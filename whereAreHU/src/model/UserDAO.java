@@ -10,8 +10,6 @@ import java.util.List;
 
 import util.DBUtil;
 
-
-
 public class UserDAO {
 	public List<UserVO> All() {
 		List<UserVO> userlist = new ArrayList<>();
@@ -41,7 +39,6 @@ public class UserDAO {
 	
 			Connection conn = DBUtil.getConnection();
 			PreparedStatement st = null;
-			ResultSet rs = null;
 			int result=0;
 		 String SQL = "INSERT INTO USER_TB VALUES (?,?,?,?,?)";
 		 try {
@@ -63,7 +60,7 @@ public class UserDAO {
 			 e.printStackTrace();
 		 }
 		finally {
-			DBUtil.dbClose(rs, st, conn);
+			DBUtil.dbClose(null, st, conn);
 		}return result;
 	 }
 	
