@@ -8,7 +8,6 @@ public class UserVO {
 	String user_email;
 	
 	public UserVO() {
-		super();
 	}
 	
 
