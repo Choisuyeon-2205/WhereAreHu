@@ -10,11 +10,11 @@ import javax.sql.DataSource;
 public class DBUtil {
 	
 	//1. DB연결을 만들어주기
-	/*
+	
 	public static Connection getConnection() {
 		Connection conn = null;
 		String driverName ="oracle.jdbc.driver.OracleDriver";
-		String url="jdbc:oracle:thin:@localhost:1521:xe";
+		String url="jdbc:oracle:thin:@192.168.0.120ㄴ:1521:xe";
 		String userid="hr", password="hr";
 		
 		try {
@@ -28,8 +28,8 @@ public class DBUtil {
 		
 		return conn;
 	}
-	*/
 	
+	/*
 	//1. DB연결을 만들어주기(connection pool)
 		public static Connection getConnection() {
 			Connection conn = null;
@@ -37,7 +37,7 @@ public class DBUtil {
 			try {
 				initContext = new InitialContext();
 				Context envContext  = (Context)initContext.lookup("java:/comp/env");
-				DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
+				DataSource ds = (DataSource)envContext.lookup("jdbc/ProOracle");
 				try {
 					conn = ds.getConnection();
 				} catch (SQLException e) {
@@ -50,7 +50,7 @@ public class DBUtil {
 			}
 			return conn;
 		}
-	
+	*/
 	//2. 자원반납
 	public static void dbClose(ResultSet rs, Statement st, Connection conn) {
 		try {
