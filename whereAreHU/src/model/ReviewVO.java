@@ -3,30 +3,19 @@ package model;
 import java.sql.Date;
 
 public class ReviewVO {
-	int review_id;
-	int user_id;
-	int area_num;
-	String review;
-	String photo;
-	double rate;
-	Date write_day;
+	private int review_id;
+	private int user_id;
+	private String area_num;
+	private String review;
+	private String photo;
+	private double rate;
+	private Date write_day;
 	
 	public ReviewVO() {
 		super();
 	}
-
-	//not null
-	public ReviewVO(int review_id, int user_id, int area_num, double rate, Date write_day) {
-		super();
-		this.review_id = review_id;
-		this.user_id = user_id;
-		this.area_num = area_num;
-		this.rate = rate;
-		this.write_day = write_day;
-	}
-
-	//all
-	public ReviewVO(int review_id, int user_id, int area_num, String review, String photo, double rate,
+	
+	public ReviewVO(int review_id, int user_id, String area_num, String review, String photo, double rate,
 			Date write_day) {
 		super();
 		this.review_id = review_id;
@@ -54,11 +43,11 @@ public class ReviewVO {
 		this.user_id = user_id;
 	}
 
-	public int getArea_num() {
+	public String getArea_num() {
 		return area_num;
 	}
 
-	public void setArea_num(int area_num) {
+	public void setArea_num(String area_num) {
 		this.area_num = area_num;
 	}
 

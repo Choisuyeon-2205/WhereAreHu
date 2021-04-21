@@ -1,11 +1,11 @@
 package model;
 
 public class UserVO {
-	String user_id;
-	String user_pw;
-	String user_name;
-	String user_phone;
-	String user_email;
+	private String user_id;
+	private String user_pw;
+	private String user_name;
+	private String user_phone;
+	private String user_email;
 	
 	public UserVO() {
 		super();
