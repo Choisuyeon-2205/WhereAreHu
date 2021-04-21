@@ -9,8 +9,8 @@ import javax.sql.DataSource;
 
 public class DBUtil {
 	
-	//1. DB연결을 만들어주기
-	
+	//1. DB�뿰寃곗쓣 留뚮뱾�뼱二쇨린
+	//192.168.0.120
 	public static Connection getConnection() {
 		Connection conn = null;
 		String driverName ="oracle.jdbc.driver.OracleDriver";
@@ -30,7 +30,7 @@ public class DBUtil {
 	}
 	
 	/*
-	//1. DB연결을 만들어주기(connection pool)
+	//1. DB�뿰寃곗쓣 留뚮뱾�뼱二쇨린(connection pool)
 		public static Connection getConnection() {
 			Connection conn = null;
 			Context initContext;
@@ -51,7 +51,7 @@ public class DBUtil {
 			return conn;
 		}
 	*/
-	//2. 자원반납
+	//2. �옄�썝諛섎궔
 	public static void dbClose(ResultSet rs, Statement st, Connection conn) {
 		try {
 			if(rs!=null) rs.close();
