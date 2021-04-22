@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("user", user);
 			session.setAttribute("username", user.getUser_name());
 			RequestDispatcher rd;
-			rd = request.getRequestDispatcher("loginok.jsp");
+			rd = request.getRequestDispatcher("../list/area_MainPage.html");
 			rd.forward(request, response);
 		}
 		
