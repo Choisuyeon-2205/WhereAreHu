@@ -7,6 +7,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import model.ServiceAreaDAO;
 import model.ServiceAreaVO;
  
 public class GetRestData {
@@ -40,7 +41,7 @@ public class GetRestData {
             
             String miseType = "";
             
-            RestAreaDAO areaDao= new RestAreaDAO();
+            ServiceAreaDAO areaDao= new ServiceAreaDAO();
             // 객체형태로
             // {"returnType":"json","clearDate":"--",.......},... 
             for (int i=0;i<parse_listArr.size();i++) {
