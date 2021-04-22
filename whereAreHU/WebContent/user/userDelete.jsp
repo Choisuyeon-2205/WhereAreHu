@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원탈퇴</title>
 </head>
 <body>
-<p>${param.user_id}</p>
-<p>${param.user_pw}</p>
-${username}
+<h1>그동안 이용해주셔서 감사합니다</h1>
 </body>
 </html>

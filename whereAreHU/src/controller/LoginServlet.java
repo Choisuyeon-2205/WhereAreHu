@@ -19,23 +19,40 @@ public class LoginServlet extends HttpServlet {
 
 
     public LoginServlet() { }
-    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	RequestDispatcher rd;
+		rd = request.getRequestDispatcher("Login.jsp");
+		rd.forward(request, response);
+    }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
+		UserVO v = new UserVO();
+
 		UserDAO dao = new UserDAO();
 		UserVO user = dao.loginChk(user_id, user_pw);
-		request.setAttribute("user", user);
-		request.setAttribute("username", user.getUser_name());
-		HttpSession session = request.getSession();
-		session.setAttribute("user_id", user_id);
-		session.setAttribute("user_pw", user_pw);
-		session.setAttribute("user", user);
-		session.setAttribute("username", user.getUser_name());
-		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("loginok.jsp");
-		rd.forward(request, response);
+		if(user == null) {
+			response.sendRedirect("loginChk");
+			
+		}else {
+			request.setAttribute("user", user);
+			request.setAttribute("username", user.getUser_name());
+			HttpSession session = request.getSession();
+		
+			session.setAttribute("user_id", user_id);
+			session.setAttribute("user_pw", user_pw);
+			session.setAttribute("user", user);
+			session.setAttribute("username", user.getUser_name());
+			RequestDispatcher rd;
+			rd = request.getRequestDispatcher("../list/area_MainPage.html");
+			rd.forward(request, response);
+		}
+		
+		
+			
+			
+		
 		
 		
 	}

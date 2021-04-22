@@ -1,0 +1,281 @@
+@charset "UTF-8";
+
+
+*{
+	/* 헤더에 배경사진 적용하면 그림파일 특성상 넣으면서 여백이 생김 -> padding과 margin으로 여백 없도록 하기! */
+	padding:0px;
+	margin:0px;
+	box-sizing: border-box;
+}
+
+header{
+	background-image: url("../image/pic1.jpg");
+	height: 880px;
+	background-size: 100% /* 그림 사이즈 딱 맞게~ */
+}
+
+.logo button{
+	background-color : white;
+	color: white;
+	width: 100px;
+	height: 44px;
+	font-size: 15px;
+	font-weight: 700;
+	border-radius: 6px;
+	border: 0;
+     background-color: rgba( 255, 255, 255, 0.5 );
+	
+	cursor: pointer; /* 커서 들이대면 커서가 변경됨 */
+}
+
+
+
+nav{
+	display: grid;
+	grid-template-columns: auto auto; /* 1:1 비율로 나누어줌 (=1fr 1fr) */
+	justify-content: space-between; /* 양끝으로 가게 만들어~ㄴ */
+	
+}
+
+
+.logo{
+	color: white;
+	font-size: 35px;
+	font-weight: 800;
+	margin: 20px 0 0 20px /* 12 3 6 9시 방향 띄우기 */
+}
+
+.menu ul{
+	display: grid;
+	grid-template-columns: auto auto auto auto; /* 4개라서 auto를 4번 준다 */
+	grid-gap: 30px; /* ul마다 30px씩 떨어뜨림! */
+	list-style-type : none; /* 링크 누르면 색 변하는 거 제거 */
+	
+	margin: 20px 20px 0 0 /* 12 3 6 9시 방향 띄우기 */
+}
+
+.menu ul a {
+	text-decoration: none; /* 링크 밑줄 제거 */
+	color: white;
+	font-weight: 800 /* 글자 굵기 설정 */
+}
+
+
+
+
+/* 검색창 css! */
+
+.search_box{
+	width: 630px;
+	display: inline-block;
+	background-color:white;
+	padding: 20px 30px;
+	position: relative; /* 위치 이동 */
+	top: 50px;
+	left: 400px;
+	
+	border-radius: 6px; /* 모서리 둥글게 */
+	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
+}
+
+.search_title {
+	padding: 10px 0; /* 두 개만 값을 주면 세로와 가로임!! */
+	font-size: 30px;
+	font-weight: 800;
+	color: rgb(75,75,75);
+}
+
+table {
+	width:100%;
+}
+
+.search_input{
+	height: 45px;
+	width: 100%;
+	color: rgb(100, 98, 98);
+	font-size: 15px;
+	border: 1px solid rgb(230,227,227);
+}
+
+.search_button{ /* 버튼 방향을 오른쪽으로 정렬 */
+	display: grid;
+	justify-content: end;
+	padding: 20px 0;
+}
+
+
+.search_button button{
+	background-color : #ff385c;
+	color: white;
+	width: 70px;
+	height: 45px;
+	font-size: 15px;
+	font-weight: 700;
+	border-radius: 6px;
+	border: 0;
+	
+	cursor: pointer; /* 커서 들이대면 커서가 변경됨 */
+}
+
+
+
+
+.sec_title{
+	font-size: 25px;
+	font-weight: 800;
+	color: rgb(66, 66, 66);
+
+}
+
+
+main {
+	margin: 30px 80px;
+}
+
+
+
+section{ /* 섹션 끝날 때마다 위아래로 공간을 만들어줘서 보기 좋게 함! */
+	margin: 30px;
+}
+
+
+
+
+.card_box {
+	display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top:20px;
+
+
+}
+
+.card_img{
+	background-image: url("../image/puppy_round.jpg");
+	height: 50px;
+	background-size: 100% 100%;
+}
+
+.card {
+	display:grid;
+	grid-template-columns: 1fr 10fr;
+	border: 1px solid yellow;
+	border-radius : 5px;
+	box-shadow: 0 3px 3px 0 rgb(170, 170, 170); 
+}
+
+.card_content{
+	display: grid;
+	align-items:center;
+	margin-left: 10px;
+	font-weight: 600;
+}
+
+
+
+.choo_box{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;	
+	grid-column-gap: 10px;
+	margin-top:20px;
+}
+
+
+
+
+.choo_image{
+	background-image: url("../image/puppy_round.jpg");
+	height: 250px;
+	background-size: 100% 100%;
+}
+
+
+
+
+.ad2{
+	background-image: url("../image/EoJrDnBUYAA9jMN.jpg");
+	height: 350px;
+	background-size: 100% 100%;
+	margin-top:20px;
+}
+
+.home_box{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;	
+	grid-gap: 10px;
+	margin-top:20px;
+}
+
+
+
+.home_img1{
+	background-image: url("../image/sample1.jpg");
+	height: 100px;
+	background-size: 100% 100%;
+}
+
+.home_img2{
+	background-image: url("../image/sample2.jpg");
+	height: 100px;
+	background-size: 100% 100%;
+}
+
+.home_img3{
+	background-image: url("../image/sample3.png");
+	height: 100px;
+	background-size: 100% 100%;
+}
+
+.home_img4{
+	background-image: url("../image/sample4.jpg");
+	height: 100px;
+	background-size: 100% 100%;
+}
+
+.home_img5{
+	background-image: url("../image/sample5.jpg");
+	height: 100px;
+	background-size: 100% 100%;
+}
+
+.home_img6{
+	background-image: url("../image/sample6.jpg");
+	height: 100px;
+	background-size: 100% 100%;
+}
+
+.home_img7{
+	background-image: url("../image/sample7.jpg");
+	height: 100px;
+	background-size: 100% 100%;
+}
+
+.home_img8{
+	background-image: url("../image/sample8.jpg");
+	height: 100px;
+	background-size: 100% 100%;
+}
+
+
+
+.info1{
+	margin: 5px 0;
+	font-size: 13px;
+	color: grey;
+}
+
+.info2{
+	font-size: 18px;
+	font-weight: 600;
+	color: green;
+}
+
+.star{
+	font-size: 12px;
+	color: yellow;
+	font-weight: 800;
+}
+
+.count, .type{
+	font-size: 12px;
+	
+}

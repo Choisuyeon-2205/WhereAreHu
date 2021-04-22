@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p>${param.user_id}</p>
-<p>${param.user_pw}</p>
-${username}
+ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
 </body>
 </html>
