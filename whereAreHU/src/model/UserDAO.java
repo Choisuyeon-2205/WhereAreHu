@@ -11,6 +11,8 @@ import java.util.List;
 import util.DBUtil;
 
 public class UserDAO {
+
+	
 	public int delete(String user_id) {
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null;
@@ -108,7 +110,7 @@ public class UserDAO {
 	 }
 	
 	public UserVO loginChk(String user_id, String user_pw) {
-		UserVO user = new UserVO();
+		UserVO user = null;
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -120,6 +122,7 @@ public class UserDAO {
 			st.setString(2, user_pw);
 			rs = st.executeQuery();
 			while(rs.next()) {
+				user = new UserVO();
 			user = makeUser(rs);
 			}
 		} catch (SQLException e) {

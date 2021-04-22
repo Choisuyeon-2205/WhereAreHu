@@ -18,7 +18,7 @@ ID<input type="text" name="user_id" class="id"><br>
 <div class="passForm">
 PW<input type="password" name="user_pw" class="pw"><br>
 </div>
-<input type="submit" value="Login" class="btn">
+<input type="submit" value="Login" class="btn" onclick="check()">
 <form action="userinsert.jsp" method="post">
   <div class="bottomText">
    Don't you have ID?
