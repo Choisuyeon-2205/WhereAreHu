@@ -11,6 +11,30 @@ import java.util.List;
 import util.DBUtil;
 
 public class UserDAO {
+	
+	// È¸¿ø Å»Åð
+		public int delete(String user_id) {
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement st = null;
+			ResultSet rs = null;
+			int result=0;
+			String SQL = "delete from user_tb where USER_ID = ?";
+			try {
+				conn.setAutoCommit(false);
+				st = conn.prepareStatement(SQL);
+				st.setString(1, user_id);
+				result=st.executeUpdate();
+				conn.commit();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				DBUtil.dbClose(null, st, conn);
+			}
+			
+			return result;
+		}
+	
 	public List<UserVO> All() {
 		List<UserVO> userlist = new ArrayList<>();
 		Connection conn = DBUtil.getConnection();
