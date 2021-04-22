@@ -11,36 +11,55 @@ import java.util.List;
 import util.DBUtil;
 
 public class UserDAO {
+	public int delete(String user_id) {
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		int result=0;
+		String SQL = "delete from user_tb where USER_ID = ?";
+		try {
+			conn.setAutoCommit(false);
+			st = conn.prepareStatement(SQL);
+			st.setString(1, user_id);
+			result=st.executeUpdate();
+			conn.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(null, st, conn);
+		}
+		
+		return result;
+	}
 	
-	// È¸¿ø Å»Åð
-		public int delete(String user_id) {
-			Connection conn = DBUtil.getConnection();
-			PreparedStatement st = null;
-			ResultSet rs = null;
-			int result=0;
-			String SQL = "delete from user_tb where USER_ID = ?";
-			try {
-				conn.setAutoCommit(false);
-				st = conn.prepareStatement(SQL);
-				st.setString(1, user_id);
-				result=st.executeUpdate();
-				conn.commit();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+	public boolean confirmID(String user_id) {
+		boolean result = false;
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		String sql = "select user_id from user_tb where user_id =?";
+		try {
+			st = conn.prepareStatement(sql);
+			st.setString(1, user_id);
+			rs = st.executeQuery();
+		if(rs.next()) {
+			result =true;
+		}
+		} catch (Exception e){
 				e.printStackTrace();
 			}finally {
-				DBUtil.dbClose(null, st, conn);
+				DBUtil.dbClose(rs, st, conn);
 			}
-			
-			return result;
-		}
-	
+		
+		return result;
+	}
 	public List<UserVO> All() {
 		List<UserVO> userlist = new ArrayList<>();
 		Connection conn = DBUtil.getConnection();
 		Statement st = null;
 		ResultSet rs = null;
-		String sql = "select * from user_tb";
+		String sql = "select * from user_tb where ?";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);

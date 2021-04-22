@@ -5,29 +5,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
-<body>
-<h1 align="center">LOGIN PAGE</h1>
+<body width="100%" height="100%">
 
-<table>
+<form action="loginChk" method ="post" class="loginForm">	
+<h2>LOGIN</h2>
+<div class="idForm">
+ID<input type="text" name="user_id" class="id"><br>
+</div>
 
-
-<form action="loginChk" method ="post">
-<tr><td>UserID:</td><td><input type="text" name="user_id"></td></tr><br><br>
-<tr><td>Password:</td><td><input type="password" name="user_pw"></td></tr><br><br>
-</table><br>
-<input type="submit" value="Login">
-
+<div class="passForm">
+PW<input type="password" name="user_pw" class="pw"><br>
+</div>
+<input type="submit" value="Login" class="btn">
+<form action="userinsert.jsp" method="post">
+  <div class="bottomText">
+   Don't you have ID?
+<input type="submit" value="Signup" class="btn2">
+</div>
 </form>
-<table>
-<tr><td>
-
-<form action="create.jsp" method="post"></td></tr>
-<tr><td><p> 계정이 없으신가요?  </p></td>
-<td><input type="submit" value="Signup"></td></tr>
-</table>
-
 </form>
+
 
 </body>
 </html>

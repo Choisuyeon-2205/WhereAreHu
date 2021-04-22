@@ -6,8 +6,6 @@
   
 }
 
-
-
 body {
   background-color:#d7fbe8;
 }
@@ -79,11 +77,27 @@ body {
   transition: 0.4s;
   display:inline;
 }
-
+.btn2 {
+  position:relative;
+  left:10%;
+  transform: translateX(-50%);
+  margin-bottom: 40px;
+  width:50px;
+  height:30px;
+  background: linear-gradient(125deg,#1fab89,#62d2a2,#9df3c4);
+  background-position: left;
+  color:white;
+  font-weight: bold;
+  border:none;
+  cursor:pointer;
+  transition: 0.4s;
+  display:inline;
+}
 .btn:hover {
   background-position: right;
 }
 
 .bottomText {
   text-align: center;
+
 }
