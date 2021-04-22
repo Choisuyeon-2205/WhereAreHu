@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import model.ReviewDAO;
 import model.ReviewVO;
 
 /**
@@ -28,15 +30,15 @@ public class ReviewInsertServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String UPLOAD_DIR ="upload";
+		String UPLOAD_DIR ="upload"; //이클립스 내 파일이 업로드 될 폴더 이름
 		 int size = 1024 * 1024 * 10; // 파일 사이즈 설정 : 10M
-		// DefaultFileRenamePolicy 처리는 중복된 이름이 존재할 경우 처리할 때
-		 String path = getServletContext().getRealPath(UPLOAD_DIR);
-		 System.out.println(path);
-		 MultipartRequest mprequest = 
-				 new MultipartRequest(request, path, size, "utf-8", 
-				 new DefaultFileRenamePolicy());
-
+		// DefaultFileRenamePolicy 중복된 이름의 파일이 업로드 될 시 번호를 붙여 파일을 생성해주는 정책
+		 String path = getServletContext().getRealPath(UPLOAD_DIR); //이클립스의 경로는 가상 경로이기 때문에 실 경로를 얻어줌
+		 System.out.println(path); //실경로 출력
+		 //MultipartRequest 객체를 만들어 줌, form으로 받은 request, 실경로, 파일 사이즈, 인코딩, 이름 정책 순
+		 MultipartRequest mprequest = new MultipartRequest(request, path, size, "utf-8", new DefaultFileRenamePolicy());
+		 		
+		 
 		// 전송한 전체 파일이름들을 가져온다.
 		Enumeration files = mprequest.getFileNames();
 		String str = (String) files.nextElement();
@@ -48,9 +50,17 @@ public class ReviewInsertServlet extends HttpServlet {
 		String originalFileName = mprequest.getOriginalFileName(str);
 		System.out.println(originalFileName);
 		
-		/*String user_id = sessio
+		ReviewVO rev = new ReviewVO();
+		rev.setArea_num(mprequest.getParameter("area_num"));
+		rev.setReview(mprequest.getParameter("review"));
+		rev.setRate(Double.parseDouble(mprequest.getParameter("rate")));
+		rev.setPhoto(mprequest.getParameter("photo"));
 		
-		ReviewVO review = new ReviewVO();*/
+		ReviewDAO dao = new ReviewDAO();
+		int result = dao.insertReview(rev);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("resultInfo.jsp");
+		rd.forward(request, response);
 	}
 
 }
