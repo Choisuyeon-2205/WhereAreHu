@@ -8,11 +8,7 @@
 	box-sizing: border-box;
 }
 
-header{
-	background-image: url("../image/pic1.jpg");
-	height: 880px;
-	background-size: 100% /* 그림 사이즈 딱 맞게~ */
-}
+
 
 .logo button{
 	background-color : white;
@@ -23,17 +19,20 @@ header{
 	font-weight: 700;
 	border-radius: 6px;
 	border: 0;
-     background-color: rgba( 255, 255, 255, 0.5 );
+    background-color: rgba( 255, 255, 255, 0 );
+
 	
 	cursor: pointer; /* 커서 들이대면 커서가 변경됨 */
 }
 
 
 
-nav{
+.menu_section{
 	display: grid;
 	grid-template-columns: auto auto; /* 1:1 비율로 나누어줌 (=1fr 1fr) */
-	justify-content: space-between; /* 양끝으로 가게 만들어~ㄴ */
+	justify-content: space-between; /* 양끝으로 가게 만들어~ */
+	
+	background-color : rgba(172, 172, 172, 0.7);
 	
 }
 
@@ -42,7 +41,7 @@ nav{
 	color: white;
 	font-size: 35px;
 	font-weight: 800;
-	margin: 20px 0 0 20px /* 12 3 6 9시 방향 띄우기 */
+	margin: 12px 0 0 20px /* 12 3 6 9시 방향 띄우기 */
 }
 
 .menu ul{
@@ -57,13 +56,80 @@ nav{
 .menu ul a {
 	text-decoration: none; /* 링크 밑줄 제거 */
 	color: white;
-	font-weight: 800 /* 글자 굵기 설정 */
+	font-weight: 800; /* 글자 굵기 설정 */
+
+	
 }
 
 
 
 
+/* 메인 화면 관련 */
+.main_box{
+	width: 630px;
+	display: inline-block;
+	background-color: rgb(255, 255, 255, 0.3);
+	padding: 20px 30px;
+	position: relative; /* 위치 이동 */
+	top: 50px;
+	left: 400px;
+	border-radius: 6px; /* 모서리 둥글게 */
+	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
+}
+
+.main_title {
+	padding: 10px 15px; /* 두 개만 값을 주면 세로와 가로임!! */
+	font-size: 30px;
+	font-weight: 800;
+	color: rgb(75,75,75);
+
+}
+
+
+
+
+
+
+
+
 /* 검색창 css! */
+
+.main_search_link{
+	width: 630px;
+	display: block;
+	padding: 20px 30px;
+	position: relative; /* 위치 이동 */
+	top: 50px;
+	left: 400px;
+	
+}
+
+.main_search_link ul{
+	display: grid;
+	grid-template-columns: auto auto; /* 2개라서 auto를 2번 준다 */
+	grid-gap: 30px; /* ul마다 30px씩 떨어뜨림! */
+	list-style-type : none; /* 링크 누르면 색 변하는 거 제거 */
+	
+	margin: 20px 20px 20px 120px /* 12 3 6 9시 방향 띄우기 */
+}
+
+.main_search_link ul a {
+	text-decoration: none; /* 링크 밑줄 제거 */
+	color: rgb(75,75,75);
+	font-weight: 800; /* 글자 굵기 설정 */
+	position: relative;
+	padding: 6px 12px;
+	
+}
+
+
+
+
+
+
+
+
+
 
 .search_box{
 	width: 630px;
@@ -105,7 +171,7 @@ table {
 
 
 .search_button button{
-	background-color : #ff385c;
+	background-color: rgb(31, 171, 137);
 	color: white;
 	width: 70px;
 	height: 45px;
@@ -190,13 +256,6 @@ section{ /* 섹션 끝날 때마다 위아래로 공간을 만들어줘서 보�
 
 
 
-
-.ad2{
-	background-image: url("../image/EoJrDnBUYAA9jMN.jpg");
-	height: 350px;
-	background-size: 100% 100%;
-	margin-top:20px;
-}
 
 .home_box{
 	display: grid;
