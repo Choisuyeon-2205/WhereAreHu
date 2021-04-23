@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Where? 휴식이 있는 곳!</title>
+<link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="https://a0.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
+<link rel="stylesheet" href="css/styles.css"/>
+<style>
+
+header{ 
+	background-image: url("image/main_sample2.jpg");
+	height: 880px;
+	background-size: 100% /* 그림 사이즈 딱 맞게~ */
+}
+
+</style>
+
+</head>
+<body><!-- block: 사이즈 완전 딱 맞게, 즉 높이랑 넓이 모두 조정 / inline-block: 넓이는 줄고, 높이는 그대로! -->
+	<header> <!-- 전체 -->
+		<nav> <!-- 최상단 ~ 로고 있는 부분 하나 / 메뉴 있는 부분 하나 해서 두 개로 나눔 -->
+		  <div class = "logo"><button type="button"><img src="logo1.png" alt="로고가 있는 자리" width = "100" height = "44"></button><svg width="102" height="32" fill="currentcolor" style="display:inline-block"></svg></div>
+		  <div class = "menu">
+		  	<ul>
+		  		<li><a href="#">여기가대충최상단이고</a></li>
+		  		<li><a href="#">여기는그중에서도메뉴인것같고</a></li>
+		  		<li><a href="#">로그인</a></li>
+		  		<li><a href="#">회원가입</a></li>
+		  	</ul>
+		  </div>
+		</nav>
+	
+	
+	
+		<section> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
+		  <div class = "search_box">
+		  	<div class = "search_title">대충 텍스트 있는 곳</div>
+		  	<table>
+		  		<tr>
+		  			<tb colspan="2">
+		  				<input class = "search_input" type = "text" placeholder = "검색하실 위치, 장소 혹은 휴게소를 검색해주세요">
+		  			</tb>
+		  		</tr>
+		  		<tr>
+		  			<tb colspan="2"> <!-- 이쪽은 아마 빼고 헤더의 메뉴에 관련 내용을 넣을 듯하다 -->
+		  				<select class = "search_input">
+		  					<option>전부 조회</option>
+		  					<option>상행선</option>
+		  					<option>하행선</option>
+		  				</select>
+		  			</tb>
+		  		</tr>
+		  	</table>
+		  	
+		  	
+		  	<div class = "search_button">
+		  		<button>검색</button>
+		  	</div>
+		  	
+		  	
+		  </div>
+		</section>
+	</header>
+	
+	
+</body>
+</html>

@@ -3,6 +3,7 @@ package model;
 import java.sql.Date;
 
 public class ReviewVO {
+<<<<<<< HEAD
 	private int review_id; //sequence_number로 리뷰 PK
 	private String user_id; //session을 통해 자동으로 전달 받음
 	private String area_num; //session을 통해 자동으로 전달 받음
@@ -10,12 +11,37 @@ public class ReviewVO {
 	private String photo; //image 파일 이름이 들어옴
 	private double rate; //별점 script를 통해 사용자 작성
 	private Date write_day;
+=======
+	int review_id;
+	int user_id;
+	int area_num;
+	String review;
+	String photo;
+	double rate;
+	Date write_day;
+>>>>>>> branch 'master' of https://github.com/Choisuyeon-2205/whereAreHU.git
 	
 	public ReviewVO() {
 		super();
 	}
+<<<<<<< HEAD
 	
 	public ReviewVO(int review_id, String user_id, String area_num, String review, String photo, double rate,
+=======
+
+	//not null
+	public ReviewVO(int review_id, int user_id, int area_num, double rate, Date write_day) {
+		super();
+		this.review_id = review_id;
+		this.user_id = user_id;
+		this.area_num = area_num;
+		this.rate = rate;
+		this.write_day = write_day;
+	}
+
+	//all
+	public ReviewVO(int review_id, int user_id, int area_num, String review, String photo, double rate,
+>>>>>>> branch 'master' of https://github.com/Choisuyeon-2205/whereAreHU.git
 			Date write_day) {
 		super();
 		this.review_id = review_id;
@@ -43,11 +69,11 @@ public class ReviewVO {
 		this.user_id = user_id;
 	}
 
-	public String getArea_num() {
+	public int getArea_num() {
 		return area_num;
 	}
 
-	public void setArea_num(String area_num) {
+	public void setArea_num(int area_num) {
 		this.area_num = area_num;
 	}
 

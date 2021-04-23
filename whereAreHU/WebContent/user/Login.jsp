@@ -3,31 +3,55 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login Page</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
-<body>
-<h1 align="center">LOGIN PAGE</h1>
+<body width="100%" height="100%">
 
-<table>
+<form action="loginChk" method ="post" class="loginForm">	
+<h2>LOGIN</h2>
+<div class="idForm">
+ID<input type="text" name="user_id" class="id"><br>
+</div>
 
+<div class="passForm">
+PW<input type="password" name="user_pw" class="pw"><br>
+</div>
+<input type="submit" value="Login" class="btn" onclick="check()">
+<form action="userinsert.jsp" method="post">
+  <div class="bottomText">
+   Don't you have ID?  <a href="userinsert.jsp">Sign up</a>
+   
+   
+ <a href="javascript:KakaoLogin()"><img = src="https://developers.kakao.com/docs/static/image/m/kakaologin.png"></a>
+   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+   <script>
 
-<form action="loginChk" method ="post">
-<tr><td>UserID:</td><td><input type="text" name="user_id"></td></tr><br><br>
-<tr><td>Password:</td><td><input type="password" name="user_pw"></td></tr><br><br>
-</table><br>
-<input type="submit" value="Login">
+	  window.Kakao.init("b17f39ce838a0f2150074bbe84b0e99e");
+	  function KakaoLogin() {
+		window.Kakao.Auth.login({
+			scope:'profile, account_email',
+			success: function(authobj) {
+				console.log(authobj);
+				window.Kakao.API.request({
+					url:'/v2/user/me',
+					success: res => {
+						const Kakao_account=res.kakao_account;
+				console.log(kakao_account);
+					}
+				});
+			}
+		});
+	}
+   
+   </script>
 
+</div>
 </form>
-<table>
-<tr><td>
-
-<form action="create.jsp" method="post"></td></tr>
-<tr><td><p> 계정이 없으신가요?  </p></td>
-<td><input type="submit" value="Signup"></td></tr>
-</table>
-
 </form>
+
 
 </body>
 </html>

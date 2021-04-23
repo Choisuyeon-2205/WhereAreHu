@@ -1,22 +1,20 @@
-package restarea;
+package getdata;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import model.ServiceAreaDAO;
 import model.ServiceAreaVO;
  
 public class GetRestData {
  
     public static void main(String[] args) {
-        //휴게소 조회 서비스
+    	//휴게소 DATA 가져오기 (API=> DB)
         try {
-            // 인증키
-            String serviceKey = "9631752245";
-            
+      
             String urlStr = "http://data.ex.co.kr/openapi/restinfo/hiwaySvarInfoList?key=9631752245&type=json";      
             URL url = new URL(urlStr);
             
@@ -40,7 +38,7 @@ public class GetRestData {
             
             String miseType = "";
             
-            RestAreaDAO areaDao= new RestAreaDAO();
+            ServiceAreaDAO areaDao= new ServiceAreaDAO();
             // 객체형태로
             // {"returnType":"json","clearDate":"--",.......},... 
             for (int i=0;i<parse_listArr.size();i++) {
