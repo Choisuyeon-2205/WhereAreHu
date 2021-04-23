@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
+<script 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+</script>
+  <link rel="stylesheet" type="text/css" href="./style2.css">
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>Sign up</title>
+
 <script>
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
 
 	function pw_check() {
 		var password1 = $("#pw").val();
@@ -41,20 +43,31 @@
 	}
 </script>
 </head>
+
 <body>
+
 	<form action="userInsert" method="post">
-		<h1>Signup PAGE</h1>
-		<hr>
+
+
+    <h1>Sign up</h1>
+       <legend> <span class="number">v</span> Your Basic Info</legend>
+	<div>
+	<a>
 		ID:<input type="text" name="user_id" id="user_id" value="">
-		<button type="button" class="id_overlap_button" onclick="id_check()">중복검사</button><br>
+		</a><a>
+		<button type="button" class="btn1" onclick="id_check()">Check</button><br>
+</a>
+</div>
 		 PW:<input type="password" name="user_pw" id="pw" value=""><br>
 		PW confirm:<input type="password" name="user_pw" id="pw2" value=""><br>
-		이름:<input type="text" name="user_name"><br> 
-		연락처:<input type="text" name="user_phone"><br> 
+		Name:<input type="text" name="user_name"><br> 
+		Tel:<input type="text" name="user_phone"><br> 
 		Email:<input type="text" name="user_email"><br> 
-		<input type="submit" value="회원가입" onclick="pw_check()"><br>
-		<input type="button" value="BACK" onClick="history.go(-1)"> 
+		<input type="submit" value="Sign up" onclick="pw_check()" class ="aa"><br>
+		<input type="button" value="BACK" onClick="history.go(-1)"class ="aa"> 
+
 	</form>
+
 
 </body>
 </html>
