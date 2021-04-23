@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.Enumeration;
 
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -51,22 +53,28 @@ public class ReviewInsertServlet extends HttpServlet {
 		//String originalFileName = mprequest.getOriginalFileName(str);
 		//System.out.println(originalFileName);
 		
-		ReviewVO rev = new ReviewVO();
-		//rev.setArea_num(mprequest.getParameter("area_num"));
-		//rev.setUser_id(mprequest.getParameter("user_id"));
-		rev.setArea_num("000485"); //service_area area_num parent key 제약조건
-		rev.setUser_id("test1"); //user_tb user_id parent key 제약조건
-		rev.setReview(mprequest.getParameter("review"));
-		rev.setRate(Double.parseDouble(mprequest.getParameter("rate")));
-		rev.setPhoto(fileName);
+		HttpSession sess = request.getSession(); //리뷰 입력시 session 쿠키 내의 회원 및 휴게소 정보를 불러와야 하기 때문에 Session 객체 생성
 		
-		ReviewDAO dao = new ReviewDAO();
-		int result = dao.insertReview(rev);
+		ReviewVO rev = new ReviewVO(); //리뷰 작성을 위한 ReviewVO 객체 생성
+		rev.setArea_num((String)sess.getAttribute("area_num")); //session의 area_num을 rev에 입력
+		rev.setUser_id((String)sess.getAttribute("user_id")); //session의 user_idf를 rev에 입력
+		rev.setReview(mprequest.getParameter("review")); //사용자가 form 태그로 작성한 리뷰 내용을 rev에 입력
+		rev.setRate(Double.parseDouble(mprequest.getParameter("rate"))); //사용자가 선택한 별점을 rev에 입력
+		rev.setPhoto(fileName); //사용자가 업로드 한 사진의 파일 이름을 rev에 입력
 		
+		ReviewDAO dao = new ReviewDAO(); //DB에 해당 데이터를 입력하기 위한 ReviewDAO 객체 생성
+		int result = dao.insertReview(rev); //지금까지 만든 rev 객체를 DB에 insert
 		
-		request.setAttribute("review", rev);
-		RequestDispatcher rd = request.getRequestDispatcher("review/reviewMain.jsp");
-		rd.forward(request, response);
+		if (result > 0) {
+			request.setAttribute("review", rev);
+			RequestDispatcher rd = request.getRequestDispatcher("review/reviewMain.jsp");
+			rd.forward(request, response);
+		} else {
+			PrintWriter out = response.getWriter();
+			out.print("등록에 실패했습니다.");
+			RequestDispatcher rd = request.getRequestDispatcher("review/review_insert.jsp");
+			rd.forward(request, response);
+		}
 	}
 
 }
