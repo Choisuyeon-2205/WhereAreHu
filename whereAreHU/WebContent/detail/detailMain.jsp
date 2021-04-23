@@ -6,9 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>휴게소 상세정보 조회</title>
-<%
-ServiceAreaVO sarea= (ServiceAreaVO)request.getAttribute("sarea");
-%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 $(function(){
 	$("#back").click(function(){
@@ -86,14 +84,12 @@ p {
 	<div class="detail">
 		<span class="et-detail" id="info">
 			<h2>상세 정보</h2><br>
-			주소: ${sarea.getAddress()}<br>
-			노선: ${sarea.getRoute()}<br>
-			대표 전화번호: ${sarea.getArea_phone()}<br>
-			지사명: ${sarea.getFname()}<br>
-			<% String str= sarea.getIsGas()==1?"주유소":"휴게소"; %>
-			주유소/휴게소: <%=str %><br>
-			<% String str2= sarea.getDescend()==1?"하행":"상행"; %>
-			상/하행: <%=str2 %><br>
+			주소: ${sarea.address}<br>
+			노선: ${sarea.route}<br>
+			대표 전화번호: ${sarea.area_phone}<br>
+			지사명: ${sarea.fname}<br>
+			주유소/휴게소: ${sarea.isGas==1?"주유소":"휴게소"}<br>
+			상/하행: ${sarea.descend==1?"하행":"상행"}<br>
 			대표 전화번호: ${sarea.getMinicar()}<br>
 			소형차 주차대수: ${sarea.getLargecar()}<br>
 			대형차 주차대수: ${sarea.getOthercar()}<br>
@@ -105,9 +101,10 @@ p {
 		</span>
 	</div>
 	<div class="buttons">
-		<input type="button" id="food" value="대표음식" onclick="location.href='selectDetailFood?area_num=${sarea.getArea_num()}&area_name=${sarea.getArea_name()}'"/> 
-		<input type="button" id="oil" value="주유소" /> 
-		<input type="button" id="brand" value="브랜드매장" />
+		<input type="button" id="food" value="대표음식" 
+		onclick="location.href='selectDetailFood?area_num=${sarea.getArea_num()}&area_name=${sarea.area_name}'"> 
+		<input type="button" id="oil" value="주유소" onclick="location.href='selectDetailOil?area_num=${sarea.getArea_num()}&area_name=${sarea.getArea_name()}'"/> 
+		<input type="button" id="brand" value="브랜드매장" onclick="location.href='selectDetailBrand?area_num=${sarea.getArea_num()}&area_name=${sarea.getArea_name()}'"/>
 	</div>
 	<%--
 	<jsp:include page="../review/reviewMain.jsp"></jsp:include>

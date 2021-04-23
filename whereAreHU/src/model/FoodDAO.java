@@ -15,7 +15,7 @@ public class FoodDAO {
 		Connection conn= null;
 		PreparedStatement st= null;
 		
-		String sql= "insert into food values(?,?,?,?,?,?)";
+		String sql= "insert into food values(brand_numbering.nextval,?,?,?,?,?,?)";
 		
 		conn= DBUtil.getConnection();
 
