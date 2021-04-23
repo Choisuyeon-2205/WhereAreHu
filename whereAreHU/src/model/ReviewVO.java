@@ -3,19 +3,19 @@ package model;
 import java.sql.Date;
 
 public class ReviewVO {
-	private int review_id;
-	private int user_id;
-	private String area_num;
-	private String review;
-	private String photo;
-	private double rate;
+	private int review_id; //sequence_number로 리뷰 PK
+	private String user_id; //session을 통해 자동으로 전달 받음
+	private String area_num; //session을 통해 자동으로 전달 받음
+	private String review; //form 통해 사용자 작성
+	private String photo; //image 파일 이름이 들어옴
+	private double rate; //별점 script를 통해 사용자 작성
 	private Date write_day;
 	
 	public ReviewVO() {
 		super();
 	}
 	
-	public ReviewVO(int review_id, int user_id, String area_num, String review, String photo, double rate,
+	public ReviewVO(int review_id, String user_id, String area_num, String review, String photo, double rate,
 			Date write_day) {
 		super();
 		this.review_id = review_id;
@@ -35,11 +35,11 @@ public class ReviewVO {
 		this.review_id = review_id;
 	}
 
-	public int getUser_id() {
+	public String getUser_id() {
 		return user_id;
 	}
 
-	public void setUser_id(int user_id) {
+	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
 

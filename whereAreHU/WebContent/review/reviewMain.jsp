@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>결과 페이지</title>
+<style>
+h1 { color: green; }
+</style>
 </head>
 <body>
-
+<h1>${review }</h1>
 </body>
 </html>

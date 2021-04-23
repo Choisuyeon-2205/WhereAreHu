@@ -37,7 +37,7 @@
 </head>
 <body>
 <form action="reviewInsert" method="post" enctype="multipart/form-data">
-	<select id="star_rate" name="star_rate">
+	<select id="star_rate" name="rate">
 		<option value="1.0">1</option>
 		<option value="2.0">2</option>
 		<option value="3.0">3</option>

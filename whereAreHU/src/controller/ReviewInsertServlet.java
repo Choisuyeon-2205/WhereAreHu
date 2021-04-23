@@ -45,21 +45,27 @@ public class ReviewInsertServlet extends HttpServlet {
 
 		// 파일명 중복이 발생했을 때 정책에 의해 뒤에 1,2,3 처럼 숫자가 붙어 고유 파일명을 생성한다.
 		// 이때 생성된 이름을 FilesystemName이라고 하여 그 이름 정보를 가져온다. (중복 처리)
-		//String fileName = mprequest.getFilesystemName(str);
+		String fileName = mprequest.getFilesystemName(str);
+		System.out.println(fileName);
 		// 실제 파일 이름을 가져온다.
-		String originalFileName = mprequest.getOriginalFileName(str);
-		System.out.println(originalFileName);
+		//String originalFileName = mprequest.getOriginalFileName(str);
+		//System.out.println(originalFileName);
 		
 		ReviewVO rev = new ReviewVO();
-		rev.setArea_num(mprequest.getParameter("area_num"));
+		//rev.setArea_num(mprequest.getParameter("area_num"));
+		//rev.setUser_id(mprequest.getParameter("user_id"));
+		rev.setArea_num("000485"); //service_area area_num parent key 제약조건
+		rev.setUser_id("test1"); //user_tb user_id parent key 제약조건
 		rev.setReview(mprequest.getParameter("review"));
 		rev.setRate(Double.parseDouble(mprequest.getParameter("rate")));
-		rev.setPhoto(mprequest.getParameter("photo"));
+		rev.setPhoto(fileName);
 		
 		ReviewDAO dao = new ReviewDAO();
 		int result = dao.insertReview(rev);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("resultInfo.jsp");
+		
+		request.setAttribute("review", rev);
+		RequestDispatcher rd = request.getRequestDispatcher("review/reviewMain.jsp");
 		rd.forward(request, response);
 	}
 
