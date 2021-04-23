@@ -105,12 +105,12 @@ p {
 		</span>
 	</div>
 	<div class="buttons">
-		<input type="button" id="food" value="대표음식" /> 
+		<input type="button" id="food" value="대표음식" onclick="location.href='selectDetailFood?area_num=${sarea.getArea_num()}&area_name=${sarea.getArea_name()}'"/> 
 		<input type="button" id="oil" value="주유소" /> 
 		<input type="button" id="brand" value="브랜드매장" />
 	</div>
 	<%--
 	<jsp:include page="../review/reviewMain.jsp"></jsp:include>
-	 --%>
+	 --%> 
 </body>
 </html>

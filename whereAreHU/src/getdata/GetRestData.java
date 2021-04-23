@@ -1,6 +1,5 @@
-package restarea;
+package getdata;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import org.json.simple.JSONArray;
@@ -13,11 +12,9 @@ import model.ServiceAreaVO;
 public class GetRestData {
  
     public static void main(String[] args) {
-        //휴게소 조회 서비스
+    	//휴게소 DATA 가져오기 (API=> DB)
         try {
-            // 인증키
-            String serviceKey = "9631752245";
-            
+      
             String urlStr = "http://data.ex.co.kr/openapi/restinfo/hiwaySvarInfoList?key=9631752245&type=json";      
             URL url = new URL(urlStr);
             
