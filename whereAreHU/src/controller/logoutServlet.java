@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -16,14 +17,18 @@ import model.UserVO;
 /**
  * Servlet implementation class logoutServlet
  */
-@WebServlet("/logout")
+@WebServlet("/list/logout")
 public class logoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  HttpSession session = request.getSession();
+		response.setCharacterEncoding("UTF-8"); 
+
+		HttpSession session = request.getSession();
 		  ServletContext app = getServletContext();
+		  
+		  
 		  List<UserVO> ulist = (List<UserVO>)app.getAttribute("user_list");
 		    if(ulist!=null) {
 		    	UserVO user = (UserVO)session.getAttribute("user");
@@ -31,9 +36,11 @@ public class logoutServlet extends HttpServlet {
 		    }
 		    app.setAttribute("user_list", ulist);
 		    session.invalidate();
-		    
-		    response.sendRedirect("logout");
-	
+		
+
+		 
+		    response.sendRedirect("../user/loginChk");
+		
 	}
 
 }

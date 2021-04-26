@@ -12,7 +12,29 @@ import util.DBUtil;
 
 public class UserDAO {
 
-	
+	public int changepw(String user_id, String user_pw, String newpasswd) {
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement st = null;
+		int result=0;
+		String sql = "update user_tb set user_pw ='?'"
+				+ " where user_id='?'"
+				+ " and user_pw='?'";
+		
+		try {
+			 st = conn.prepareStatement(sql);
+			st.setString(1, newpasswd);
+			st.setString(2, user_id);
+			st.setString(3, user_pw);
+			result= st.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(null, st, conn);
+		}
+		return result;
+	}
 	public int delete(String user_id) {
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null;

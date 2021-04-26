@@ -3,55 +3,119 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 
+<script> 
+function check() {
+	var user_id =$('#id').val();
+	var user_pw=$('#password').val();
+    if (user_id == "") {
+    	 
+        alert("아이디를 입력해주세요");
+        $("#id").focus();
+        return;
+    } 
+    else if (user_pw == "") {
+    	 
+        alert("비밀번호를를 입력해주세요");
+        $("#pw").focus();
+        return;
+    }
+
+	$.ajax({
+		type:"post",
+		url:'loginChk',
+		data:{"user_id":user_id,"user_pw":user_pw},
+		success: function (data) {
+			 
+			if(data.trim() =="no"){
+			
+				alert("로그인 정보를 확인해주세요");
+				$('#id').val("");
+				$('#password').val("");
+				$('#id').focus();
+			}else{
+				location.href="../list/mainPage.jsp"
+			}
+		}
+	})
+}
+
+</script>
 <meta charset="UTF-8">
 <title>Login Page</title>
   <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
-<body width="100%" height="100%">
+<body>
 
 <form action="loginChk" method ="post" class="loginForm">	
 <h2>LOGIN</h2>
 <div class="idForm">
-ID<input type="text" name="user_id" class="id"><br>
+ID<input type="text" name="user_id" class="id" id="id"><br>
 </div>
 
 <div class="passForm">
-PW<input type="password" name="user_pw" class="pw"><br>
+PW<input type="password" name="user_pw" class="pw" id="password"><br>
 </div>
-<input type="submit" value="Login" class="btn" onclick="check()">
-<form action="userinsert.jsp" method="post">
+<input type="button" value="Login" class="btn" onclick="check()">
+
+
+
+
+<form action="userinsert.jsp" method="post" />
   <div class="bottomText">
    Don't you have ID?  <a href="userinsert.jsp">Sign up</a>
    
-   
- <a href="javascript:KakaoLogin()"><img = src="https://developers.kakao.com/docs/static/image/m/kakaologin.png"></a>
-   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-   <script>
+ <a href="javascript:KakaoLogin()">
+    <img   src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile28.uf.tistory.com%2Fimage%2F99BEE8465C3D7D12140EAC" id="kakao">
+ </a>
+<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+<div id="naver_id_login"></div>
+<!-- //네이버아이디로로그인 버튼 노출 영역 -->
 
+</div>
+</form>
+   <script>
 	  window.Kakao.init("b17f39ce838a0f2150074bbe84b0e99e");
 	  function KakaoLogin() {
 		window.Kakao.Auth.login({
 			scope:'profile, account_email',
 			success: function(authobj) {
-				console.log(authobj);
+				
+				console.log(authobj),
 				window.Kakao.API.request({
 					url:'/v2/user/me',
 					success: res => {
-						const Kakao_account=res.kakao_account;
+						const kakao_account=res.kakao_account;
 				console.log(kakao_account);
+				  var kakaonickname = res.properties.nickname;    //카카오톡 닉네임을 변수에 저장
+			      var kakao_email = res.properties.account_email; 
+			      window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/whereAreHU/user/loginChk?kakaonickname="
+			    		  +kakaonickname+"&kakao_email="+account_email);
+			      window.loaction.href="../list/mainPage.jsp";
+			      
 					}
 				});
 			}
 		});
 	}
-   
+	
    </script>
 
-</div>
-</form>
-</form>
 
-
+<!-- 네이버아디디로로그인 초기화 Script -->
+<script type="text/javascript">
+	var naver_id_login = new naver_id_login("LzGGjtT_5CpyZZFjnLWk", "http://localhost:9090/whereAreHU/user/callback.jsp");
+	var state = naver_id_login.getUniqState();
+	naver_id_login.setButton("white", 2,40);
+	naver_id_login.setDomain(".service.com");
+	naver_id_login.setState(state);
+	naver_id_login.setPopup();
+	naver_id_login.init_naver_id_login();
+	$("#naver_id_login img").attr("src", "https://nuriss.kr/data/editor/1811/thumb-f25dcaecf0e201873d1d781c022795e4_1542973599_017_835x181.png");
+</script>
+<!-- // 네이버아이디로로그인 초기화 Script -->
 </body>
 </html>

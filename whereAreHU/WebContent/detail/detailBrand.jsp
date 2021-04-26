@@ -7,20 +7,72 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+* {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+header {
+  max-width: 1000px;
+  margin: 24vh auto;
+}
+
+h1 {
+  color: #1fab89;
+  text-align: center;
+  font-family: Source Sans Pro, sans-serif;
+  line-height: 3em;
+  font-size: 50px;
+  line-height: 1.1;
+}
+header p {
+ text-align: center;
+}
+
+.cards {
+  text-align: center;
+  list-style: none;
+  width:1600px;
+}
+
+.card {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #d7fbe8;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 6rem rgba(black, 0.1);
+  width:450px;
+  list-style-type: none;
+  display: inline-block;
+  * {
+    margin-bottom: 1rem;
+  }
+}
+
+.card--image {
+  font-size: 6rem;
+  line-height: 1;
+  }
+</style>
 <body>
-<h1>${area_name}의 대표메뉴</h1>
-<table>
-	<tr>
-		<td>브랜드명</td><td>브랜드내용</td><td>오픈시간</td><td>마감시간</td>
-	</tr>
-	<c:forEach var="brand" items="${brandlist}">
-	<tr>
-		<td>${brand.getBrand_name()}</td>
-		<td>${brand.getBrand_text()}</td>
-		<td>${brand.getBrand_start()}</td>
-		<td>${brand.getBrand_end()}</td>
-	</tr>
-	</c:forEach>
-</table>
+<header>
+  <h1>${area_name}의 브랜드매장</h1>
+  <p>${area_name}와 함께 즐거운 여행 되세요!</p>
+</header>
+<hr>
+<main>
+  <ul class="cards">
+  	<c:forEach var="brand" items="${brandlist}">
+    <li class="card">
+      <div class="card--image">✤</div>
+      <h2>${brand.brand_name}</h2>
+      <p>${brand.brand_text}</p>
+      <p>오픈시간:&nbsp${brand.brand_start}</p>
+      <p>마감시간:&nbsp${brand.brand_end}</p>
+    </li>
+    </c:forEach>
+  </ul>
+</main>
 </body>
 </html>
