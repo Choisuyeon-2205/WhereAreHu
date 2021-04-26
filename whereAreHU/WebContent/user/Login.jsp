@@ -49,7 +49,7 @@ function check() {
   <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
-
+<form action="userinsert.jsp" method="post" ></form>
 <form action="loginChk" method ="post" class="loginForm">	
 <h2>LOGIN</h2>
 <div class="idForm">
@@ -64,7 +64,7 @@ PW<input type="password" name="user_pw" class="pw" id="password"><br>
 
 
 
-<form action="userinsert.jsp" method="post" />
+
   <div class="bottomText">
    Don't you have ID?  <a href="userinsert.jsp">Sign up</a>
    
@@ -84,20 +84,26 @@ PW<input type="password" name="user_pw" class="pw" id="password"><br>
 			scope:'profile, account_email',
 			success: function(authobj) {
 				
-				console.log(authobj),
+		/* 		console.log(authobj), */
 				window.Kakao.API.request({
 					url:'/v2/user/me',
 					success: res => {
 						const kakao_account=res.kakao_account;
 				console.log(kakao_account);
-				  var kakaonickname = res.properties.nickname;    //카카오톡 닉네임을 변수에 저장
-			      var kakao_email = res.properties.account_email; 
-			      window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/whereAreHU/user/loginChk?kakaonickname="
-			    		  +kakaonickname+"&kakao_email="+account_email);
-			      window.loaction.href="../list/mainPage.jsp";
+			  var kakaonickname = kakao_account.profile.nickname;    //카카오톡 닉네임을 변수에 저장
+			      var kakao_email = kakao_account.email; 
+			  
+			      console.log(kakao_account.email);
+			      console.log(kakao_account.profile.nickname);
 			      
+			  
+			      //location.href = "http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/whereAreHU/user/loginChk?kakaonickname="
+			    		  //+kakaonickname+"&kakao_email="+account_email); 
+			     	 window.location.href="../list/mainPage.jsp?kakaonickname="
+			    		  +kakaonickname+"&kakao_email="+kakao_email;
+			       
 					}
-				});
+				});	
 			}
 		});
 	}
@@ -115,6 +121,7 @@ PW<input type="password" name="user_pw" class="pw" id="password"><br>
 	naver_id_login.setPopup();
 	naver_id_login.init_naver_id_login();
 	$("#naver_id_login img").attr("src", "https://nuriss.kr/data/editor/1811/thumb-f25dcaecf0e201873d1d781c022795e4_1542973599_017_835x181.png");
+	//location.href="../list/mainPage.jsp";
 </script>
 <!-- // 네이버아이디로로그인 초기화 Script -->
 </body>
