@@ -217,7 +217,7 @@ button.createbtn i {
 }
 
 .nav ul {
-  display: flex;
+  display: inline-flex;
   justify-content: space-around;
   list-style-type: none;
   height: 40px;
@@ -227,11 +227,12 @@ button.createbtn i {
 
 .nav ul li {
   padding: 10px;
-  width: auto;
+  width: 200px;
   cursor: pointer;
   text-align: center;
   transition: all 0.2s ease-in-out;
 }
+
 
 .nav ul li:hover,
 .nav ul li.active {
@@ -244,7 +245,7 @@ button.createbtn i {
 }
 
 .tab {
-  display: none;
+   display: none;  
 }
 
 .tab {
@@ -329,9 +330,6 @@ button.createbtn i {
     margin:0;
   }
 
-  .profile-header h3 {
-  }
-
   .profile-option {
     width: 30px;
     height: 30px;
@@ -370,3 +368,56 @@ button.createbtn i {
   justify-content: center;
   margin: 20px auto;
 }
+
+.outText {
+	margin: 0;
+}
+
+.outButton1, .outButton2 {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12apx;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.outButton1, .outButton2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.outButton1:hover, .outButton2:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+ul {
+  list-style:none;
+  padding-left:0;
+}
+
+
+#shipping li label {
+ width:70px;
+ display : inline-block;
+ text-align:left;     
+}
+input[type="text"], input[type="tel"], input[type="email"] {
+  width:300px;
+}
+
+.review, .good{
+      border:1px solid #ccc;
+      width : inherit;
+      border-collapse: collapse;
+    }
+.review th, td, .good th, td { padding:10px 20px; }
+
+
