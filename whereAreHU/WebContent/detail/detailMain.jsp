@@ -1,6 +1,7 @@
 <%@page import="model.ServiceAreaVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,7 +77,7 @@ p {
 <body>
 	<img src="../images/back.png" id="back" width="30px" height="30px">
 	<div class="header">
-		<h1>${sarea.getArea_name()}</h1>
+		<h1>${sarea.area_name}</h1>
 		<h4>♥</h4>
 		<h5>좋아요</h5>
 	</div>
@@ -90,10 +91,10 @@ p {
 			지사명: ${sarea.fname}<br>
 			주유소/휴게소: ${sarea.isGas==1?"주유소":"휴게소"}<br>
 			상/하행: ${sarea.descend==1?"하행":"상행"}<br>
-			대표 전화번호: ${sarea.getMinicar()}<br>
-			소형차 주차대수: ${sarea.getLargecar()}<br>
-			대형차 주차대수: ${sarea.getOthercar()}<br>
-			장애인 주차대수: ${sarea.getThumbsup()}<br>
+			대표 전화번호: ${sarea.minicar}<br>
+			소형차 주차대수: ${sarea.largecar}<br>
+			대형차 주차대수: ${sarea.othercar}<br>
+			장애인 주차대수: ${sarea.thumbsup}<br>
 		</span>
 		<span class="et-detail" id="map">
 			<h1>지도api</h1><br>
@@ -102,12 +103,13 @@ p {
 	</div>
 	<div class="buttons">
 		<input type="button" id="food" value="대표음식" 
-		onclick="location.href='selectDetailFood?area_num=${sarea.getArea_num()}&area_name=${sarea.area_name}'"> 
-		<input type="button" id="oil" value="주유소" onclick="location.href='selectDetailOil?area_num=${sarea.getArea_num()}&area_name=${sarea.getArea_name()}'"/> 
-		<input type="button" id="brand" value="브랜드매장" onclick="location.href='selectDetailBrand?area_num=${sarea.getArea_num()}&area_name=${sarea.getArea_name()}'"/>
+		onclick="location.href='selectDetailFood?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"> 
+		<input type="button" id="oil" value="주유소" onclick="location.href='selectDetailOil?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/> 
+		<input type="button" id="brand" value="브랜드매장" onclick="location.href='selectDetailBrand?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/>
 	</div>
-	<%--
-	<jsp:include page="../review/reviewMain.jsp"></jsp:include>
-	 --%> 
+	
+	<jsp:include page="../review/reviewMain.jsp">
+		<jsp:param name="reviewlist" value="${reviewlist}" />
+	</jsp:include>
 </body>
 </html>
