@@ -129,21 +129,6 @@
 
 
 
-
-
-.search_box{
-	width: 630px;
-	display: inline-block;
-	background-color:white;
-	padding: 20px 30px;
-	position: relative; /* 위치 이동 */
-	top: 50px;
-	left: 400px;
-	
-	border-radius: 6px; /* 모서리 둥글게 */
-	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
-}
-
 .search_title {
 	padding: 10px 0; /* 두 개만 값을 주면 세로와 가로임!! */
 	font-size: 30px;
@@ -155,13 +140,7 @@ table {
 	width:100%;
 }
 
-.search_input{
-	height: 45px;
-	width: 100%;
-	color: rgb(100, 98, 98);
-	font-size: 15px;
-	border: 1px solid rgb(230,227,227);
-}
+
 
 .search_button{ /* 버튼 방향을 오른쪽으로 정렬 */
 	display: grid;
