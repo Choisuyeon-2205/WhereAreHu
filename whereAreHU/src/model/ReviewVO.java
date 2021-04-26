@@ -3,34 +3,21 @@ package model;
 import java.sql.Date;
 
 public class ReviewVO {
-<<<<<<< HEAD
-	private int review_id; //sequence_number·Î ¸®ºä PK
-	private String user_id; //sessionÀ» ÅëÇØ ÀÚµ¿À¸·Î Àü´Þ ¹ÞÀ½
-	private String area_num; //sessionÀ» ÅëÇØ ÀÚµ¿À¸·Î Àü´Þ ¹ÞÀ½
-	private String review; //form ÅëÇØ »ç¿ëÀÚ ÀÛ¼º
-	private String photo; //image ÆÄÀÏ ÀÌ¸§ÀÌ µé¾î¿È
-	private double rate; //º°Á¡ script¸¦ ÅëÇØ »ç¿ëÀÚ ÀÛ¼º
+
+	private int review_id; //sequence_numberï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ PK
+	private String user_id; //sessionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private String area_num; //sessionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private String review; //form ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½
+	private String photo; //image ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private double rate; //ï¿½ï¿½ï¿½ï¿½ scriptï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½
 	private Date write_day;
-=======
-	int review_id;
-	int user_id;
-	int area_num;
-	String review;
-	String photo;
-	double rate;
-	Date write_day;
->>>>>>> branch 'master' of https://github.com/Choisuyeon-2205/whereAreHU.git
 	
 	public ReviewVO() {
 		super();
 	}
-<<<<<<< HEAD
-	
-	public ReviewVO(int review_id, String user_id, String area_num, String review, String photo, double rate,
-=======
 
 	//not null
-	public ReviewVO(int review_id, int user_id, int area_num, double rate, Date write_day) {
+	public ReviewVO(int review_id, String user_id, String area_num, double rate, Date write_day) {
 		super();
 		this.review_id = review_id;
 		this.user_id = user_id;
@@ -40,9 +27,7 @@ public class ReviewVO {
 	}
 
 	//all
-	public ReviewVO(int review_id, int user_id, int area_num, String review, String photo, double rate,
->>>>>>> branch 'master' of https://github.com/Choisuyeon-2205/whereAreHU.git
-			Date write_day) {
+	public ReviewVO(int review_id, String user_id, String area_num, String review, String photo, double rate, Date write_day) {
 		super();
 		this.review_id = review_id;
 		this.user_id = user_id;
@@ -69,11 +54,11 @@ public class ReviewVO {
 		this.user_id = user_id;
 	}
 
-	public int getArea_num() {
+	public String getArea_num() {
 		return area_num;
 	}
 
-	public void setArea_num(int area_num) {
+	public void setArea_num(String area_num) {
 		this.area_num = area_num;
 	}
 
@@ -114,6 +99,6 @@ public class ReviewVO {
 		return "ReviewVO [review_id=" + review_id + ", user_id=" + user_id + ", area_num=" + area_num + ", review="
 				+ review + ", photo=" + photo + ", rate=" + rate + ", write_day=" + write_day + "]";
 	}
-	
+
 	
 }
