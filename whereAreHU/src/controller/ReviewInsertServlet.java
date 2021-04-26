@@ -56,8 +56,10 @@ public class ReviewInsertServlet extends HttpServlet {
 		HttpSession sess = request.getSession(); //리뷰 입력시 session 쿠키 내의 회원 및 휴게소 정보를 불러와야 하기 때문에 Session 객체 생성
 		
 		ReviewVO rev = new ReviewVO(); //리뷰 작성을 위한 ReviewVO 객체 생성
-		rev.setArea_num((String)sess.getAttribute("area_num")); //session의 area_num을 rev에 입력
-		rev.setUser_id((String)sess.getAttribute("user_id")); //session의 user_idf를 rev에 입력
+		//rev.setArea_num(request.getParameter("area_num")); //session의 area_num을 rev에 입력
+		//rev.setUser_id((String)sess.getAttribute("user_id")); //session의 user_idf를 rev에 입력
+		rev.setArea_num("000485");
+		rev.setUser_id("test1");
 		rev.setReview(mprequest.getParameter("review")); //사용자가 form 태그로 작성한 리뷰 내용을 rev에 입력
 		rev.setRate(Double.parseDouble(mprequest.getParameter("rate"))); //사용자가 선택한 별점을 rev에 입력
 		rev.setPhoto(fileName); //사용자가 업로드 한 사진의 파일 이름을 rev에 입력
