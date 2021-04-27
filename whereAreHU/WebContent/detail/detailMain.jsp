@@ -124,9 +124,6 @@ td {
 		<input type="button" id="brand" value="브랜드매장" onclick="location.href='selectDetailBrand?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/>
 	</div>
 	<div id="revlist">
-	<jsp:include page="../review/rev_list.jsp">
-		<jsp:param name="revlist" value="${revlist}" />
-	</jsp:include>
 	</div>
 	<div id="revinsert">
 	<jsp:include page="../review/review_insert.jsp">

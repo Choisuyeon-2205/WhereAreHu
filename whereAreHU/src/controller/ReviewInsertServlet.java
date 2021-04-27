@@ -27,11 +27,6 @@ import model.ReviewVO;
 public class ReviewInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("review/review_insert.jsp");
-		rd.forward(request, response);
-	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String UPLOAD_DIR ="upload"; //이클립스 내 파일이 업로드 될 폴더 이름
 		 int size = 1024 * 1024 * 10; // 파일 사이즈 설정 : 10M
@@ -67,20 +62,19 @@ public class ReviewInsertServlet extends HttpServlet {
 		
 		ReviewDAO dao = new ReviewDAO(); //DB에 해당 데이터를 입력하기 위한 ReviewDAO 객체 생성
 		int result = dao.insertReview(rev); //지금까지 만든 rev 객체를 DB에 insert
-		String area_num="000485";
 		
 		if (result > 0) {
 			response.addHeader("Refresh", "1;url=second");
 			ReviewDAO dao2 = new ReviewDAO();
 //			String area_num = request.getParameter("area_num");
-			List<ReviewVO> rlist = dao2.selectAllReviewsByRestStop(area_num);
+			List<ReviewVO> rlist = dao2.selectAllReviewsByRestStop(rev.getArea_num());
 			request.setAttribute("revlist", rlist);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("rev_list.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("review/rev_list.jsp");
 			rd.forward(request, response);
 		} else {
 			PrintWriter out = response.getWriter();
-			out.print("등록에 실패했습니다.");
+			System.out.println("");
 		}
 	}
 
