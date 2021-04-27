@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class LoginChkFilter
  */
-@WebFilter({ "/user/*", "/reviewInsert" })
+//@WebFilter({ "/user/*", "/reviewInsert" })
 public class LoginChkFilter implements Filter {
 
     /**
