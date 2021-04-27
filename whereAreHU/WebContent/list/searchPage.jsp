@@ -116,28 +116,16 @@ header{
 		<section> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
 		  <div class = "search_box">
 		  	<div class = "search_title">휴게소 검색</div>
-		  	<table>
-		  		<tr>
-		  			<tb colspan="2">
-		  				<input class = "search_input" type = "text" placeholder = "검색하실 위치, 장소 혹은 휴게소를 검색해주세요">
-		  			</tb>
-		  		</tr>
-		  		<tr>
-		  			<tb colspan="2"> <!-- 이쪽은 아마 빼고 헤더의 메뉴에 관련 내용을 넣을 듯하다 -->
-		  				<select class = "search_input">
-		  					<option>전부 조회</option>
-		  					<option>상행선</option>
-		  					<option>하행선</option>
-		  				</select>
-		  			</tb>
-		  		</tr>
-		  	</table>
-		  	
-		  	
-		  	<div class = "search_button">
-		  		<button><a href="searchResultPage.jsp">검색</a></button>
-		  	</div>
-		  	
+
+		  		
+		  			
+		  	<form action = "searchResult">
+		  		<input name = "search" class = "search_input" type = "text" placeholder = "검색하실 위치, 장소 혹은 휴게소를 검색해주세요">
+		  		
+			  	<div class = "search_button">
+			  		<input type = "submit" value = "검색">
+			  	</div>
+		  	</form>
 		  	
 		  </div>
 		</section>

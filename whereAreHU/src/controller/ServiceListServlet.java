@@ -14,26 +14,37 @@ import javax.servlet.http.HttpServletResponse;
 import model.ServiceAreaDAO;
 import model.ServiceAreaVO;
 
+
 /**
  * Servlet implementation class ServiceListServlet
  */
-@WebServlet("/list/searchResultPage")
+@WebServlet("/list/searchResult")
 public class ServiceListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PrintWriter out = response.getWriter(); // 
+		String searcharea = request.getParameter("search");
+		
+
 		ServiceAreaDAO dao = new ServiceAreaDAO();
-		List<ServiceAreaVO> servicelist = dao.selectAllArea();
-		request.setAttribute("servicelist", servicelist);
-		RequestDispatcher rd = request.getRequestDispatcher("searchResultPage.jsp");
+
+		//검색별 조회
+		List<ServiceAreaVO> servicesearch = dao.selectSearchArea(searcharea);
+		request.setAttribute("servicesearch", servicesearch);
+		System.out.println(servicesearch);
+
+
+		RequestDispatcher rd = request.getRequestDispatcher("searchResult.jsp");
 		rd.forward(request, response);
+		
 		
 		
 	}
 
-	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
 
 }
