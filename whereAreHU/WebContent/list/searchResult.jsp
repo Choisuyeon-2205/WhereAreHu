@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
 <html>
@@ -196,17 +197,22 @@ header{
 			<section id="section2">
 			  <div class = "right_section" style="overflow:scroll; width: 800px; height: 400px;">
 			 	<h2>검색 결과</h2>
-			 	<table>
-			 		<thead>
-			 			<tr>
-			 				<th>휴게소명</th>
-			 				<th>주소</th>
-			 				<th>고속도로</th>
-							<th>추천 수</th>
-			 			</tr>
-			 		</thead>
-			 	
-			 	</table>
+				  <main>
+				  
+
+				  <c:forEach var="search" items="${servicesearch}" > 
+				  	<div id = result_section>
+				  		<p>휴게소명: ${search.area_name }</p>
+					  	<p>주소: ${search.address }</p>
+					  	<p>도로: ${search.route }</p>
+					  	<p>추천 수: ${search.thumbsup }</p>
+				  	</div>
+				  </c:forEach>
+				  
+
+
+				  </main>
+
 			  	
 			  </div>
 			
@@ -220,3 +226,4 @@ header{
 
 
 
+				  
