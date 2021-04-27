@@ -19,8 +19,9 @@ $(function() {
 		var arr = responseData["list"];
 		for (var data in arr) {
 			var elt = arr[data];
-			<%session.setAttribute("area_num", "000485");%> //이 부분을 포워드로 전달 받으면 삭제
-			var aNum = <%=(String) session.getAttribute("area_num")%> //현재 세션에 저장된 휴게소 번호 불러옴
+<%-- 			<%session.setAttribute("area_num", "000485");%> //이 부분을 포워드로 전달 받으면 삭제
+			var aNum = <%=(String) session.getAttribute("area_num")%> //현재 세션에 저장된 휴게소 번호 불러옴 --%>
+			var aNum = <%=request.getAttribute("area_num")%> //현재 세션에 저장된 휴게소 번호 불러옴
 			for (key in elt) {
 				if(key == "svarCd" && elt[key] == aNum) {
 					//console.log(elt[key]); //해당하는 key값 확인
@@ -57,7 +58,7 @@ $(function() {
 	    		    navigator.geolocation.getCurrentPosition(function(position) {
 	    		        
 	    		        var myLoc = position.coords.latitude + ',' + position.coords.longitude;
-						var msg = 'https://map.kakao.com/link/from/현재위치,' + myLoc + '/to/' + stopAddr + ',' + result[0].y + ',' + result[0].x;
+						var msg = 'https://map.kakao.com/link/from/현위치,' + myLoc + '/to/' + stopName + ',' + result[0].y + ',' + result[0].x;
 						
 						 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 							console.log(msg); //로그에서 길찾기 URL 확인
@@ -69,8 +70,7 @@ $(function() {
 					
 					        // 인포윈도우로 장소에 대한 설명을 표시합니다
 					        var infowindow = new kakao.maps.InfoWindow({
-					            //content: '<div style="width:150px;text-align:center;padding:6px 0;">' + stopName + '</div>',
-					            content: '<a href="' + msg + '">길찾기</a>'
+					        	content: '<div style="width:150px;text-align:center;padding:6px 0;">' + stopName + '<br><a href="' + msg + '">길찾기</a></div>'
 					        });
 					        infowindow.open(map, marker);
 					
@@ -80,7 +80,7 @@ $(function() {
 	    		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
 	    			//var locPosition = new kakao.maps.LatLng(33.450701, 126.570667);  
-					var msg = 'https://map.kakao.com/link/to/' + stopAddr + ',' + result[0].y + ',' + result[0].x;
+					var msg = 'https://map.kakao.com/link/to/' + stopName + ',' + result[0].y + ',' + result[0].x;
 					
 					 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 						console.log(msg); //로그에서 길찾기 URL 확인
@@ -92,8 +92,7 @@ $(function() {
 				
 				        // 인포윈도우로 장소에 대한 설명을 표시합니다
 				        var infowindow = new kakao.maps.InfoWindow({
-				            //content: '<div style="width:150px;text-align:center;padding:6px 0;">' + stopName + '</div>',
-				            content: '<a href="' + msg + '">길찾기</a>'
+				        	content: '<div style="width:150px;text-align:center;padding:6px 0;">' + stopName + '<br><a href="' + msg + '">길찾기</a></div>'
 				        });
 				        infowindow.open(map, marker);
 				

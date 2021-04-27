@@ -97,8 +97,7 @@ p {
 			장애인 주차대수: ${sarea.thumbsup}<br>
 		</span>
 		<span class="et-detail" id="map">
-			<h1>지도api</h1><br>
-			<h3>something about 지도api</h3>
+			<jsp:include page="../review/kakaoMap.jsp" />
 		</span>
 	</div>
 	<div class="buttons">

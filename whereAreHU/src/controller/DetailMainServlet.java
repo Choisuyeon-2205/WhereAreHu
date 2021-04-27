@@ -24,12 +24,13 @@ public class DetailMainServlet extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String area_num="000001";
+		String area_num="000485";
 		ServiceAreaDAO saDAO = new ServiceAreaDAO();
 		ReviewDAO reDAO = new ReviewDAO();
 		List<ReviewVO> reviewlist = reDAO.selectAllReviewsByRestStop(area_num);
 		System.out.println(reviewlist);
 		
+		request.setAttribute("area_num", area_num);
 		request.setAttribute("sarea", saDAO.selectOneArea(area_num));
 		request.setAttribute("reviewlist", reviewlist);
 	
