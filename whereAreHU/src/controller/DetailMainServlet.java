@@ -50,8 +50,6 @@ public class DetailMainServlet extends HttpServlet {
 		request.setAttribute("area_num", area_num);
 		request.setAttribute("sarea", saDAO.selectOneArea(area_num));
 		request.setAttribute("reviewlist", reviewlist);
-<<<<<<< HEAD
-=======
 		request.setAttribute("like_num", like_num);
 		request.setAttribute("like_me", like_me);
 	
@@ -60,14 +58,9 @@ public class DetailMainServlet extends HttpServlet {
 		List<ReviewVO> rlist = dao.selectAllReviewsByRestStop(area_num);
 		request.setAttribute("revlist", rlist);
 		System.out.println(rlist);
->>>>>>> branch 'master' of https://github.com/Choisuyeon-2205/whereAreHU.git
 		
 		RequestDispatcher rd = request.getRequestDispatcher("detailMain.jsp");
 		rd.forward(request, response);
-<<<<<<< HEAD
-=======
-		
 
->>>>>>> branch 'master' of https://github.com/Choisuyeon-2205/whereAreHU.git
 	}
 }
