@@ -16,7 +16,7 @@ import model.ReviewVO;
 /**
  * Servlet implementation class ReviewListServlet
  */
-@WebServlet("/reviewList")
+@WebServlet("/review/reviewList")
 public class ReviewListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,7 +28,7 @@ public class ReviewListServlet extends HttpServlet {
 		request.setAttribute("revlist", rlist);
 		System.out.println(rlist);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("review/rev_list.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("rev_list.jsp");
 		rd.forward(request, response);
 	}
 }
