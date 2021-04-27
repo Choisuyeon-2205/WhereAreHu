@@ -32,11 +32,15 @@
 		 console.log("2:" + naver_id_login.oauthParams.access_token);
 		 console.log(naver_id_login.getProfileData('email'));
 		 console.log(naver_id_login.getProfileData('name'));
-		// console.log(naver_id_login.getProfileData('mobile'));
-		// 
-	
-	
+		 console.log(naver_id_login.getProfileData('mobile'));
+		 
 		window.close();
+		
+		
+		top.opener.location="../list/mainPage.jsp?name="
+				+naver_id_login.getProfileData('name')
+				+"&email=" + naver_id_login.getProfileData('email');
+
 	
 	}
 

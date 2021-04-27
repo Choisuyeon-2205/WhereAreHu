@@ -100,8 +100,7 @@ PW<input type="password" name="user_pw" class="pw" id="password"><br>
 			      //location.href = "http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/whereAreHU/user/loginChk?kakaonickname="
 			    		  //+kakaonickname+"&kakao_email="+account_email); 
 			     	 window.location.href="../list/mainPage.jsp?kakaonickname="
-			    		  +kakaonickname+"&kakao_email="+kakao_email;
-			       
+			    		  +kakaonickname+"&kakao_email="+kakao_email;			       
 					}
 				});	
 			}
