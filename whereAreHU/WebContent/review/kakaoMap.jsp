@@ -19,9 +19,7 @@ $(function() {
 		var arr = responseData["list"];
 		for (var data in arr) {
 			var elt = arr[data];
-<%-- 			<%session.setAttribute("area_num", "000485");%> //이 부분을 포워드로 전달 받으면 삭제
-			var aNum = <%=(String) session.getAttribute("area_num")%> //현재 세션에 저장된 휴게소 번호 불러옴 --%>
-			var aNum = ${area_num} //현재 세션에 저장된 휴게소 번호 불러옴
+			var aNum = ${area_num};
 			for (key in elt) {
 				if(key == "svarCd" && elt[key] == aNum) {
 					//console.log(elt[key]); //해당하는 key값 확인
