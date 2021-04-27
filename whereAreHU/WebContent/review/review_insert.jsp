@@ -9,6 +9,46 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 <link rel="stylesheet" href="review/dist/themes/fontawesome-stars.css" />
 <script type="text/javascript" src="review/dist/jquery.barrating.min.js"></script>
+<style>
+	#review 
+	{
+		border-radius: 10px;
+		margin: 0 0 20px 0;
+	}
+	
+	.parent {
+		position: relative;
+		width: 650px;
+		height: 300px;
+		margin: 10px auto;
+	}
+	
+	.child {
+		position: absolute;
+		left: 50%; 
+		transform: translateX(-50%);
+	}
+	
+	input[type="submit"] {
+		position: absolute;
+		right: 0%;
+	}
+	
+	div.br-widget {
+		position: absolute;
+		left: 50%; 
+		margin-bottom: 10px;
+		transform: translateX(-50%);
+	}
+	
+	textarea {
+		padding: 15px;
+	}
+	
+	textarea:focus {outline:none;}
+	
+	
+</style>
 <script>
    $(function() {
       $('#star_rate').barrating({
@@ -36,19 +76,19 @@
 </script>
 </head>
 <body>
-<form action="reviewInsert" method="post" enctype="multipart/form-data">
-	<select id="star_rate" name="rate">
-		<option value="1.0">1</option>
-		<option value="2.0">2</option>
-		<option value="3.0">3</option>
-		<option value="4.0">4</option>
-		<option value="5.0">5</option>
-	</select><br>
-	<label for="review">리뷰 입력</label><br>
-	<textarea id="review" name="review" cols="80" rows="5"></textarea><br>
-	<label for="photo">사진 업로드</label><br>
-	<input type="file" name="photo">
-	<input type="submit" value="등록하기">
-</form>
+<div id="content" class="parent">
+	<form class="child" action="reviewInsert" method="post" enctype="multipart/form-data">
+		<select id="star_rate" name="rate">
+			<option value="1.0">1</option>
+			<option value="2.0">2</option>
+			<option value="3.0">3</option>
+			<option value="4.0">4</option>
+			<option value="5.0">5</option>
+		</select><br>
+		<textarea id="review" name="review" cols="80" rows="6"></textarea><br>
+		<input type="file" name="photo">
+		<input type="submit" value="등록하기">
+	</form>
+</div>
 </body>
 </html>
