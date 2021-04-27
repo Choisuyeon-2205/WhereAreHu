@@ -10,9 +10,31 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 $(function(){
+	var like_me = ${like_me};
+	
 	$("#back").click(function(){
 		window.history.back();
 	});
+	$("#like").on("click", function(){
+		alert("*" + like_me + "*");
+		if(like_me===1){
+			$(this).css("background-color", "lightgray");
+		}else{
+			$(this).css("background-color", "red");
+		}
+		$.ajax({
+			url:"updateGood?user_id=oh&area_num=000485",
+			type: "post",
+			success: function(data){	
+				alert(data);
+				$("#like_num").text(data.like);
+				location.reload();
+			},
+			error: function(){}
+		});
+	});
+	if(like_me===1)
+		$("#like").css("background-color", "red");
 });
 </script>
 <style type="text/css">
@@ -87,14 +109,20 @@ table {
 td {
 	text-align: center;
 }
+#like {
+	color="red";
+}
 </style>
 </head>
 <body>
-	<img src="../images/back.png" id="back" width="30px" height="30px">
+	<img src="images/back.png" id="back" width="30px" height="30px">
 	<div class="header">
 		<h1>${sarea.area_name}</h1>
-		<h4>♥</h4>
-		<h5>좋아요</h5>
+		<c:if test="${like_me!=-1 }">
+			<button type="button" id="like">♡</button>
+		</c:if>
+		<h5>좋아요 수: <span id="like_num">${like_num}</span></h5>
+		<div><jsp:include page="../common/header.jsp"/></div>
 	</div>
 	<hr>
 	<div class="detail">

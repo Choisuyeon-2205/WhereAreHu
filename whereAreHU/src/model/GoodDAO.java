@@ -79,17 +79,18 @@ public class GoodDAO {
 				return area;
 			}
 			
-			//한 가게를 좋아요 눌렀을 때 insert
+			//한 가게를 좋아요 눌렀을 때 insert, 좋아요 업데이트
 			public int isGood(String user_id, String area_num) {
 				//좋아요 누른적이 있는지 확인
+				System.out.println(user_id+" "+area_num);
 				int result= selectByOne(user_id,area_num);
 				String sql2=""; 
 				int result2=0;
 				if(result==-1) {
 					//처음 누를 때
-					sql2= "insert into good values (?,?,1)";
+					sql2= "insert into good(user_id,area_num,isgood) values (?,?,1)";
 				}else {
-					sql2= "update good set isgood=1 where user_id=? and area_num=?";
+					sql2= "update good set isgood=decode(isgood,1,0,1) where user_id=? and area_num=?";
 				}
 				
 				Connection conn= DBUtil.getConnection();
@@ -109,28 +110,29 @@ public class GoodDAO {
 				return result2;
 			}
 			
-			//좋아요 취소
-			public int cancelGood(String user_id, String area_num) {
-				String sql= "update good set isgood=1 where user_id=? and area_num=?";
-				Connection conn;
+			//휴게소 좋아요 수
+			public int selectByAreaNum(String area_num) {
+				int isgood= 0;
+				Connection conn= DBUtil.getConnection();
 				PreparedStatement st= null;
-				int result=0;
-				
-				conn= DBUtil.getConnection();
-				
+				ResultSet rs= null;
+				String sql="select count(*) as num from good where area_num=? and isgood=1";
 				try {
 					st= conn.prepareStatement(sql);
-					st.setString(1, user_id);
-					st.setString(2, area_num);
+					st.setString(1, area_num);
+					rs= st.executeQuery();
+					while(rs.next()) {
+						isgood = rs.getInt("num");
+					}
 					
-					result= st.executeUpdate();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}finally {
-					DBUtil.dbClose(null, st, conn);
-				}	
-				return result;
+				} finally {
+					DBUtil.dbClose(rs, st, conn);
+				}
+				return isgood;
 			}
+			
 			
 }
