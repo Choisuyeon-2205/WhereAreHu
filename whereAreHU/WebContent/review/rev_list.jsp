@@ -11,21 +11,24 @@
 <style>
 table, td { border: 1px solid gray; border-collapse: collapse; }
 td { padding: 5px; }
-tr:first-of-type { background-color: hotpink; }
+tr:first-of-type { background-color: green; }
 </style>
 </head>
 <body>
+<c:set var="cPath" value="${pageContext.request.contextPath }"/>
 <table>
-<tr><td>리뷰 번호</td><td>회원ID</td><td>휴게소 번호</td><td>리뷰</td><td>사진이름</td><td>별점></td><td>글쓴 날짜</td></tr>
+<tr><td>리뷰 번호</td><td>회원ID</td><td>휴게소 번호</td><td>별점</td><td>글쓴 날짜</td><td>사진</td></tr>
 <c:forEach var="rev" items="${revlist }">
 <tr>
 	<td>${rev.review_id }</td>
 	<td>${rev.user_id }</td>
 	<td>${rev.area_num }</td>
-	<td>${rev.review }</td>
-	<td>${rev.photo }</td>
 	<td>${rev.rate }</td>
 	<td>${rev.write_day }</td>
+	<td><img src="${cPath }/upload/${rev.photo}" width="100px" height="100px"/>
+</tr>
+<tr>
+	<td colspan="6">${rev.review }</td>
 </tr>
 </c:forEach>
 </table>

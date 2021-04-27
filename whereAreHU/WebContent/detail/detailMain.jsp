@@ -72,6 +72,21 @@ p {
 	font-family: "Cooper Blk BT";
 	font-size: 20px;
 }
+
+#revlist {
+	width: 800px;
+	margin: 10px auto;
+	position: relative;
+}
+
+table {
+	width: 700px;
+	margin: 0 auto;
+	position: absolute;
+}
+td {
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -106,9 +121,10 @@ p {
 		<input type="button" id="oil" value="주유소" onclick="location.href='selectDetailOil?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/> 
 		<input type="button" id="brand" value="브랜드매장" onclick="location.href='selectDetailBrand?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/>
 	</div>
-	
-	<jsp:include page="../review/reviewMain.jsp">
-		<jsp:param name="reviewlist" value="${reviewlist}" />
+	<div id="revlist">
+	<jsp:include page="../review/rev_list.jsp">
+		<jsp:param name="revlist" value="${revlist}" />
 	</jsp:include>
+	</div>
 </body>
 </html>
