@@ -11,7 +11,29 @@ import java.util.List;
 import util.DBUtil;
 
 public class UserDAO {
-
+	
+	public List<UserVO> selectById (String user_id) {
+		List<UserVO> userlist = new ArrayList<>();
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		String sql = "select *from user_id where user_id =? ";
+		try {
+			st = conn.prepareStatement(sql);
+			st.setString(1, user_id);
+			rs = st.executeQuery();
+			while(rs.next()) {
+				userlist.add(makeUser(rs));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		return userlist;
+	}
+	
 	public int changepw(String user_id, String user_pw, String newpasswd) {
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null;
