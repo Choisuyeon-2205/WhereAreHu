@@ -8,6 +8,10 @@
 <meta charset="UTF-8">
 <title>휴게소 상세정보 조회</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+<link rel="stylesheet" href="../review/dist/themes/fontawesome-stars.css" />
+<script type="text/javascript" src="../review/dist/jquery.barrating.min.js"></script>
+
 <script>
 $(function(){
 	var like_me = ${like_me};
@@ -98,13 +102,11 @@ p {
 #revlist {
 	width: 800px;
 	margin: 10px auto;
-	position: relative;
 }
 
 table {
 	width: 700px;
 	margin: 0 auto;
-	position: absolute;
 }
 td {
 	text-align: center;
@@ -118,9 +120,8 @@ td {
 	<img src="images/back.png" id="back" width="30px" height="30px">
 	<div class="header">
 		<h1>${sarea.area_name}</h1>
-		<c:if test="${like_me!=-1 }">
-			<button type="button" id="like">♡</button>
-		</c:if>
+		<button type="button" id="like">♡</button>
+		
 		<h5>좋아요 수: <span id="like_num">${like_num}</span></h5>
 		<div><jsp:include page="../common/header.jsp"/></div>
 	</div>
@@ -150,8 +151,10 @@ td {
 		<input type="button" id="brand" value="브랜드매장" onclick="location.href='selectDetailBrand?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/>
 	</div>
 	<div id="revlist">
-	<jsp:include page="../review/rev_list.jsp">
-		<jsp:param name="revlist" value="${revlist}" />
+	</div>
+	<div id="revinsert">
+	<jsp:include page="../review/review_insert.jsp">
+		<jsp:param name="rev" value="${review}" />
 	</jsp:include>
 	</div>
 </body>
