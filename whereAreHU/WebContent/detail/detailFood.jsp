@@ -62,7 +62,7 @@ header p {
     <li class="card">
       <h2>${food.food_name}</h2>
       <c:if test="${food.food_best eq 'Y'}">
-		<img src="../images/thumb2.png" width="50px" height="50px">
+		<img src="images/thumb2.png" width="50px" height="50px">
    	  </c:if>
       <p>${food.food_context}</p>
       <p>가격: ${food.food_cost}</p>
