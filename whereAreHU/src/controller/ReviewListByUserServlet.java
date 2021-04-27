@@ -16,19 +16,19 @@ import model.ReviewVO;
 /**
  * Servlet implementation class ReviewListServlet
  */
-@WebServlet("/review/reviewList")
-public class ReviewListServlet extends HttpServlet {
+@WebServlet("/mypage/reviewByUserList")
+public class ReviewListByUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ReviewDAO dao = new ReviewDAO();
-//		String area_num = "000485";
-		String area_num = request.getParameter("area_num");
-		List<ReviewVO> rlist = dao.selectAllReviewsByRestStop(area_num);
+		String user_id = request.getParameter("user_id");
+
+		List<ReviewVO> rlist = dao.selectAllReviewsByUser(user_id);
 		request.setAttribute("revlist", rlist);
 		System.out.println(rlist);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("rev_list.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("jsp/rev_listForUser.jsp");
 		rd.forward(request, response);
 	}
 }
