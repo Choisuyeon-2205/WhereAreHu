@@ -95,7 +95,7 @@ public class ServiceAreaDAO {
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from service_area where area_num = '%'||?||'%'";
+		String sql = "select * from service_area where area_num = ?";
 		try {
 			st = conn.prepareStatement(sql);
 			st.setString(1, area_num);

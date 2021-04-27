@@ -39,7 +39,7 @@ p{
 <header>
 	<h1>${oil.oil_name} 정보</h1>
 	<c:if test="${oil.oislpg eq 'Y'}">
-		<img src="../images/icon_LPG.png" width="50px" height="50px">
+		<img src="images/icon_LPG.png" width="50px" height="50px">
     </c:if>
     <p>운영시간: ${oil.oil_start} ~ ${oil.oil_end} </p>
 </header>
