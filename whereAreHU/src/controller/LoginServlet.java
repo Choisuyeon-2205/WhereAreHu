@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		if(user == null) {
 			
 			//response.sendRedirect("loginChk");
-			//out.println("<script>alert('·Î±×ÀÎÁ¤º¸¸¦ È®ÀÎÇØÁÖ¼¼¿ä') </script>");
+			//out.println("<script>alert('ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½') </script>");
 			out.println("no");
 			
 			
@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("user_pw", user_pw);
 			session.setAttribute("user", user);
 			session.setAttribute("username", user.getUser_name());
-			out.println("·Î±×ÀÎ ¼º°ø");
+			out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			//RequestDispatcher rd;
 			// response.sendRedirect("../list/area_MainPage.html");
 			

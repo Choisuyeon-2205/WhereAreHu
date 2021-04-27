@@ -1,14 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리뷰 입력</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-<link rel="stylesheet" href="review/dist/themes/fontawesome-stars.css" />
-<script type="text/javascript" src="review/dist/jquery.barrating.min.js"></script>
+<link rel="stylesheet" href="../review/dist/themes/fontawesome-stars.css" />
+<script type="text/javascript" src="../review/dist/jquery.barrating.min.js"></script>
+<title>리뷰 입력</title>
+
 <style>
 	#review 
 	{
@@ -29,7 +33,7 @@
 		transform: translateX(-50%);
 	}
 	
-	input[type="submit"] {
+	#instBtn {
 		position: absolute;
 		right: 0%;
 	}
@@ -46,11 +50,10 @@
 	}
 	
 	textarea:focus {outline:none;}
-	
-	
 </style>
 <script>
-   $(function() {
+$(function() {
+	
       $('#star_rate').barrating({
         theme: 'fontawesome-stars'
       });
@@ -63,7 +66,7 @@
       $('#star_rate').barrating({
     		theme: 'fontawesome-stars'
     		, readonly: true
-    	});
+      });
       
 /*       $('#star_rate').barrating({
     		theme: 'fontawesome-stars'
@@ -72,12 +75,41 @@
     			// 선택한 별점 값을 value로 받음
     		}
     	}); */
-   });
+    	
+    	$.ajax({
+    		url: "../reviewList",
+    		type: "get",
+    		data: {"area_num":"000485"},
+    		success: function(responseData) {
+	    		//console.log(responseData);
+    			$("#revlist").html(responseData);
+    		},
+    		error: function() {}
+    	});
+    	
+    	$("#instBtn").on("click", function() {
+    		
+    		$.ajax({
+    			url: "../reviewInsert",
+    			type: "post",
+    			data: $("#revFrom").serialize(),
+    			encType: "multipart/form-data; charset=UTF-8",
+    			contentType : false,
+    			success: function(responseData) {
+    				console.log(responseData);
+    				$("#revlist").html(responseData);
+    				$("#review").text("");
+    			},
+    			error: function() {}
+    		});
+    	});
+    	
+});
 </script>
 </head>
 <body>
 <div id="content" class="parent">
-	<form class="child" action="reviewInsert" method="post" enctype="multipart/form-data">
+	<form id="revForm" class="child">
 		<select id="star_rate" name="rate">
 			<option value="1.0">1</option>
 			<option value="2.0">2</option>
@@ -87,8 +119,8 @@
 		</select><br>
 		<textarea id="review" name="review" cols="80" rows="6"></textarea><br>
 		<input type="file" name="photo">
-		<input type="submit" value="등록하기">
+		<button id=instBtn>등록하기</button>
 	</form>
 </div>
-</body>
+<body>
 </html>
