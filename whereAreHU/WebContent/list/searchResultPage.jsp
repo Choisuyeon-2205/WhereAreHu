@@ -10,15 +10,23 @@
 <link rel="stylesheet" href="css/styles.css"/>
 
 
+
 <style>
 
 
 header{
 
-	background-image: url("image/highway_5.jpg"); 
+	background-image: url("image/highway_3.jpg"); 
 	background-repeat: no-repeat;
 	height: 880px;
 	background-size: 100% /* 그림 사이즈 딱 맞게~ */
+}
+
+
+.main_search_link{
+	top: 20px;
+	left: 400px;
+	
 }
 
 /* 커서 액션 활성화 */
@@ -48,37 +56,91 @@ header{
 }
 
 
-
-
-.search_box{
-	width: 630px;
-	display: inline-block;
+.result_box{
+	width: 80%;
+	height: 550px;
+	display: grid;
+	grid-template-columns: 250px 30px auto;
 	background-color: rgba(215, 251, 232, 0.6);
 	padding: 20px 30px;
 	position: relative; /* 위치 이동 */
-	top: 50px;
-	left: 400px;
+	top: 20px;
+	left: 100px;
 	
 	border-radius: 6px; /* 모서리 둥글게 */
 	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
 
 }
 
-.search_input{
-	height: 45px;
-	width: 460px;
-	color: rgb(100, 98, 98);
-	font-size: 15px;
-	border: 1px solid rgb(230,227,227);
-	
-	margin-top:10px;
-	padding-left:10px;
+.left_section{
+	margin-left: 90px;
 }
 
-.search_button a{
+.left_section ul{
+	height: 100px;
+
+}
+
+
+.left_section ul li{
+	list-style:none;
+	line-height: 70px;
+	
+	
+}
+.left_section ul li a{
+	color: hotpink;
 	text-decoration: none;
-	list-style-type : none; 
-	color: white;
+	list-style-type : none;
+
+	
+	cursor: pointer;
+}
+
+.right_section{
+	background-color: rgba(68,114,196, 0.4);
+	padding:0;
+	margin:0;
+	
+
+	width: 800px;
+	height: 400px;
+}
+
+.right_section p{
+	color:white;
+	padding: 20px;
+	line-height:35px;
+}
+::-webkit-scrollbar{
+	widht:25px;
+}
+::-webkit-scrollbar-track{
+	border:7px solid #232943;
+	box-shadow: inset 0 0 2.5px 2px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb{
+	background: #f00;
+	border-radius: 3px;
+}
+
+
+#vertical{
+	width: 5px;
+	height: 80%;
+	background-color: black;
+}
+
+#section1{
+    width: 20%;
+
+}
+
+#section2{
+    margin: 30px;
+    padding: 30px;
+    width: 70%;
+    
 }
 
 
@@ -112,37 +174,49 @@ header{
 		  
 		  </div>
 		</section>
-	
-		<section> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
-		  <div class = "search_box">
-		  	<div class = "search_title">휴게소 검색</div>
-		  	<table>
-		  		<tr>
-		  			<tb colspan="2">
-		  				<input class = "search_input" type = "text" placeholder = "검색하실 위치, 장소 혹은 휴게소를 검색해주세요">
-		  			</tb>
-		  		</tr>
-		  		<tr>
-		  			<tb colspan="2"> <!-- 이쪽은 아마 빼고 헤더의 메뉴에 관련 내용을 넣을 듯하다 -->
-		  				<select class = "search_input">
-		  					<option>전부 조회</option>
-		  					<option>상행선</option>
-		  					<option>하행선</option>
-		  				</select>
-		  			</tb>
-		  		</tr>
-		  	</table>
-		  	
-		  	
-		  	<div class = "search_button">
-		  		<button><a href="searchResultPage.jsp">검색</a></button>
-		  	</div>
-		  	
-		  	
-		  </div>
+		
+		<section class = "result_box">
+			<section id="section1"> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
+			  <div class = "left_section">
+			  
+				<ul>
+					<li><a href="#">abc</a></li>
+					<li><a href="#">cdb</a></li>
+					<li><a href="#">efd</a></li>
+					<li><a href="#">gwt</a></li>
+					<li><a href="#">sdc</a></li>
+					<li><a href="#">bzjo</a></li>
+				</ul>
+			  	
+			  </div>
+			</section>
+			
+			<section id = "vertical"></section>
+			
+			<section id="section2">
+			  <div class = "right_section" style="overflow:scroll; width: 800px; height: 400px;">
+			 	<h2>검색 결과</h2>
+			 	<table>
+			 		<thead>
+			 			<tr>
+			 				<th>휴게소명</th>
+			 				<th>주소</th>
+			 				<th>고속도로</th>
+							<th>추천 수</th>
+			 			</tr>
+			 		</thead>
+			 	
+			 	</table>
+			  	
+			  </div>
+			
+			</section>
 		</section>
 	</header>
 	
 	
 </body>
 </html>
+
+
+
