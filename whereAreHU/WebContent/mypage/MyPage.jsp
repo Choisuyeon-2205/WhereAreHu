@@ -1,3 +1,6 @@
+<%@page import="model.UserDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +19,7 @@
 		 bioMore = document.querySelector("#see-more-bio");
 		 bioLength = bio.innerText.length;
 		 tabs(0);
-		 $(".nav ul li").click(function() {
+		 $(".nav ul li").click(function() { 
 			  $(this)
 			    .addClass("active")
 			    .siblings()
@@ -115,6 +118,9 @@
 </script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+</head>
+<body>
+	
 <link rel="stylesheet" type="text/css" href="./css/mypage.css">
 
 </head>
@@ -141,6 +147,7 @@
 			<div class="profile-side">
 				<div>
 				<p>OOO님 환영합니다</p>
+				${param.username} ${param.user_pw}
 				<br>
 					<ul id="UserInfo">
 						
@@ -199,6 +206,7 @@
 			<div class="profile-body" id="here">
 			
 			 여기
+			 ${param.username}
 			
 			
 			
