@@ -7,6 +7,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+<link rel="stylesheet" href="../review/dist/themes/fontawesome-stars.css" />
+<script type="text/javascript" src="../review/dist/jquery.barrating.min.js"></script>
 <title>리뷰 입력</title>
 
 <style>
@@ -73,22 +77,24 @@ $(function() {
     	}); */
     	
     	$.ajax({
-    		url: "../review/rev_list.jsp",
+    		url: "../reviewList",
     		type: "get",
-    		data: "revlist=" + $(revlist),
+    		data: {"area_num":"000485"},
     		success: function(responseData) {
-    			console.log(responseData);
+	    		//console.log(responseData);
     			$("#revlist").html(responseData);
     		},
     		error: function() {}
     	});
     	
     	$("#instBtn").on("click", function() {
+    		
     		$.ajax({
-    			url: "../review/revewInsert",
+    			url: "../reviewInsert",
     			type: "post",
-    			data:$("#revForm").serialize(),
-    			contentType: "multipart/form-data; charset=UTF-8",
+    			data: $("#revFrom").serialize(),
+    			encType: "multipart/form-data; charset=UTF-8",
+    			contentType : false,
     			success: function(responseData) {
     				console.log(responseData);
     				$("#revlist").html(responseData);
@@ -103,7 +109,7 @@ $(function() {
 </head>
 <body>
 <div id="content" class="parent">
-	<form id="revForm" class="child" action="selectDetail" method="post" enctype="multipart/form-data">
+	<form id="revForm" class="child">
 		<select id="star_rate" name="rate">
 			<option value="1.0">1</option>
 			<option value="2.0">2</option>
