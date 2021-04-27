@@ -7,15 +7,6 @@
 <title>Where? 휴식이 있는 곳!</title>
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="image/small_logo_icon.png">
 <link rel="stylesheet" href="css/styles.css"/>
-<script>
-if (!Kakao.Auth.getAccessToken()) {
-  console.log('Not logged in.');
-  return;
-}
-Kakao.Auth.logout(function() {
-  console.log(Kakao.Auth.getAccessToken());
-});
-</script>
 <style>
 
 header{ 
@@ -99,13 +90,19 @@ header{
 		  	<div class = "main_title">전국 모든 휴게소와 관련된 정보</div>
 		  </div>
 		</section>
-		
+		<script>
+		sessionStorage.getItem("username");
+		console.log(sessionStorage.getItem("username"))
+		</script>
+			
 		<section>
 			<div class = "main_left_text">
 				<span class = "main_text1">뭔가 엄청 거창한 말</span>
 				<span class = "main_text2">두 번째로 거창한 말</span>
 				<span class = "main_text3">세 번째로 거창한 말</span>
 				<span class = "main_text4">이상한 말</span>
+				
+				
 			</div>
 		</section>
 		
