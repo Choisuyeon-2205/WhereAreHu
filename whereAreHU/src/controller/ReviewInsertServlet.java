@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -66,16 +67,20 @@ public class ReviewInsertServlet extends HttpServlet {
 		
 		ReviewDAO dao = new ReviewDAO(); //DB에 해당 데이터를 입력하기 위한 ReviewDAO 객체 생성
 		int result = dao.insertReview(rev); //지금까지 만든 rev 객체를 DB에 insert
+		String area_num="000485";
 		
 		if (result > 0) {
-			request.setAttribute("review", rev);
-			RequestDispatcher rd = request.getRequestDispatcher("review/reviewMain.jsp");
+			response.addHeader("Refresh", "1;url=second");
+			ReviewDAO dao2 = new ReviewDAO();
+//			String area_num = request.getParameter("area_num");
+			List<ReviewVO> rlist = dao2.selectAllReviewsByRestStop(area_num);
+			request.setAttribute("revlist", rlist);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("rev_list.jsp");
 			rd.forward(request, response);
 		} else {
 			PrintWriter out = response.getWriter();
 			out.print("등록에 실패했습니다.");
-			RequestDispatcher rd = request.getRequestDispatcher("review/review_insert.jsp");
-			rd.forward(request, response);
 		}
 	}
 

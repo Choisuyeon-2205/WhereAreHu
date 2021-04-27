@@ -8,6 +8,10 @@
 <meta charset="UTF-8">
 <title>휴게소 상세정보 조회</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+<link rel="stylesheet" href="../review/dist/themes/fontawesome-stars.css" />
+<script type="text/javascript" src="../review/dist/jquery.barrating.min.js"></script>
+
 <script>
 $(function(){
 	$("#back").click(function(){
@@ -76,13 +80,11 @@ p {
 #revlist {
 	width: 800px;
 	margin: 10px auto;
-	position: relative;
 }
 
 table {
 	width: 700px;
 	margin: 0 auto;
-	position: absolute;
 }
 td {
 	text-align: center;
@@ -124,6 +126,11 @@ td {
 	<div id="revlist">
 	<jsp:include page="../review/rev_list.jsp">
 		<jsp:param name="revlist" value="${revlist}" />
+	</jsp:include>
+	</div>
+	<div id="revinsert">
+	<jsp:include page="../review/review_insert.jsp">
+		<jsp:param name="rev" value="${review}" />
 	</jsp:include>
 	</div>
 </body>

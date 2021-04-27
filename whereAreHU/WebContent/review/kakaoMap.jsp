@@ -49,6 +49,25 @@ $(function() {
 	//geocoder.addressSearch(addr, function(result, status) {
 	geocoder.addressSearch(stopAddr, function(result, status) {
 	
+		function f1(msg) {
+			 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		        // 결과값으로 받은 위치를 마커로 표시합니다
+		        var marker = new kakao.maps.Marker({
+		            map: map,
+		            position: coords
+		        });
+		
+		        // 인포윈도우로 장소에 대한 설명을 표시합니다
+		        var infowindow = new kakao.maps.InfoWindow({
+		        	content: '<div style="width:150px;text-align:center;padding:6px 0;">' + stopName + '<br><a href="' + msg + '">길찾기</a></div>'
+		        });
+		        infowindow.open(map, marker);
+		
+		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		        map.setCenter(coords);	
+		}
+		
+		
 	    // 정상적으로 검색이 완료됐으면 
 	     if (status === kakao.maps.services.Status.OK) {
 	
@@ -59,53 +78,25 @@ $(function() {
 	    		        
 	    		        var myLoc = position.coords.latitude + ',' + position.coords.longitude;
 						var msg = 'https://map.kakao.com/link/from/현위치,' + myLoc + '/to/' + stopName + ',' + result[0].y + ',' + result[0].x;
-						
-						 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-							console.log(msg); //로그에서 길찾기 URL 확인
-					        // 결과값으로 받은 위치를 마커로 표시합니다
-					        var marker = new kakao.maps.Marker({
-					            map: map,
-					            position: coords
-					        });
-					
-					        // 인포윈도우로 장소에 대한 설명을 표시합니다
-					        var infowindow = new kakao.maps.InfoWindow({
-					        	content: '<div style="width:150px;text-align:center;padding:6px 0;">' + stopName + '<br><a href="' + msg + '">길찾기</a></div>'
-					        });
-					        infowindow.open(map, marker);
-					
-					        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-					        map.setCenter(coords);
+						console.log(msg); //로그에서 길찾기 URL 확인
+						f1(msg);
 	    		      });
 	    		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
 	    			//var locPosition = new kakao.maps.LatLng(33.450701, 126.570667);  
 					var msg = 'https://map.kakao.com/link/to/' + stopName + ',' + result[0].y + ',' + result[0].x;
-					
-					 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-						console.log(msg); //로그에서 길찾기 URL 확인
-				        // 결과값으로 받은 위치를 마커로 표시합니다
-				        var marker = new kakao.maps.Marker({
-				            map: map,
-				            position: coords
-				        });
-				
-				        // 인포윈도우로 장소에 대한 설명을 표시합니다
-				        var infowindow = new kakao.maps.InfoWindow({
-				        	content: '<div style="width:150px;text-align:center;padding:6px 0;">' + stopName + '<br><a href="' + msg + '">길찾기</a></div>'
-				        });
-				        infowindow.open(map, marker);
-				
-				        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-				        map.setCenter(coords);
+					console.log(msg); //로그에서 길찾기 URL 확인
+					f1(msg);
 	    		}
 	    	 
 	       
 	    } 
+	    
 	});
 	})
 	
 });
+	
 </script>
 </body>
 </html>
