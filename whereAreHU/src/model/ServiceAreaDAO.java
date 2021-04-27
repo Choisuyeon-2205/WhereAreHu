@@ -95,7 +95,7 @@ public class ServiceAreaDAO {
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from service_area where area_num = ?";
+		String sql = "select * from service_area where area_num = '%'||?||'%'";
 		try {
 			st = conn.prepareStatement(sql);
 			st.setString(1, area_num);
@@ -119,13 +119,13 @@ public class ServiceAreaDAO {
 			Connection conn = DBUtil.getConnection();
 			PreparedStatement st= null;
 			ResultSet rs = null;
-			String sql = "select * from service_area where route like ? or address like ? or area_name like ?";
+			String sql = "select * from service_area where route like ('%'||?||'%') or address like ('%'||?||'%') or area_name like ('%'||?||'%')";
 			try {
 				st= conn.prepareStatement(sql);
-				st.setString(1, "%"+str+"%");
-				st.setString(2, "%"+str+"%");
-				st.setString(3, "%"+str+"%");
-				rs = st.executeQuery(sql);
+				st.setString(1, str);
+				st.setString(2, str);
+				st.setString(3, str);
+				rs = st.executeQuery();
 				while (rs.next()) {
 					ServiceAreaVO area = makeArea(rs);
 					arealist.add(area);
@@ -146,7 +146,7 @@ public class ServiceAreaDAO {
 			Connection conn = DBUtil.getConnection();
 			PreparedStatement st= null;
 			ResultSet rs = null;
-			String sql = "select * from service_area where route=?";
+			String sql = "select * from service_area where route= '%'||?||'%'";
 			try {
 				st= conn.prepareStatement(sql);
 				st.setString(1, route);
@@ -171,10 +171,10 @@ public class ServiceAreaDAO {
 			Connection conn = DBUtil.getConnection();
 			PreparedStatement st= null;
 			ResultSet rs = null;
-			String sql = "select * from service_area where address like ?";
+			String sql = "select * from service_area where address like ('%'||?||'%')";
 			try {
 				st= conn.prepareStatement(sql);
-				st.setString(1, city+"%");
+				st.setString(1, city);
 				rs = st.executeQuery(sql);
 				while (rs.next()) {
 					ServiceAreaVO area = makeArea(rs);
