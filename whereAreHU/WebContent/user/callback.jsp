@@ -12,14 +12,14 @@
 
 <!-- 네이버아디디로로그인 초기화 Script -->
 <script type="text/javascript">
-	var naver_id_login = new naver_id_login("LzGGjtT_5CpyZZFjnLWk", "http://localhost:9090/whereAreHU/user/callback.jsp");
+	var naver_id_login = new naver_id_login("LzGGjtT_5CpyZZFjnLWk", "http://192.168.0.120:9090/whereAreHU/user/callback.jsp");
 	var state = naver_id_login.getUniqState();
 	naver_id_login.setButton("white", 2,40);
 	naver_id_login.setDomain(".service.com");
 	naver_id_login.setState(state);
 	naver_id_login.setPopup();
 	naver_id_login.init_naver_id_login();
-	$("#naver_id_login img").attr("src", "https://nuriss.kr/data/editor/1811/thumb-f25dcaecf0e201873d1d781c022795e4_1542973599_017_835x181.png");
+	$("#naver_id_login img").attr("src", "naver.png");
 </script>
 <!-- // 네이버아이디로로그인 초기화 Script -->
 <!-- 네이버아디디로로그인 Callback페이지 처리 Script -->

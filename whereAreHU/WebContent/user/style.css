@@ -102,11 +102,12 @@ body {
 
 }
 #kakao{
-	display:block;
-	height: 50px;
-	margin: auto;
+	display:inline-block;
+	 width:180px !important;
+  height: 40px;
+	margin-top: 10px;
 }
 #naver_id_login img {
   
-  width:228px;
+  width:180px !important;
   height: 40px;}
