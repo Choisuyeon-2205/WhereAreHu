@@ -23,7 +23,7 @@ public class DeleteuserServlet extends HttpServlet {
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("delForm.jsp");
+		rd = request.getRequestDispatcher("jsp/delForm.jsp");
 		rd.forward(request, response);
 	}
 
@@ -38,10 +38,10 @@ public class DeleteuserServlet extends HttpServlet {
 		String pw = (String)session.getAttribute("user_pw");
 		if(pw2.equals(pw) ){
 			try {
-				System.out.println("비밀번호같으");
+				System.out.println("비밀번호같음");
 				dao.deleteId((String)session.getAttribute("user_id"));
 			    session.invalidate();
-			    response.sendRedirect("../list/area_MainPage.html");
+			    response.sendRedirect("../list/mainPage.jsp");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

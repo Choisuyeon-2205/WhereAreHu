@@ -18,13 +18,14 @@
 		 bio = document.querySelector(".bio");
 		 bioMore = document.querySelector("#see-more-bio");
 		 //bioLength = bio.innerText.length;
-		 tabs(0);
+		 
 		 $(".nav ul li").click(function() { 
 			  $(this)
 			    .addClass("active")
 			    .siblings()
 			    .removeClass("active");
-			});
+		});
+		
 		 
 	});
 
@@ -33,34 +34,37 @@
 	function tabs(panelIndex) {
 		//alert(panelIndex);
 		//console.log(tab[panelIndex]);
-		
+		/*
 	    tab.forEach(function(node) {
 	   		node.style.display = "none";
 	 
 	    }); 
 	  tab[panelIndex].style.display = "block";
-	
+	*/
 	  //bioText();
 	  //if (document.querySelector(".alert-message").innerText > 9) {
 		//  document.querySelector(".alert-message").style.fontSize = ".7rem";
 		//}
 	  
+	   
 	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+	//회원정보 수정 하는 AJAX (0)
+	  if(panelIndex==0){
+		  $.ajax({
+			  url:"changeByUserList",
+			 
+			  success:function(responseData){
+				  alert(responseData);
+				  $("#here").html(responseData);
+			  }
+		  });
+	  }
 	  
 	  //리뷰 조회 리스트 끌어다 오는 AJAX (1)
-	  if(panelIndex==1){
+	  else if(panelIndex==1){
 		  $.ajax({
 			  url:"reviewByUserList",
-			  data: {"user_id":""},
+			  data: {"user_id":"${user_id}"},
 			  success:function(responseData){
 				  alert(responseData);
 				  $("#here").html(responseData);
@@ -69,10 +73,10 @@
 	  }
 	  
 	//좋아요 조회 리스트 끌어다 오는 AJAX (2)
-	  if(panelIndex==2){
+	else if(panelIndex==2){
 		  $.ajax({
 			  url:"GoodByUserList",
-			  
+			  data: {"user_id":"${user_id}"},
 			  success:function(responseData){
 				  alert(responseData);
 				  $("#here").html(responseData);
@@ -80,6 +84,17 @@
 		  });
 	  }
 	
+	//회원탈퇴 하는 AJAX (3)
+	else if(panelIndex==3){
+		  $.ajax({
+			  url:"Deleteuser",
+			  data: {"user_id":"${user_id}"},
+			  success:function(responseData){
+				  alert(responseData);
+				  $("#here").html(responseData);
+			  }
+		  });
+	  }
 	
 	 
 	
@@ -117,15 +132,17 @@
 	
 
 </script>
+	
+<link rel="stylesheet" type="text/css" href="./css/mypage.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	
-<link rel="stylesheet" type="text/css" href="./css/mypage.css">
+
 
 </head>
 <body>
+    
 	<div class="container">
 		<div class="profile-header">
 			<div class="profile-img">
@@ -147,15 +164,13 @@
 		<div class="left-side">
 			<div class="profile-side">
 				<div>
-				<p>OOO님 환영합니다</p>
-				${param.username} ${param.user_pw}
+				<p>${username}님 환영합니다</p>
+				
 				<br>
 					<ul id="UserInfo">
 						
-						<li><label for="user_id">아이디</label> <input type="text"
-							id="user_id" readonly="readonly"></li>
-						<li><label for="user-name">이름</label> <input type="text"
-							id="user-name" readonly="readonly"></li>
+						<li><label for="user_id">아이디</label> ${user_id}
+						<li><label for="user-name">이름</label> ${username}
 
 						<li><label for="mail">이메일</label> <input type="email"
 							id="mail" readonly="readonly"></li>
@@ -165,7 +180,7 @@
 					<br>
 				</div>
 				<div class="profile-btn">
-					<button class="chatbtn" id="chatBtn">
+					<button class="chatbtn" id="chatBtn" onclick = "location.href='../list/logout'">
 						<i class="fa fa-comment"></i> 로그아웃
 					</button>
 
