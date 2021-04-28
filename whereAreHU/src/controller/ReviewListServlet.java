@@ -22,8 +22,8 @@ public class ReviewListServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ReviewDAO dao = new ReviewDAO();
-		String area_num = "000485";
-//		String area_num = request.getParameter("area_num");
+//		String area_num = "000485";
+		String area_num = request.getParameter("area_num");
 		List<ReviewVO> rlist = dao.selectAllReviewsByRestStop(area_num);
 		request.setAttribute("revlist", rlist);
 		System.out.println(rlist);

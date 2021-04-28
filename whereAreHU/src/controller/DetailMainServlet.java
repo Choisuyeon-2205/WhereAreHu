@@ -1,8 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Enumeration;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import javax.websocket.Session;
-
 import model.GoodDAO;
 import model.ReviewDAO;
 import model.ReviewVO;
@@ -27,7 +29,7 @@ public class DetailMainServlet extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String area_num="000485";
+		String area_num= (String) request.getParameter("area_num");
 		ServiceAreaDAO saDAO = new ServiceAreaDAO();
 		ReviewDAO reDAO = new ReviewDAO();
 		GoodDAO goodDAO= new GoodDAO();
@@ -38,7 +40,6 @@ public class DetailMainServlet extends HttpServlet {
 		int like_me= goodDAO.selectByOne(user_id, area_num);
 		System.out.println(like_me);
 		List<ReviewVO> reviewlist = reDAO.selectAllReviewsByRestStop(area_num);
-		System.out.println(reviewlist);
 		
 		request.setAttribute("area_num", area_num);
 		request.setAttribute("sarea", saDAO.selectOneArea(area_num));
@@ -50,17 +51,9 @@ public class DetailMainServlet extends HttpServlet {
 //		String area_num = request.getParameter("area_num");
 		List<ReviewVO> rlist = dao.selectAllReviewsByRestStop(area_num);
 		request.setAttribute("revlist", rlist);
-		System.out.println(rlist);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("detailMain.jsp");
 		rd.forward(request, response);
-		
 
 	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		doGet(request, response);
-	}
-
 }

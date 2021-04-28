@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+
 
 <script> 
 function check() {
@@ -67,7 +69,7 @@ PW<input type="password" name="user_pw" class="pw" id="password"><br>
 
   <div class="bottomText">
    Don't you have ID?  <a href="userinsert.jsp">Sign up</a>
-   
+   	
  <a href="javascript:KakaoLogin()">
     <img   src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile28.uf.tistory.com%2Fimage%2F99BEE8465C3D7D12140EAC" id="kakao">
  </a>
@@ -100,7 +102,13 @@ PW<input type="password" name="user_pw" class="pw" id="password"><br>
 			      //location.href = "http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/whereAreHU/user/loginChk?kakaonickname="
 			    		  //+kakaonickname+"&kakao_email="+account_email); 
 			     	 window.location.href="../list/mainPage.jsp?kakaonickname="
-			    		  +kakaonickname+"&kakao_email="+kakao_email;			       
+			    		  +kakaonickname+"&kakao_email="+kakao_email;		
+			     	sessionStorage.setItem("username",kakaonickname);
+			     	sessionStorage.setItem("user_email",kakao_email);
+			      	//sessionStorage.getItem("user_email");
+			     	//sessionStorage.getItem("username"); 가져오기 
+
+			     	
 					}
 				});	
 			}
