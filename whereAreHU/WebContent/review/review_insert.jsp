@@ -10,7 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-<link rel="stylesheet" href="fontawesome-stars.css">
+<link rel="stylesheet" href="../review/dist/themes/fontawesome-stars.css">
 <script type="text/javascript" src="../review/dist/jquery.barrating.min.js"></script>
 <title>리뷰 입력</title>
 
@@ -65,7 +65,6 @@ $(function() {
 
  		$('#revStar').barrating({
 			theme : 'fontawesome-stars',
-			showValues : true,
 			readonly : true
 		});
  

@@ -10,6 +10,7 @@
 <title>리뷰 목록</title>
 <style>
 table, td { border: 1px solid gray; border-collapse: collapse; }
+table { width: 700px; margin: 20px auto; text-align: center;}
 td { padding: 5px; }
 tr:first-of-type { background-color: #d7fbe8; }
 </style>
