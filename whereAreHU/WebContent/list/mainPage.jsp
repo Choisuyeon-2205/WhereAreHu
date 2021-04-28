@@ -78,13 +78,13 @@ header{
 			<%
 				if(user_id == null){
 			%> 
-		  		<li><button class = "btn" type = "button" onclick = "location.href='../user/loginChk'">로그인</button></li>
+		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../user/loginChk'">로그인</button></li>
 
 		  	<%
 				} else {
 		  	%>
-		  		<li><button class = "btn" type = "button" onclick = "location.href='../mypage/MyPage.jsp'">마이페이지</button></li>
-		  		<li><button class = "btn" type = "button" onclick = "location.href='logout'">로그아웃</button></li>
+		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../mypage/MyPage.jsp'">마이페이지</button></li>
+		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='logout'">로그아웃</button></li>
 		  	<%
 				}
 		  	%>	

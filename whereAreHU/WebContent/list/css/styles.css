@@ -63,7 +63,24 @@
 
 
 /* 로그인 버튼 관련 */
-
+.button_wrap{
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  border-radius: 8px;
+}
+.button_wrap:hover{
+  color:white;
+  background-color: rgb(31,171,137);
+}
+.button_wrap .icon{
+  display: none;
+}
+button_wrap:link{
+  text-decoration: none;
+}
 
 
 
