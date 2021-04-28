@@ -24,8 +24,8 @@
 	.parent {
 		position: relative;
 		width: 650px;
-		height: 300px;
-		margin: 10px auto;
+		height: 200px;
+		margin: 30px auto;
 	}
 	
 	.child {
