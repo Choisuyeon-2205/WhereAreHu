@@ -105,7 +105,7 @@ public class ReviewDAO {
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null;
 		ResultSet rs = null;
-		String sql = "select * from review where area_num = ?";
+		String sql = "select * from review where area_num = ? order by review_id desc";
 		
 		try {
 			st = conn.prepareStatement(sql);
