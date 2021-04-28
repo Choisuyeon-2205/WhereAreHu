@@ -13,8 +13,38 @@ import util.DBUtil;
 public class UserDAO {
 	
 	
-	
+	// 회원정보 수정 
+		public int updateUser(UserVO user) {
+		int result = 0;
+		String sql = " update user_tb set " +
+					 " USER_NAME =? "+	 
+					 " USER_PW =? "+
+					 " USER_PHONE =?"+
+					 " USER_EMAIL =?" +
+					 "where USER_ID = ?";
+			
+			Connection conn;
+			PreparedStatement st = null;
+			conn = DBUtil.getConnection();
+			try {
+				st = conn.prepareStatement(sql);
+				st.setString(1, user.getUser_name());
+				st.setString(2, user.getUser_pw());
+				st.setString(3, user.getUser_phone());
+				st.setString(4, user.getUser_email());
+				st.setString(5, user.getUser_id());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				DBUtil.dbClose(null, st, conn);
+			}
+			return result;
+		}
+		
 
+	
+	
 	
 	public void deleteId(String user_id) throws SQLException{
 	    String sql = "delete from user_tb where user_id = ?";

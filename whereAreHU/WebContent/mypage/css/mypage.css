@@ -6,6 +6,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+ 
 }
 
 body {
@@ -14,6 +15,7 @@ body {
   padding-top: 90px;
   font-family: "Poppins", sans-serif;
   margin: 0 100px;
+  /*  background-image: url("../image/main_background.jpg");*/ 
 }
 
 .profile-header {
@@ -227,7 +229,7 @@ button.createbtn i {
 
 .nav ul li {
   padding: 10px;
-  width: 200px;
+  width: 300px;
   cursor: pointer;
   text-align: center;
   transition: all 0.2s ease-in-out;

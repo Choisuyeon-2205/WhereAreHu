@@ -25,8 +25,8 @@ public class userDeletServlet extends HttpServlet {
 		UserDAO dao = new UserDAO();
 		int result = dao.delete(user_id);
 		
-		System.out.println(result + "°Ç »èÁ¦");
-		request.setAttribute("message", result + "°Ç »èÁ¦µÇ¾ú½À´Ï´Ù.");
+		System.out.println(result + "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+		request.setAttribute("message", result + "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 		
 	
 		RequestDispatcher rd = request.getRequestDispatcher("resultInfo.jsp");
