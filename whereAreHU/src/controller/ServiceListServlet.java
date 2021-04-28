@@ -36,7 +36,7 @@ public class ServiceListServlet extends HttpServlet {
 		System.out.println(servicesearch);
 
 
-		RequestDispatcher rd = request.getRequestDispatcher("searchResult.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("searchResultService.jsp");
 		rd.forward(request, response);
 		
 		

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
 <html>
@@ -10,77 +11,93 @@
 <link rel="stylesheet" href="css/styles.css"/>
 
 
+
 <style>
 
 
 header{
 
-	background-image: url("image/highway_5.jpg"); 
+	background-image: url("image/highway_3.jpg"); 
 	background-repeat: no-repeat;
 	height: 880px;
 	background-size: 100% /* 그림 사이즈 딱 맞게~ */
 }
 
-/* 커서 액션 활성화 */
-.main_search_link ul a::after{
-	content:"";
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 0;
-	height: 4px;
-	background: rgb(215,251,232);
-	transition: all .5s ease-out;
-}
-
-.main_search_link ul a:hover::after{
-	width: 100%;
-}
-
-.main_search_link ul a {
-	text-decoration: none; /* 링크 밑줄 제거 */
-	color: rgb(248,248,248);
-	font-weight: 800; /* 글자 굵기 설정 */
-	position: relative;
-	padding: 6px 12px;
-	
-}
 
 
 
-
-.search_box{
-	width: 630px;
-	display: inline-block;
+.result_box{
+	width: 80%;
+	height: 550px;
+	display: grid;
+	grid-template-columns: 250px 30px auto;
 	background-color: rgba(215, 251, 232, 0.6);
 	padding: 20px 30px;
 	position: relative; /* 위치 이동 */
-	top: 50px;
-	left: 400px;
+	top: 20px;
+	left: 100px;
 	
 	border-radius: 6px; /* 모서리 둥글게 */
 	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
 
 }
 
-.search_input{
-	height: 45px;
-	width: 460px;
-	color: rgb(100, 98, 98);
-	font-size: 15px;
-	border: 1px solid rgb(230,227,227);
+.left_section{
+	margin-left: 90px;
+}
+
+
+.right_section{
+	background-color: rgba(68,114,196, 0.4);
+	padding:0;
+	margin:0;
 	
-	margin-top:10px;
-	padding-left:10px;
+
+	width: 800px;
+	height: 400px;
 }
 
-.search_button a{
-	text-decoration: none;
-	list-style-type : none; 
+.right_section p{
+	color:white;
+	padding: 10px;
+	line-height:35px;
+}
+::-webkit-scrollbar{
+	widht:25px;
+}
+::-webkit-scrollbar-track{
+	border:7px solid #232943;
+	box-shadow: inset 0 0 2.5px 2px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb{
+	background: #f00;
+	border-radius: 3px;
+}
+
+
+#vertical{
+	width: 5px;
+	height: 80%;
+	background-color: black;
+}
+
+#section1{
+    width: 20%;
+
+}
+
+#section2{
+    margin: 30px;
+    padding: 30px;
+    width: 70%;
+    
+}
+
+
+.main_search_link h1 {
 	color: white;
+	font-size: 22px;
 }
-
 
 
 </style>
@@ -116,35 +133,61 @@ header{
 		  </div>
 		</nav>
 	
-
+	
 		<section> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
 		  <div class = "main_search_link">
-		  	<ul>
-		  		<li><a href="../list/searchResultOil" class="_p4ul2ts" >주유소 조회</a></li>
-		  		<li><a href="/s/experiences/online" class="_p4ul2ts" >고속도로별 조회</a></li>
-		  	</ul>
+		  	<h1>조회 결과</h1>
 		  
 		  </div>
 		</section>
-	
-		<section> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
-		  <div class = "search_box">
-		  	<div class = "search_title">휴게소 검색</div>
+		
+		<section class = "result_box">
+			<section id="section1"> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
+			  <div class = "left_section">
+				<h3>검색 결과</h3>
+				  <main>
 
-		  		
-		  			
-		  	<form action = "searchResult">
-		  		<input name = "search" class = "search_input" type = "text" placeholder = "검색하실 위치, 장소 혹은 휴게소를 검색해주세요">
-		  		
-			  	<div class = "search_button">
-			  		<input type = "submit" value = "검색">
-			  	</div>
-		  	</form>
-		  	
-		  </div>
+				  <c:forEach var="search" items="${routelist}" > 
+				  	<div id = result_section>
+				  		<p>휴게소명: ${routelist.searchroute }</p>
+				  	</div>
+				  </c:forEach>
+				   
+
+
+				  </main>
+			  </div>
+			</section>
+			
+			<section id = "vertical"></section>
+			
+			<section id="section2">
+			  <div class = "right_section" style="overflow:scroll; width: 800px; height: 400px;">
+			 	<h2>검색 결과</h2>
+				  <main>
+				  
+
+				  <c:forEach var="search" items="${servicesearch}" > 
+				  	<div id = result_section>
+				  		<p><a href="../detail/selectDetail?area_num=${search.area_num }">휴게소명: ${search.area_name }</a></p>
+				  	</div>
+				  </c:forEach>
+				  
+
+
+				  </main>
+
+			  	
+			  </div>
+			
+			</section>
 		</section>
 	</header>
 	
 	
 </body>
 </html>
+
+
+
+				  

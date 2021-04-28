@@ -14,10 +14,14 @@
 
 <style>
 
+main {
+	margin: 30px 30px;
+}
+
 
 header{
 
-	background-image: url("image/highway_3.jpg"); 
+	background-image: url("image/gas_background2.jpg"); 
 	background-repeat: no-repeat;
 	height: 880px;
 	background-size: 100% /* 그림 사이즈 딱 맞게~ */
@@ -30,9 +34,9 @@ header{
 	width: 80%;
 	height: 550px;
 	display: grid;
-	grid-template-columns: 250px 30px auto;
+	grid-template-columns: 350px 30px auto;
 	background-color: rgba(215, 251, 232, 0.6);
-	padding: 20px 30px;
+	padding: 20px 0;
 	position: relative; /* 위치 이동 */
 	top: 20px;
 	left: 100px;
@@ -42,46 +46,48 @@ header{
 
 }
 
+
+
 .left_section{
-	margin-left: 90px;
-}
-
-.left_section ul{
-	height: 100px;
-
-}
-
-
-.left_section ul li{
-	list-style:none;
-	line-height: 70px;
-	
-	
-}
-.left_section ul li a{
-	color: hotpink;
-	text-decoration: none;
-	list-style-type : none;
-
-	
-	cursor: pointer;
-}
-
-.right_section{
-	background-color: rgba(68,114,196, 0.4);
+	display: inline-block;
 	padding:0;
 	margin:0;
+
+}
+
+.left_section p{
+	padding: 10px;
+	line-height:20px;
+}
+
+#result_section::after{
+	content:"";
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 0;
+	height: 4px;
+	background: rgb(215,251,232);
+	transition: all .5s ease-out;
+}
+
+#result_section:hover::after{
+	width: 100%;
+}
+
+#result_section {
+	text-decoration: none; /* 링크 밑줄 제거 */
+	color: rgb(248,248,248);
+	font-weight: 800; /* 글자 굵기 설정 */
+	position: relative;
+	padding: 6px 12px;
 	
-
-	width: 800px;
-	height: 400px;
 }
 
-.right_section p{
-	color:white;
-	padding: 20px;
-	line-height:35px;
-}
+
+
+
 ::-webkit-scrollbar{
 	widht:25px;
 }
@@ -101,10 +107,8 @@ header{
 	background-color: black;
 }
 
-#section1{
-    width: 20%;
 
-}
+
 
 #section2{
     margin: 30px;
@@ -112,7 +116,6 @@ header{
     width: 70%;
     
 }
-
 
 .main_search_link h1 {
 	color: white;
@@ -163,33 +166,30 @@ header{
 		
 		<section class = "result_box">
 			<section id="section1"> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
-			  <div class = "left_section">
-			  
-				<ul>
-					<li><a href="#">abc</a></li>
-					<li><a href="#">cdb</a></li>
-					<li><a href="#">efd</a></li>
-					<li><a href="#">gwt</a></li>
-					<li><a href="#">sdc</a></li>
-					<li><a href="#">bzjo</a></li>
-				</ul>
-			  	
+							<h3>검색 결과</h3>
+			  <div class = "left_section" style="overflow:scroll; width: 330px; height: 450px;">
+
+				  <main>
+				  <c:forEach var="oil" items="${oillist}" > 
+				  	<div >
+				  		<p><a id = result_section href="../detail/selectDetailOil?area_name=${oil.oil_name}" >주유소명: ${oil.oil_name}</a></p>
+				  	</div>
+				  </c:forEach>
+				  
+
+
+				  </main>
 			  </div>
 			</section>
 			
 			<section id = "vertical"></section>
 			
 			<section id="section2">
-			  <div class = "right_section" style="overflow:scroll; width: 800px; height: 400px;">
+			  <div class = "right_section" style="overflow:scroll; width: 600px; height: 400px;">
 			 	<h2>검색 결과</h2>
 				  <main>
 				  
 
-				  <c:forEach var="search" items="${servicesearch}" > 
-				  	<div id = result_section>
-				  		<p><a href="../detail/selectDetail?area_num=${search.area_num }">휴게소명: ${search.area_name }</a></p>
-				  	</div>
-				  </c:forEach>
 				  
 
 
