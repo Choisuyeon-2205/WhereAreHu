@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.Connection; 
+import java.sql.Connection;  
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +12,26 @@ import util.DBUtil;
 
 public class UserDAO {
 	
+	
+	
+
+	
+	public void deleteId(String user_id) throws SQLException{
+	    String sql = "delete from user_tb where user_id = ?";
+	     
+		Connection conn = DBUtil.getConnection();
+	    PreparedStatement st = null;
+	     
+	    try{
+	        st = conn.prepareStatement(sql);    
+	        st.setString(1, user_id);	         
+	        st.executeUpdate();	         
+	    } finally{
+	       DBUtil.dbClose(null, st, conn);
+	    }
+	     
+	         
+	}
 	public List<UserVO> selectById (String user_id) {
 		List<UserVO> userlist = new ArrayList<>();
 		Connection conn = DBUtil.getConnection();
