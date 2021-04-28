@@ -2,11 +2,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>휴게소 상세정보 조회</title>
+<title>Where? 휴식이 있는 곳!</title>
+<link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="../list/image/small_logo_icon.png">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 <link rel="stylesheet" href="../review/dist/themes/fontawesome-stars.css" />
@@ -19,18 +21,16 @@ $(function(){
 	$("#back").click(function(){
 		window.history.back();
 	});
-	$("#like").on("click", function(){
-		alert("*" + like_me + "*");
+	$("#like_button").on("click", function(){
 		if(like_me===1){
 			$(this).css("background-color", "lightgray");
-		}else{
+		}else {
 			$(this).css("background-color", "red");
 		}
 		$.ajax({
-			url:"updateGood?user_id=oh&area_num=000485",
+			url:"updateGood?user_id=${sessionScope.user_id}&area_num=${sarea.area_num}",
 			type: "post",
 			success: function(data){	
-				alert(data);
 				$("#like_num").text(data.like);
 				location.reload();
 			},
@@ -38,11 +38,16 @@ $(function(){
 		});
 	});
 	if(like_me===1)
-		$("#like").css("background-color", "red");
+		$("#like_button").css("background-color", "red");
+	
+	
+	if(${fn:indexOf(sarea.area_name, '휴')}<=0)
+		document.getElementById("buttons").style.display = "none"; 
+	
 });
 </script>
 <style type="text/css">
-.header, .detail, .buttons {
+.header, .detail, #buttons {
 	text-align: center;
 	margin-top: 10px;
 }
@@ -61,7 +66,7 @@ h4 {
 	color: red;
 }
 
-span {
+span{
 	display: inline-block;
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -85,7 +90,7 @@ input[type=button] {
 	font-size: 20px;
 }
 
-.buttons {
+#buttons {
 	background-color: #1fab89;
 	height: 100px;
 	border-radius: 10px;
@@ -103,27 +108,36 @@ p {
 	width: 800px;
 	margin: 10px auto;
 }
-
-table {
-	width: 700px;
-	margin: 0 auto;
-}
-td {
-	text-align: center;
-}
-#like {
+#like_button {
 	color="red";
 }
+#like {
+	padding: 10px;
+	background-color: #1fab89;
+}
+#login_header {
+	float: right;
+	
+}
+.detail{
+	background-color: lightgray;
+}
+.header{
+	background-color: lightgray;
+}
+
 </style>
 </head>
 <body>
 	<img src="images/back.png" id="back" width="30px" height="30px">
 	<div class="header">
 		<h1>${sarea.area_name}</h1>
-		<button type="button" id="like">♡</button>
-		
-		<h5>좋아요 수: <span id="like_num">${like_num}</span></h5>
-		<div><jsp:include page="../common/header.jsp"/></div>
+		<span id="login_header"><jsp:include page="../common/header.jsp"/></span>
+		&nbsp;
+		<div id="like">
+			<button type="button" id="like_button">♡</button>
+			<h5><div id="like_num">좋아요 수: ${like_num}</div></h5>
+		</div>
 	</div>
 	<hr>
 	<div class="detail">
@@ -144,7 +158,7 @@ td {
 			<jsp:include page="../review/kakaoMap.jsp" />
 		</span>
 	</div>
-	<div class="buttons">
+	<div id="buttons">
 		<input type="button" id="food" value="대표음식" 
 		onclick="location.href='selectDetailFood?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"> 
 		<input type="button" id="oil" value="주유소" onclick="location.href='selectDetailOil?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/> 

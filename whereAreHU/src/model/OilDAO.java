@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 import util.DBUtil;
 
 public class OilDAO {
@@ -95,6 +99,48 @@ public class OilDAO {
 		} finally {
 			DBUtil.dbClose(rs, st, conn);
 		}
+		return oil;
+	}
+	
+	//전체 주유소 목록 조회
+	public List<OilVO> selectAllOil() {
+		List<OilVO> oillist = new ArrayList<>();
+		Connection conn = DBUtil.getConnection();
+		Statement st = null;
+		ResultSet rs = null;
+		String sql = "select * from oil";
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while (rs.next()) {
+				OilVO oil = makeOil(rs);
+				oillist.add(oil);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		return oillist;
+		
+	}
+
+	private OilVO makeOil(ResultSet rs) throws SQLException {
+		OilVO oil = new OilVO();
+		oil.setOil_id(rs.getString("oil_id"));
+		oil.setOil_name(rs.getString("oil_name"));
+		oil.setOil_dire(rs.getString("oil_dire"));
+		oil.setOil_tel(rs.getString("oil_tel"));
+		oil.setOil_firm(rs.getString("oil_firm"));
+		oil.setOislpg(rs.getString("oislpg"));
+		oil.setGprice(rs.getString("gprice"));
+		oil.setDprice(rs.getString("dprice"));
+		oil.setLprice(rs.getString("lprice"));
+		oil.setOil_start(rs.getString("oil_start"));
+		oil.setOil_end(rs.getString("oil_end"));
+		oil.setArea_num(rs.getString("area_num"));
+		
 		return oil;
 	}
 }
