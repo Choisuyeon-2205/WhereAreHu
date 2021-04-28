@@ -83,6 +83,7 @@ header{
 		  	<%
 				} else {
 		  	%>
+		  		<li><button class = "btn" type = "button" onclick = "location.href='../mypage/MyPage.jsp'">마이페이지</button></li>
 		  		<li><button class = "btn" type = "button" onclick = "location.href='logout'">로그아웃</button></li>
 		  	<%
 				}
