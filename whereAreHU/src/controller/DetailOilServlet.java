@@ -21,8 +21,9 @@ public class DetailOilServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String area_name= request.getParameter("area_name");
-		int idx= area_name.indexOf("휴");
-		if(idx==-1) idx= area_name.indexOf("주");
+		int idx= area_name.indexOf("휴게소");
+		if(idx==-1) idx= area_name.indexOf("주유소");
+		if(idx==-1) idx= area_name.indexOf("졸음쉼터");
 		
 		area_name= area_name.substring(0, idx);
 		System.out.println(area_name);

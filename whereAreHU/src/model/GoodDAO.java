@@ -82,7 +82,6 @@ public class GoodDAO {
 			//한 가게를 좋아요 눌렀을 때 insert, 좋아요 업데이트
 			public int isGood(String user_id, String area_num) {
 				//좋아요 누른적이 있는지 확인
-				System.out.println(user_id+" "+area_num);
 				int result= selectByOne(user_id,area_num);
 				String sql2=""; 
 				int result2=0;

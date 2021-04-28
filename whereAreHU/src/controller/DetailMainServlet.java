@@ -46,11 +46,6 @@ public class DetailMainServlet extends HttpServlet {
 		request.setAttribute("reviewlist", reviewlist);
 		request.setAttribute("like_num", like_num);
 		request.setAttribute("like_me", like_me);
-	
-		ReviewDAO dao = new ReviewDAO();
-//		String area_num = request.getParameter("area_num");
-		List<ReviewVO> rlist = dao.selectAllReviewsByRestStop(area_num);
-		request.setAttribute("revlist", rlist);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("detailMain.jsp");
 		rd.forward(request, response);
