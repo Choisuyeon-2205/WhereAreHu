@@ -10,9 +10,6 @@
 <title>Where? 휴식이 있는 곳!</title>
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="../list/image/small_logo_icon.png">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-<link rel="stylesheet" href="../review/dist/themes/fontawesome-stars.css" />
-<script type="text/javascript" src="../review/dist/jquery.barrating.min.js"></script>
 
 <script>
 $(function(){
@@ -163,13 +160,13 @@ p {
 		onclick="location.href='selectDetailFood?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"> 
 		<input type="button" id="oil" value="주유소" onclick="location.href='selectDetailOil?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/> 
 		<input type="button" id="brand" value="브랜드매장" onclick="location.href='selectDetailBrand?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/>
-	</div>
-	<div id="revlist">
-	</div>
 	<div id="revinsert">
 	<jsp:include page="../review/review_insert.jsp">
 		<jsp:param name="rev" value="${review}" />
 	</jsp:include>
+	</div>
+	</div>
+	<div id="revlist">
 	</div>
 </body>
 </html>
