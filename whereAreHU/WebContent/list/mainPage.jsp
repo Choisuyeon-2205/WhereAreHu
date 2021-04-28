@@ -10,15 +10,7 @@
 <link rel="stylesheet" href="css/styles.css"/>
 
 
-<script>
-if (!Kakao.Auth.getAccessToken()) {
-  console.log('Not logged in.');
-  return;
-}
-Kakao.Auth.logout(function() {
-  console.log(Kakao.Auth.getAccessToken());
-});
-</script>
+
 <style>
 
 header{ 
