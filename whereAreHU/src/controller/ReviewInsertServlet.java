@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.ResponseWrapper;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -23,58 +24,56 @@ import model.ReviewVO;
 /**
  * Servlet implementation class ReviewInsertServlet
  */
-@WebServlet("/reviewInsert")
+@WebServlet("/review/reviewInsert")
 public class ReviewInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	@ResponseWrapper
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String UPLOAD_DIR ="upload"; //ÀÌÅ¬¸³½º ³» ÆÄÀÏÀÌ ¾÷·Îµå µÉ Æú´õ ÀÌ¸§
-		 int size = 1024 * 1024 * 10; // ÆÄÀÏ »çÀÌÁî ¼³Á¤ : 10M
-		// DefaultFileRenamePolicy Áßº¹µÈ ÀÌ¸§ÀÇ ÆÄÀÏÀÌ ¾÷·Îµå µÉ ½Ã ¹øÈ£¸¦ ºÙ¿© ÆÄÀÏÀ» »ý¼ºÇØÁÖ´Â Á¤Ã¥
-		 String path = getServletContext().getRealPath(UPLOAD_DIR); //ÀÌÅ¬¸³½ºÀÇ °æ·Î´Â °¡»ó °æ·ÎÀÌ±â ¶§¹®¿¡ ½Ç °æ·Î¸¦ ¾ò¾îÁÜ
-		 System.out.println(path); //½Ç°æ·Î Ãâ·Â
-		 //MultipartRequest °´Ã¼¸¦ ¸¸µé¾î ÁÜ, formÀ¸·Î ¹ÞÀº request, ½Ç°æ·Î, ÆÄÀÏ »çÀÌÁî, ÀÎÄÚµù, ÀÌ¸§ Á¤Ã¥ ¼ø
+		String UPLOAD_DIR ="upload"; //ï¿½ï¿½Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
+		 int size = 1024 * 1024 * 10; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : 10M
+		// DefaultFileRenamePolicy ï¿½ßºï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½Ã¥
+		 String path = getServletContext().getRealPath(UPLOAD_DIR); //ï¿½ï¿½Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Î´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+		 System.out.println(path); //ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½
+		 //MultipartRequest ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, formï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ request, ï¿½Ç°ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Úµï¿½, ï¿½Ì¸ï¿½ ï¿½ï¿½Ã¥ ï¿½ï¿½
 		 MultipartRequest mprequest = new MultipartRequest(request, path, size, "utf-8", new DefaultFileRenamePolicy());
 		 		
 		 
-		// Àü¼ÛÇÑ ÀüÃ¼ ÆÄÀÏÀÌ¸§µéÀ» °¡Á®¿Â´Ù.
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 		Enumeration files = mprequest.getFileNames();
 		String str = (String) files.nextElement();
 
-		// ÆÄÀÏ¸í Áßº¹ÀÌ ¹ß»ýÇßÀ» ¶§ Á¤Ã¥¿¡ ÀÇÇØ µÚ¿¡ 1,2,3 Ã³·³ ¼ýÀÚ°¡ ºÙ¾î °íÀ¯ ÆÄÀÏ¸íÀ» »ý¼ºÇÑ´Ù.
-		// ÀÌ¶§ »ý¼ºµÈ ÀÌ¸§À» FilesystemNameÀÌ¶ó°í ÇÏ¿© ±× ÀÌ¸§ Á¤º¸¸¦ °¡Á®¿Â´Ù. (Áßº¹ Ã³¸®)
+		// ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ßºï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ã¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¿ï¿½ 1,2,3 Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Ù¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+		// ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ FilesystemNameï¿½Ì¶ï¿½ï¿½ ï¿½Ï¿ï¿½ ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½. (ï¿½ßºï¿½ Ã³ï¿½ï¿½)
 		String fileName = mprequest.getFilesystemName(str);
 		System.out.println(fileName);
-		// ½ÇÁ¦ ÆÄÀÏ ÀÌ¸§À» °¡Á®¿Â´Ù.
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 		//String originalFileName = mprequest.getOriginalFileName(str);
 		//System.out.println(originalFileName);
 		
-		HttpSession sess = request.getSession(); //¸®ºä ÀÔ·Â½Ã session ÄíÅ° ³»ÀÇ È¸¿ø ¹× ÈÞ°Ô¼Ò Á¤º¸¸¦ ºÒ·¯¿Í¾ß ÇÏ±â ¶§¹®¿¡ Session °´Ã¼ »ý¼º
+		HttpSession sess = request.getSession(); //ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·Â½ï¿½ session ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ ï¿½Þ°Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½Í¾ï¿½ ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Session ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 		
-		ReviewVO rev = new ReviewVO(); //¸®ºä ÀÛ¼ºÀ» À§ÇÑ ReviewVO °´Ã¼ »ý¼º
-		//rev.setArea_num(request.getParameter("area_num")); //sessionÀÇ area_numÀ» rev¿¡ ÀÔ·Â
-		//rev.setUser_id((String)sess.getAttribute("user_id")); //sessionÀÇ user_idf¸¦ rev¿¡ ÀÔ·Â
-		rev.setArea_num("000485");
-		rev.setUser_id("test1");
-		rev.setReview(mprequest.getParameter("review")); //»ç¿ëÀÚ°¡ form ÅÂ±×·Î ÀÛ¼ºÇÑ ¸®ºä ³»¿ëÀ» rev¿¡ ÀÔ·Â
-		rev.setRate(Double.parseDouble(mprequest.getParameter("rate"))); //»ç¿ëÀÚ°¡ ¼±ÅÃÇÑ º°Á¡À» rev¿¡ ÀÔ·Â
-		rev.setPhoto(fileName); //»ç¿ëÀÚ°¡ ¾÷·Îµå ÇÑ »çÁøÀÇ ÆÄÀÏ ÀÌ¸§À» rev¿¡ ÀÔ·Â
+		ReviewVO rev = new ReviewVO(); //ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ReviewVO ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
+		//rev.setArea_num(request.getParameter("area_num")); //sessionï¿½ï¿½ area_numï¿½ï¿½ revï¿½ï¿½ ï¿½Ô·ï¿½
+		//rev.setUser_id((String)sess.getAttribute("user_id")); //sessionï¿½ï¿½ user_idfï¿½ï¿½ revï¿½ï¿½ ï¿½Ô·ï¿½
+		rev.setArea_num(mprequest.getParameter("area_num"));
+		rev.setUser_id((String)sess.getAttribute("user_id"));
+		rev.setReview(mprequest.getParameter("review")); //ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ form ï¿½Â±×·ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ revï¿½ï¿½ ï¿½Ô·ï¿½
+		rev.setRate(Double.parseDouble(mprequest.getParameter("rate"))); //ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ revï¿½ï¿½ ï¿½Ô·ï¿½
+		rev.setPhoto(fileName); //ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ revï¿½ï¿½ ï¿½Ô·ï¿½
 		
-		ReviewDAO dao = new ReviewDAO(); //DB¿¡ ÇØ´ç µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇÏ±â À§ÇÑ ReviewDAO °´Ã¼ »ý¼º
-		int result = dao.insertReview(rev); //Áö±Ý±îÁö ¸¸µç rev °´Ã¼¸¦ DB¿¡ insert
-		
+		ReviewDAO dao = new ReviewDAO(); //DBï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Ô·ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ReviewDAO ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
+		int result = dao.insertReview(rev); //ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ rev ï¿½ï¿½Ã¼ï¿½ï¿½ DBï¿½ï¿½ insert
+
 		if (result > 0) {
-			response.addHeader("Refresh", "1;url=second");
 			ReviewDAO dao2 = new ReviewDAO();
-//			String area_num = request.getParameter("area_num");
 			List<ReviewVO> rlist = dao2.selectAllReviewsByRestStop(rev.getArea_num());
 			request.setAttribute("revlist", rlist);
-			
-			RequestDispatcher rd = request.getRequestDispatcher("review/rev_list.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("rev_list.jsp");
 			rd.forward(request, response);
 		} else {
-			PrintWriter out = response.getWriter();
-			System.out.println("");
+			RequestDispatcher rd = request.getRequestDispatcher("rev_list.jsp");
+			rd.forward(request, response);
 		}
 	}
 

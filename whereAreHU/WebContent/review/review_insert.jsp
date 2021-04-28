@@ -8,13 +8,14 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-<link rel="stylesheet" href="../review/dist/themes/fontawesome-stars.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" href="fontawesome-stars.css">
 <script type="text/javascript" src="../review/dist/jquery.barrating.min.js"></script>
 <title>리뷰 입력</title>
 
 <style>
-	#review 
+	#revText
 	{
 		border-radius: 10px;
 		margin: 0 0 20px 0;
@@ -53,73 +54,69 @@
 </style>
 <script>
 $(function() {
-	
-      $('#star_rate').barrating({
-        theme: 'fontawesome-stars'
-      });
-      
-      $('#star_rate').barrating({
-    		theme: 'fontawesome-stars'
-    		, initialRating: 3
-    	});
-      
-      $('#star_rate').barrating({
-    		theme: 'fontawesome-stars'
-    		, readonly: true
-      });
-      
-/*       $('#star_rate').barrating({
-    		theme: 'fontawesome-stars'
-    		, onSelect: function(value, text, event){
-    			// 별점 클릭 후 처리는 여기서 코드
-    			// 선택한 별점 값을 value로 받음
-    		}
-    	}); */
-    	
-    	$.ajax({
-    		url: "../reviewList",
-    		type: "get",
-    		data: {"area_num":"000485"},
-    		success: function(responseData) {
-	    		//console.log(responseData);
-    			$("#revlist").html(responseData);
-    		},
-    		error: function() {}
-    	});
-    	
-    	$("#instBtn").on("click", function() {
-    		
-    		$.ajax({
-    			url: "../reviewInsert",
-    			type: "post",
-    			data: $("#revFrom").serialize(),
-    			encType: "multipart/form-data; charset=UTF-8",
-    			contentType : false,
-    			success: function(responseData) {
-    				console.log(responseData);
-    				$("#revlist").html(responseData);
-    				$("#review").text("");
-    			},
-    			error: function() {}
-    		});
-    	});
-    	
-});
+ 		$('#revStar').barrating({
+			theme : 'fontawesome-stars'
+		});
+
+ 		$('#revStar').barrating({
+			theme : 'fontawesome-stars',
+			initialRating : 3
+		}); 
+
+ 		$('#revStar').barrating({
+			theme : 'fontawesome-stars',
+			showValues : true,
+			readonly : true
+		});
+ 
+		$.ajax({
+			url : "../review/reviewList",
+			type : "get",
+			data : {
+				"area_num" : "${area_num}"
+			},
+			success : function(responseData) {
+				$("#revlist").html(responseData);
+			},
+			error : function() {
+			}
+		});
+		
+		$("#instBtn").on("click", function() {
+			$("#revForm").ajaxForm({
+				url : "../review/reviewInsert",
+				type : "post",
+				enctype : "multipart/form-data",
+				processData : false,
+				contentType : false,
+				success : function(responseText) {
+					$("#revlist").html(responseText);
+					$("#revText").val('');
+					$("#upload").val('');
+					$('#revStar').barrating('clear');
+				},
+				error : function(e) {
+					console.log(e);
+				}
+			});
+		});
+	});
 </script>
 </head>
 <body>
 <div id="content" class="parent">
 	<form id="revForm" class="child">
-		<select id="star_rate" name="rate">
-			<option value="1.0">1</option>
-			<option value="2.0">2</option>
-			<option value="3.0">3</option>
-			<option value="4.0">4</option>
-			<option value="5.0">5</option>
+		<select id="revStar" name="rate">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
 		</select><br>
-		<textarea id="review" name="review" cols="80" rows="6"></textarea><br>
-		<input type="file" name="photo">
-		<button id=instBtn>등록하기</button>
+		<textarea id="revText" name="review" cols="80" rows="6"></textarea><br>
+		<input type="hidden" name="area_num" value=${sarea.area_num }>
+		<input type="file" id="upload" name="photo">
+		<button id="instBtn">등록하기</button>	
 	</form>
 </div>
 <body>

@@ -22,6 +22,8 @@ $(function() {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };  
+	
+	var stopAddr = "${sarea.address}";
 
 	// 지도를 생성합니다    
 	var map = new kakao.maps.Map(mapContainer, mapOption); 
@@ -31,7 +33,7 @@ $(function() {
 	
 	// 주소로 좌표를 검색합니다
 	//geocoder.addressSearch(addr, function(result, status) {
-	geocoder.addressSearch(${sarea.address}, function(result, status) {
+	geocoder.addressSearch(stopAddr, function(result, status) {
 	
 		function f1(msg) {
 			 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
@@ -61,21 +63,20 @@ $(function() {
 	    		    navigator.geolocation.getCurrentPosition(function(position) {
 	    		        
 	    		        var myLoc = position.coords.latitude + ',' + position.coords.longitude;
-						var msg = 'https://map.kakao.com/link/from/현위치,' + myLoc + '/to/${sarea.area_name},' + result[0].y + ',' + result[0].x;
+						var msg = "https://map.kakao.com/link/from/현위치," + myLoc + "/to/${sarea.area_name }," + result[0].y + "," + result[0].x;
 						console.log(msg); //로그에서 길찾기 URL 확인
 						f1(msg);
-	    		      });
+	    		     });
 	    		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
 	    			//var locPosition = new kakao.maps.LatLng(33.450701, 126.570667);  
-					var msg = 'https://map.kakao.com/link/to/=${sarea.area_name},' + result[0].y + ',' + result[0].x;
+					var msg = "https://map.kakao.com/link/to/${sarea.area_name }," + result[0].y + "," + result[0].x;
 					console.log(msg); //로그에서 길찾기 URL 확인
 					f1(msg);
 	    		}	   
-		}
-	}
+	     } 
+		    
 	});
-	
 });
 	
 </script>
