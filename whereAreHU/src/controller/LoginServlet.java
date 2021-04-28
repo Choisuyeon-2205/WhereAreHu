@@ -31,6 +31,7 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
+
 	
 		UserDAO dao = new UserDAO();
 		UserVO user = dao.loginChk(user_id, user_pw);
@@ -45,12 +46,17 @@ public class LoginServlet extends HttpServlet {
 		}else {
 			request.setAttribute("user", user);
 			request.setAttribute("username", user.getUser_name());
+			request.setAttribute("user_email", user.getUser_email());
 			HttpSession session = request.getSession();
-			
+		
 			session.setAttribute("user_id", user_id);
 			session.setAttribute("user_pw", user_pw);
+			
+			session.setAttribute(user_pw, session);
 			session.setAttribute("user", user);
 			session.setAttribute("username", user.getUser_name());
+			session.setAttribute("user_phone", user.getUser_phone());
+			session.setAttribute("user_email", user.getUser_email());
 			out.println("�α��� ����");
 			//RequestDispatcher rd;
 			// response.sendRedirect("../list/area_MainPage.html");
