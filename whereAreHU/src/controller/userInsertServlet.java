@@ -37,8 +37,8 @@ public class userInsertServlet extends HttpServlet {
 		UserVO user= new UserVO(user_id, user_pw,user_name,user_phone,user_email);
 		UserDAO dao = new UserDAO();
 		int result = dao.join(user);
-		request.setAttribute("message", result + "╟г ют╥б╣г╬З╫ю╢о╢ы.");
-		RequestDispatcher rd = request.getRequestDispatcher("loginok.jsp");
+		request.setAttribute("message", result + "О©╫О©╫ О©╫т╥б╣г╬О©╫О©╫О©╫О©╫о╢О©╫.");
+		RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
 		rd.forward(request, response);
 		
 		

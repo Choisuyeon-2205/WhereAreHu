@@ -8,19 +8,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class GoMyPageServlet
+ * Servlet implementation class GoodListByUserServlet
  */
-@WebServlet("/mypage/GoMyPageServlet")
-public class GoMyPageServlet extends HttpServlet {
+@WebServlet("/mypage/GoodByUserList")
+public class GoodListByUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("MyPage.jsp");
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher("jsp/good_listForUser.jsp");
 		rd.forward(request, response);
 	}
 

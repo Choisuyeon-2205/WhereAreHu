@@ -46,7 +46,7 @@
 
 .menu ul{
 	display: grid;
-	grid-template-columns: auto auto; /* 4개라서 auto를 4번 준다 */
+	grid-template-columns: auto auto auto; /* 3개라서 auto를 3번 준다 */
 	grid-gap: 30px; /* ul마다 30px씩 떨어뜨림! */
 	list-style-type : none; /* 링크 누르면 색 변하는 거 제거 */
 	
@@ -63,7 +63,24 @@
 
 
 /* 로그인 버튼 관련 */
-
+.button_wrap{
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  border-radius: 8px;
+}
+.button_wrap:hover{
+  color:white;
+  background-color: rgb(31,171,137);
+}
+.button_wrap .icon{
+  display: none;
+}
+button_wrap:link{
+  text-decoration: none;
+}
 
 
 

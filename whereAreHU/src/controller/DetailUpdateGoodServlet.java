@@ -31,7 +31,6 @@ public class DetailUpdateGoodServlet extends HttpServlet {
 		GoodDAO goodDAO= new GoodDAO();
 		String user_id= request.getParameter("user_id");
 		String area_num= request.getParameter("area_num");
-		System.out.println(user_id+" "+area_num);
 		int result= goodDAO.isGood(user_id, area_num);
 		
 		if(result==1) {
