@@ -7,11 +7,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리뷰 목록</title>
+<title>나의 리뷰 목록</title>
 <style>
 table, td { border: 1px solid gray; border-collapse: collapse; }
 td { padding: 5px; }
-tr:first-of-type { background-color: green; }
+tr:first-of-type { background-color: blue; }
 </style>
 </head>
 <body>

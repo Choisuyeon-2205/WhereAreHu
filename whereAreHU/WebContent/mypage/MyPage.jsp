@@ -17,7 +17,7 @@
 		 
 		 bio = document.querySelector(".bio");
 		 bioMore = document.querySelector("#see-more-bio");
-		 bioLength = bio.innerText.length;
+		 //bioLength = bio.innerText.length;
 		 tabs(0);
 		 $(".nav ul li").click(function() { 
 			  $(this)
@@ -71,7 +71,8 @@
 	//좋아요 조회 리스트 끌어다 오는 AJAX (2)
 	  if(panelIndex==2){
 		  $.ajax({
-			  url:"#",
+			  url:"GoodByUserList",
+			  
 			  success:function(responseData){
 				  alert(responseData);
 				  $("#here").html(responseData);
@@ -206,12 +207,12 @@
 			<div class="profile-body" id="here">
 			
 			 여기
-			 ${param.username}
+			 
 			
 			
 			
-				<div class="profile-user tab">
-					<h1>회원정보 수정</h1>
+				 <div class="profile-user tab">
+					<!--<h1>회원정보 수정</h1>
 					<div>
 						<ul id="ChangeInfo">
 							<li><label for="user_id">아이디</label> <input type="text"
@@ -224,11 +225,11 @@
 							<li><label for="phone">연락처</label> <input type="tel"
 								id="phone" readonly="readonly"></li>
 						</ul>
-					</div>
-				</div>
+					</div>-->
+				</div> 
 
 				<div class="profile-reviews tab">
-					<h1>내가쓴 리뷰 확인하기</h1>
+					<!-- <h1>내가쓴 리뷰 확인하기</h1>
 					<table class="reviewCheck">
 						<thead>
 							<tr>
@@ -239,28 +240,28 @@
 
 							</tr>
 						</thead>
-					</table>
+					</table> -->
 
 				</div>
 				<div class="profile-good tab">
-					<h1>내가누른 좋아요 확인하기</h1>
+					<!-- <h1>내가누른 좋아요 확인하기</h1>
 					<table class="goodCheck">
 						<thead>
 							<tr>
 								<th>휴게소 정보</th>
 							</tr>
 						</thead>
-					</table>
+					</table> -->
 				</div>
 				<div class="profile-out tab">
-					<h1>만족할만한 서비스 였나요?</h1>
+					<!-- <h1>만족할만한 서비스 였나요?</h1>
 					<textarea rows="13" cols="60"
 						style="resize: none; font-size: 20px; border-color: green;"
 						placeholder="후기 남겨주세요"></textarea>
 					<div>
 						<a><button class="outButton1" type="submit">탈퇴하기</button></a>
 						<button class="outButton2" type="submit">뒤로가기</button>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
