@@ -29,8 +29,7 @@ public class UserDAO {
 	    } finally{
 	       DBUtil.dbClose(null, st, conn);
 	    }
-	     
-	         
+       
 	}
 	public List<UserVO> selectById (String user_id) {
 		List<UserVO> userlist = new ArrayList<>();
