@@ -1,72 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-
-<style>
-
-table {
-color: #333;
-font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-font-size: 12px;
-width: 640px;
-border-collapse:
-collapse; border-spacing: 0;
-}
-
-td, th {
-border: 1px solid transparent;
-height: 30px;
-transition: all 0.3s;
-  color: #828282;
-}
-
-th {
-background: #181818;
-font-weight: bold;
-font-size: 13px;
-}
-
-td {
-background: #FAFAFA;
-text-align: center;
-}
-
-tr:nth-child(even) td { background: #111111; }
-tr:nth-child(odd) td { background: #181818; }
-
-tr:hover td{
-    background:#006dec;color: #FFF; 
-}
-
-
-
-
-
-</style>
 <body>
-<html>
-<title>Disco Player List Sorting</title>
-	<body>
-	
-	
-	
-		<table class="players-online-list tborder" id="player_table" cellspacing="2" cellpadding="5" border="2">
-			<tr class="playersonline_tr">
-				<th onclick="sortTable(0)" class="tcat" ><span class="smalltext"><strong>Name</strong></span></th>
-				<th onclick="sortTable(1)" class="tcat" ><span class="smalltext"><strong>System</strong></span></th>
-				<th onclick="sortTable(2)" class="tcat" ><span class="smalltext"><strong>Region</strong></span></th>
-				<th onclick="sortTable(3)" class="tcat" ><span class="smalltext"><strong>Ping</strong></span></th>
-				<th onclick="sortTable(4)" class="tcat" ><span class="smalltext"><strong>Time active</strong></span></th>
-			</tr>
-			<tr class="api_player_row"><td>Big.Dipper</td><td>Texas</td><td>Liberty Space</td><td>63</td><td>1h58</td></tr><tr class="api_player_row"><td>Sengy</td><td>New York</td><td>Liberty Space</td><td>67</td><td>1h37</td></tr><tr class="api_player_row"><td>Sammuel</td><td>Connecticut</td><td>Uncharted Space</td><td>65</td><td>1h36</td></tr><tr class="api_player_row"><td>DSE)C-9.Nightingale</td><td>Honshu</td><td>Kusari Space</td><td>233</td><td>1h18</td></tr><tr class="api_player_row"><td>Zarko</td><td>Sigma-21</td><td>Sigma Border Worlds</td><td>63</td><td>1h09</td></tr><tr class="api_player_row"><td>Domino.Harvy</td><td>Pennsylvania</td><td>Liberty Space</td><td>58</td><td>54m</td></tr><tr class="api_player_row"><td>(C~Jared.Nomak</td><td>New York</td><td>Liberty Space</td><td>57</td><td>52m</td></tr><tr class="api_player_row"><td>Delta_55</td><td>New York</td><td>Liberty Space</td><td>81</td><td>47m</td></tr><tr class="api_player_row"><td>[KNF]KDS-Aden.Maru</td><td>New Tokyo</td><td>Kusari Space</td><td>34</td><td>42m</td></tr><tr class="api_player_row"><td>BRO_007</td><td>Omega-54</td><td>Omega Border Worlds</td><td>42</td><td>37m</td></tr><tr class="api_player_row"><td>Carbon</td><td>Sigma-15</td><td>Sigma Border Worlds</td><td>59</td><td>30m</td></tr><tr class="api_player_row"><td>Sagledvach</td><td>Sigma-17</td><td>Sigma Border Worlds</td><td>58</td><td>27m</td></tr><tr class="api_player_row"><td>/_\-Rust.Bucket</td><td>New York</td><td>Liberty Space</td><td>347</td><td>26m</td></tr><tr class="api_player_row"><td>[13th]Moonwalker</td><td>Connecticut</td><td>Uncharted Space</td><td>33</td><td>25m</td></tr><tr class="api_player_row"><td>/_\-Uncle.Willy</td><td>Kepler</td><td>Independent Worlds</td><td>52</td><td>24m</td></tr><tr class="api_player_row"><td>Cowboy_From_Hell</td><td>Honshu</td><td>Kusari Space</td><td>59</td><td>22m</td></tr><tr class="api_player_row"><td>Timbuktu</td><td>California</td><td>Liberty Space</td><td>33</td><td>21m</td></tr><tr class="api_player_row"><td>MNS-"Phosphorus"</td><td>New York</td><td>Liberty Space</td><td>172</td><td>18m</td></tr><tr class="api_player_row"><td>Kloun</td><td>Omicron Xi</td><td>South Edge Worlds</td><td>34</td><td>17m</td></tr><tr class="api_player_row"><td>Terroruk(EXE)</td><td>California</td><td>Liberty Space</td><td>37</td><td>16m</td></tr><tr class="api_player_row"><td>"Poseidon"</td><td>Languedoc</td><td>Gallic Border Worlds</td><td>174</td><td>15m</td></tr><tr class="api_player_row"><td>N&amp;D2010</td><td>Tau-29</td><td>Tau Border Worlds</td><td>28</td><td>14m</td></tr><tr class="api_player_row"><td>Wali</td><td>Manchester</td><td>Bretonia Space</td><td>58</td><td>9m</td></tr><tr class="api_player_row"><td>Jacob.Wyatt</td><td>New York</td><td>Liberty Space</td><td>110</td><td>9m</td></tr><tr class="api_player_row"><td>Nanashi</td><td>Pennsylvania</td><td>Liberty Space</td><td>48</td><td>8m</td></tr><tr class="api_player_row"><td>BMF|Supplier</td><td>New London</td><td>Bretonia Space</td><td>84</td><td>8m</td></tr><tr class="api_player_row"><td>CrazyDeath</td><td>California</td><td>Liberty Space</td><td>28</td><td>7m</td></tr><tr class="api_player_row"><td>H.Wilde</td><td>Leeds</td><td>Bretonia Space</td><td>41</td><td>6m</td></tr><tr class="api_player_row"><td>Rheinland/Gallia.Border</td><td>Cortez</td><td>Independent Worlds</td><td>126</td><td>5m</td></tr><tr class="api_player_row"><td>Brekker</td><td>Omicron Mu</td><td>Nomad Worlds</td><td>52</td><td>5m</td></tr><tr class="api_player_row"><td>Sightless.One</td><td>Kansas</td><td>Independent Worlds</td><td>365</td><td>4m</td></tr><tr class="api_player_row"><td>[ALG]-TGX-Tulln</td><td>Omicron Delta</td><td>Nomad Worlds</td><td>0</td><td>2m</td></tr><tr class="api_player_row"><td>Agara</td><td>Kansas</td><td>Independent Worlds</td><td>72</td><td>2m</td></tr><tr class="api_player_row"><td>Reputation</td><td>Connecticut</td><td>Uncharted Space</td><td>136</td><td>2m</td></tr>
-    </table>
-
-    
-    
-  </body>
-</html>
+	<h3>악세사리</h3>
+	관심항목을 선택하세요.
+	<hr>
+	<form method="get" action="CheckboxServlet">
+		<input type="radio" id="chk_gender" name="chk_gender" value="male" checked="checked">남자
+		 <input type="radio" id="chk_gender" name="chk_gender" value="female">여자
+		 <br>
+		<h5>이메일 수신 여부 :</h5>
+		<input type="radio" id="check_mail" name="check_mail" value="yes" checked="checked">수신
+		 <input type="radio" id="check_mail" name="check_mail" value="no">거부 
+		 <br> 
+		 <h5>가입 인사</h5>
+		<textarea rows="5" cols="80" name="content"></textarea>
+		 <input type="submit" value="ok">
+		<br><br>
+		<input type="submit" value="확인">
+	</form>
 </body>
 </html>
