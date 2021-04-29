@@ -43,12 +43,14 @@ header{
 }
 
 .left_section{
-	margin-left: 90px;
+	margin-left: 10px;
+	padding: 40px 0;
+	width: 200px;
 }
 
 
 .right_section{
-	background-color: rgba(68,114,196, 0.4);
+
 	padding:0;
 	margin:0;
 	
@@ -81,10 +83,7 @@ header{
 	background-color: black;
 }
 
-#section1{
-    width: 20%;
 
-}
 
 #section2{
     margin: 30px;
@@ -98,6 +97,35 @@ header{
 	color: white;
 	font-size: 22px;
 }
+
+td, th {
+border: 1px solid transparent;
+height: 30px;
+transition: all 0.3s;
+  color: #828282;
+}
+
+th {
+background: #181818;
+font-weight: bold;
+font-size: 13px;
+}
+
+td {
+background: #FAFAFA;
+text-align: center;
+}
+
+tr:nth-child(even) td { background: #423e3e; }
+tr:nth-child(odd) td { background: #181818; }
+
+tr:hover td{
+    background: rgb(31, 171, 137);
+    color: #FFF; 
+    cursor: pointer;
+}
+
+
 
 
 </style>
@@ -144,41 +172,51 @@ header{
 		<section class = "result_box">
 			<section id="section1"> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
 			  <div class = "left_section">
-				<h3>검색 결과</h3>
-				  <main>
-
-				  <c:forEach var="search" items="${routelist}" > 
-				  	<div id = result_section>
-				  		<p>휴게소명: ${routelist.searchroute }</p>
-				  	</div>
-				  </c:forEach>
-				   
-
-
-				  </main>
+				<h2>추가 검색 박스</h2><br>
+				  <form method="post" action="CheckboxServlet">
+				  	<h4>상행/하행</h4>
+				  		<div>
+				  		<input type="radio" id="upndown" name="upndown" value="all" checked="checked">모두 조회
+						<input type="radio" id="upndown" name="upndown" value="ascend">상행
+						<input type="radio" id="upndown" name="upndown" value="descend">하행
+						</div>
+					<br><br><br>
+					<h4>주유소 여부</h4>
+						<div>
+						<input type="radio" id="isoil" name="isoil" value="all" checked="checked"> 구분 없음
+						<input type="radio" id="isoil" name="isoil" value="yes"> O
+						<input type="radio" id="isoil" name="isoil" value="no"> X
+						</div>
+					<br> 
+						<input type="submit" value="확인">
+				  </form>
 			  </div>
 			</section>
 			
 			<section id = "vertical"></section>
 			
-			<section id="section2">
-			  <div class = "right_section" style="overflow:scroll; width: 800px; height: 400px;">
-			 	<h2>검색 결과</h2>
-				  <main>
-				  
-
+			<section id="section2" style="overflow:scroll; width: 850px; height: 450px;">
+			 
+			 <h2>검색 결과</h2><br>
+			 
+			  <table class = "right_section" id="table" cellspacing="2" cellpadding="2" border="2" >
+			 	
+				  <tr class = "service_table">
+				  		<th onclick="sortTable(0)" class="service1" ><span class="smalltext"><strong>휴게소명</strong></span></th>
+						<th onclick="sortTable(1)" class="service2" ><span class="smalltext"><strong>추천수</strong></span></th>
+				  </tr>
 				  <c:forEach var="search" items="${servicesearch}" > 
-				  	<div id = result_section>
-				  		<p><a href="../detail/selectDetail?area_num=${search.area_num }">휴게소명: ${search.area_name }</a></p>
-				  	</div>
+				  	<tr id = result_section onclick="location.href='../detail/selectDetail?area_num=${search.area_num }'" ><td>${search.area_name }</td><td>${search.thumbsup }</td></tr>
+
+
 				  </c:forEach>
 				  
 
 
-				  </main>
+
 
 			  	
-			  </div>
+			  </table>
 			
 			</section>
 		</section>

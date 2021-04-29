@@ -98,8 +98,8 @@ header{
 		<section> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
 		  <div class = "main_search_link">
 		  	<ul>
-		  		<li><a href="../list/searchPage.jsp" class="_p4ul2ts">조회</a></li>
-		  		<li><a href="../list/searchPage.jsp" class="_p4ul2ts">조회</a></li>
+		  		<li><a href="searchPage.jsp" class="_p4ul2ts">조회</a></li>
+		  		<li><a href="../recommend/recommendMain.jsp" class="_p4ul2ts">추천</a></li>
 		  	</ul>
 		  
 		  </div>

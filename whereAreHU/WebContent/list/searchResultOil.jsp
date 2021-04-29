@@ -87,10 +87,20 @@ tr:hover td{
 
 .needed_left_space{
 	margin-left: 60px;
-	width:1050px;
-	height:500px;
-	overflow:hidden;
-	overflow-y : scroll; }
+	   width: 70%;
+}
+
+::-webkit-scrollbar{
+	widht:25px;
+}
+::-webkit-scrollbar-track{
+	border:7px solid #232943;
+	box-shadow: inset 0 0 2.5px 2px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb{
+	background: #f00;
+	border-radius: 3px;
+}
 
 
 
@@ -138,7 +148,7 @@ tr:hover td{
 		
 		<section class = "result_box">
 					<h3>검색 결과</h3><br>
-			<div class = "needed_left_space">				
+			<div class = "needed_left_space" style="overflow:scroll; width: 1050px; height: 500px;">				
 			
 
 		
