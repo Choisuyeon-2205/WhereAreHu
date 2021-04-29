@@ -169,10 +169,10 @@
 				<br>
 					<ul id="UserInfo">
 						
-						<li><label for="user_id">아이디</label> ${user_id}</li>
-						<li><label for="user-name">이름</label> ${username}</li>
-						<li><label for="mail">이메일</label> ${user_email }</li>
-						<li><label for="phone">연락처</label> ${user_phone}</li> 
+						<li id="user_id"><label for="user_id">아이디</label> ${user_id}</li>
+						<li id="username"><label for="user-name">이름</label> ${username}</li>
+						<li id="user_email"><label for="mail">이메일</label> ${user_email}</li>
+						<li id="user_phone"><label for="phone">연락처</label> ${user_phone}</li> 
 					</ul>
 					<br>
 				</div>
