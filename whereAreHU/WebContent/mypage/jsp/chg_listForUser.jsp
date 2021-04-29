@@ -19,7 +19,7 @@
 				<input type="text"id="user_id" name = "user_id" value="${user_id}"></li>
 				
 				<li><label for="user_name">이름</label> 
-				<input type="text" id="user_name" name = "user_name" value="${user_name}"></li>
+				<input type="text" id="user_name" name = "user_name" value="${username}"></li>
 				
 				<li><label for="user_pw">비밀번호</label> 
 				<input type="text" id="user_pw" name = "user_pw" value="${user_pw}"></li>

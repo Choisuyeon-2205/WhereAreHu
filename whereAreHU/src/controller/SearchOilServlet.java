@@ -10,29 +10,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.ServiceAreaDAO;
-import model.ServiceAreaVO;
+import model.OilDAO;
+import model.OilVO;
 
 /**
- * Servlet implementation class RouteListServlet
+ * Servlet implementation class SearchOilServlet
  */
-@WebServlet("/RouteListServlet")
-public class RouteListServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+@WebServlet("/list/searchResultOil")
+public class SearchOilServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String searchroute = request.getParameter("");
 		
-		ServiceAreaDAO dao = new ServiceAreaDAO();
+		String oil = request.getParameter("oil_id");
+
+		OilDAO dao = new OilDAO();
 		
-		List<String> routelist = dao.selectAllRoute(searchroute);
-		request.setAttribute("routelist", routelist);
-		System.out.println(routelist);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("searchResult.jsp");
+		List<OilVO> oillist = dao.selectAllOil();
+		request.setAttribute("oillist", oillist);
+		System.out.println(oillist);
+						
+		RequestDispatcher rd = request.getRequestDispatcher("searchResultOil.jsp");
 		rd.forward(request, response);
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

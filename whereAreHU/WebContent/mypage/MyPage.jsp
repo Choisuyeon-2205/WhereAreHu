@@ -169,13 +169,10 @@
 				<br>
 					<ul id="UserInfo">
 						
-						<li><label for="user_id">아이디</label> ${user_id}
-						<li><label for="user-name">이름</label> ${username}
-
-						<li><label for="mail">이메일</label> <input type="email"
-							id="mail" readonly="readonly"></li>
-						<li><label for="phone">연락처</label> <input type="tel"
-							id="phone" readonly="readonly"></li>
+						<li><label for="user_id">아이디</label> ${user_id}</li>
+						<li><label for="user-name">이름</label> ${username}</li>
+						<li><label for="mail">이메일</label> ${user_email }</li>
+						<li><label for="phone">연락처</label> ${user_phone}</li> 
 					</ul>
 					<br>
 				</div>
