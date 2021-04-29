@@ -77,7 +77,7 @@ span{
 	border-radius: 10px;
 }
 
-input[type=button] {
+.btns {
 	background-color: lightgray;
 	padding: 20px;
 	padding-left: 40px;
@@ -184,17 +184,22 @@ button_wrap:link{
 </head>
 <body>
 	<nav class = "menu_section"> <!-- 최상단 ~ 로고 있는 부분 하나 / 메뉴 있는 부분 하나 해서 두 개로 나눔 -->
-		 <div class = "logo"><button type="button"><img src="../list/image/logo1.png" alt="로고가 있는 자리" width = "100" height = "44"></button><svg width="102" height="32" fill="currentcolor" style="display:inline-block"></svg></div>
+		 <div class = "logo"><button type="button" onclick = "location.href='../list/mainPage.jsp'"><img src="../list/image/logo1.png" alt="로고가 있는 자리" width = "100" height = "44"></button><svg width="102" height="32" fill="currentcolor" style="display:inline-block"></svg></div>
 		 <div class = "menu">
 		  <ul class = "login_and_out">
-		  		<c:if test="${not empty sessionScope.user_id}">
-				<li><button class = "button_wrap" type = "button" onclick = "location.href='../mypage/MyPage.jsp'">마이페이지</button></li>
+		  	<%
+		  		Object user_id = session.getAttribute("user_id");
+				if(user_id == null){
+			%> 
+		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../user/loginChk'">로그인</button></li>
+		  	<%
+				} else {
+		  	%>
+		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../mypage/MyPage.jsp'">마이페이지</button></li>
 		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../list/logout'">로그아웃</button></li>
-				</c:if>
-				<c:if test="${empty sessionScope.user_id}">
-				<p>비회원<p>
-				<li><button class = "button_wrap" type = "button" onclick = "location.href='../user/loginChk'">로그인</button></li>
-				</c:if>
+		  	<%
+				}
+		  	%>	
 		  </ul>
 		 </div>
 	</nav>
@@ -225,10 +230,10 @@ button_wrap:link{
 		</span>
 	</div>
 	<div id="buttons">
-		<input type="button" id="food" value="대표음식" 
+		<input type="button" class="btns" id="food" value="대표음식" 
 		onclick="location.href='selectDetailFood?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"> 
-		<input type="button" id="oil" value="주유소" onclick="location.href='selectDetailOil?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/> 
-		<input type="button" id="brand" value="브랜드매장" onclick="location.href='selectDetailBrand?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/>
+		<input type="button" class="btns" id="oil" value="주유소" onclick="location.href='selectDetailOil?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/> 
+		<input type="button" class="btns" id="brand" value="브랜드매장" onclick="location.href='selectDetailBrand?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/>
 	</div>
 	<div id="revinsert">
 	

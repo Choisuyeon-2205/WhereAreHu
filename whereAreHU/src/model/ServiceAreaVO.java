@@ -141,4 +141,12 @@ public class ServiceAreaVO {
 				+ ", thumbsup=" + thumbsup + "]";
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		ServiceAreaVO saVO= (ServiceAreaVO)obj;
+		
+		return area_num== saVO.area_num;
+	}
+
+	
 }

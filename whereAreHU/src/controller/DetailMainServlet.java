@@ -38,7 +38,6 @@ public class DetailMainServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		String user_id= (String) session.getAttribute("user_id");
 		int like_me= goodDAO.selectByOne(user_id, area_num);
-		System.out.println(like_me);
 		List<ReviewVO> reviewlist = reDAO.selectAllReviewsByRestStop(area_num);
 		
 		request.setAttribute("area_num", area_num);
