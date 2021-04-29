@@ -78,12 +78,14 @@ function chkchk (form){
         return false; 
     } 
 } 
+
+
 </script> 
 </head>
 <body><!-- block: 사이즈 완전 딱 맞게, 즉 높이랑 넓이 모두 조정 / inline-block: 넓이는 줄고, 높이는 그대로! -->
 		<header> <!-- 전체 -->
 		<nav class = "menu_section"> <!-- 최상단 ~ 로고 있는 부분 하나 / 메뉴 있는 부분 하나 해서 두 개로 나눔 -->
-		  <div class = "logo"><button type="button"><img src="../list/image/logo1.png" alt="로고가 있는 자리" width = "100" height = "44"></button><svg width="102" height="32" fill="currentcolor" style="display:inline-block"></svg></div>
+		  <div class = "logo"><button id="main_btn" type="button" onclick="location.href='../list/mainPage.jsp'"><img src="../list/image/logo1.png" alt="로고가 있는 자리" width = "100" height = "44"></button><svg width="102" height="32" fill="currentcolor" style="display:inline-block"></svg></div>
 		  <div class = "menu">
 		  	<ul class = "login_and_out">
 		  	<%
@@ -95,7 +97,7 @@ function chkchk (form){
 				} else {
 		  	%>
 		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../mypage/MyPage.jsp'">마이페이지</button></li>
-		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='logout'">로그아웃</button></li>
+		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../list/logout'">로그아웃</button></li>
 		  	<%
 				}
 		  	%>	
