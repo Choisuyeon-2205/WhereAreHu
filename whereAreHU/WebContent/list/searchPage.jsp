@@ -120,7 +120,7 @@ header{
 		<section> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
 		  <div class = "main_search_link">
 		  	<ul>
-		  		<li><a href="/s/experiences/online" class="_p4ul2ts" >주유소 조회</a></li>
+		  		<li><a href="../list/searchResultOil" class="_p4ul2ts" >주유소 조회</a></li>
 		  		<li><a href="/s/experiences/online" class="_p4ul2ts" >고속도로별 조회</a></li>
 		  	</ul>
 		  
