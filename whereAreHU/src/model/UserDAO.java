@@ -15,31 +15,37 @@ public class UserDAO {
 	
 	// 회원정보 수정 
 		public int updateUser(UserVO user) {
+			System.out.println(user);
 		int result = 0;
 		String sql = " update user_tb set " +
-					 " USER_NAME =? "+	 
-					 " USER_PW =? "+
-					 " USER_PHONE =?"+
-					 " USER_EMAIL =?" +
-					 "where USER_ID = ?";
+					 " USER_PW = decode(?, '', USER_PW,?), "+
+					 " USER_PHONE =decode(?, '', USER_PHONE,?),"+
+					 " USER_EMAIL =decode(?, '', USER_EMAIL,?)" +
+					 " where USER_ID = ?";
 			
 			Connection conn;
 			PreparedStatement st = null;
 			conn = DBUtil.getConnection();
 			try {
 				st = conn.prepareStatement(sql);
-				st.setString(1, user.getUser_name());
-				st.setString(2, user.getUser_pw());
+				
+				st.setString(1,user.getUser_pw());
+				st.setString(2,user.getUser_pw());
 				st.setString(3, user.getUser_phone());
-				st.setString(4, user.getUser_email());
-				st.setString(5, user.getUser_id());
+				st.setString(4, user.getUser_phone());
+				st.setString(5, user.getUser_email());
+				st.setString(6, user.getUser_email());
+				st.setString(7, user.getUser_id());
+				result = st.executeUpdate();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally {
 				DBUtil.dbClose(null, st, conn);
 			}
+			System.out.println(result);
 			return result;
+			
 		}
 		
 
