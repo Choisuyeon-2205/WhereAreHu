@@ -8,7 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 <link rel="stylesheet" href="../review/dist/themes/fontawesome-stars.css">
 <script type="text/javascript" src="../review/dist/jquery.barrating.min.js"></script>
@@ -32,11 +31,6 @@
 		position: absolute;
 		left: 50%; 
 		transform: translateX(-50%);
-	}
-	
-	#instBtn {
-		position: absolute;
-		right: 0%;
 	}
 	
 	div.br-widget {
@@ -83,7 +77,8 @@ $(function() {
 		});
 		
  		//리뷰 입력 후 등록 누를시 리뷰 조회 페이지 새로고침 및 리뷰 DB 입력 ajax
-		$("#instBtn").on("click", function() {
+	
+/* 		$("#instBtn").on("click", function() {
 			$("#revForm").ajaxForm({
 				url : "../review/reviewInsert",
 				type : "post",
@@ -101,15 +96,43 @@ $(function() {
 					console.log(e);
 				}
 			});
-		});
-		
+		}); */
+ 		
+	   $("#instBtn").on("click", function(){
+		    // Get form
+	        var form = $('#revForm')[0];
+
+		    // Create an FormData object 
+	        var data = new FormData(form);
+
+		   $.ajax({
+	            type: "POST",
+	            enctype: 'multipart/form-data',
+	            url: "../review/reviewInsert",
+	            data: data,
+	            processData: false,
+	            contentType: false,
+	            cache: false,
+	            success: function (data) {
+	            	$("#revlist").html(data);
+					$("#revText").val('');
+					$("#upload").val('');
+					$('#revStar').barrating('clear');
+	            },
+	            error: function (e) {
+	                console.log("ERROR : ", e);
+	            }
+	        });
+	   });
+
+	
 		//로그인 상태가 아닌데 리뷰 작성을 누를 시 자동 redirect
 		$("#revText").on("click", function() {
-			if ("${sessionScope.user_id}" == null || "${sessionScope.user_id}" == "undefined" || "${sessionScope.user_id}" == "") {
+			if (${empty sessionScope.user_id}) { //session값이 비었는지 확인해줌
 				location.replace('../user/loginChk');
 			}
 		});
-		
+
 	});
 </script>
 </head>
@@ -126,7 +149,7 @@ $(function() {
 		<textarea id="revText" name="review" cols="80" rows="6"></textarea><br>
 		<input type="hidden" name="area_num" value=${sarea.area_num }>
 		<input type="file" id="upload" name="photo">
-		<button id="instBtn">등록하기</button>
+		<input type="button" id="instBtn" value="등록하기">
 	</form>
 </div>
 <body>

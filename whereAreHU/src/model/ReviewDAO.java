@@ -12,6 +12,25 @@ import util.DBUtil;
 
 public class ReviewDAO {
 
+	public int updateReview(int review_id, String pName) {
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement st = null;
+		int result = 0;
+		String sql = "update review set photo = ? where review_id = ?";
+		
+		try {
+			st = conn.prepareStatement(sql);
+			st.setString(1, pName);
+			st.setInt(2, review_id);
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(null, st, conn);
+		}
+		return result;
+	}
+	
 	public int insertReview(ReviewVO review) {
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null;
