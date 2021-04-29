@@ -77,7 +77,7 @@ span{
 	border-radius: 10px;
 }
 
-input[type=button] {
+.btns {
 	background-color: lightgray;
 	padding: 20px;
 	padding-left: 40px;
@@ -97,11 +97,6 @@ input[type=button] {
 
 p {
 	font-family: "맑은 고딕";
-}
-
-#rev{
-	font-family: "Cooper Blk BT";
-	font-size: 20px;
 }
 
 #revlist {
@@ -201,7 +196,7 @@ button_wrap:link{
 				} else {
 		  	%>
 		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../mypage/MyPage.jsp'">마이페이지</button></li>
-		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='logout'">로그아웃</button></li>
+		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../list/logout'">로그아웃</button></li>
 		  	<%
 				}
 		  	%>	
@@ -235,10 +230,10 @@ button_wrap:link{
 		</span>
 	</div>
 	<div id="buttons">
-		<input type="button" id="food" value="대표음식" 
+		<input type="button" class="btns" id="food" value="대표음식" 
 		onclick="location.href='selectDetailFood?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"> 
-		<input type="button" id="oil" value="주유소" onclick="location.href='selectDetailOil?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/> 
-		<input type="button" id="brand" value="브랜드매장" onclick="location.href='selectDetailBrand?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/>
+		<input type="button" class="btns" id="oil" value="주유소" onclick="location.href='selectDetailOil?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/> 
+		<input type="button" class="btns" id="brand" value="브랜드매장" onclick="location.href='selectDetailBrand?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/>
 	</div>
 	<div id="revinsert">
 	<jsp:include page="../review/review_insert.jsp">

@@ -175,7 +175,7 @@ public class ServiceAreaDAO {
 			try {
 				st= conn.prepareStatement(sql);
 				st.setString(1, city);
-				rs = st.executeQuery(sql);
+				rs = st.executeQuery();
 				while (rs.next()) {
 					ServiceAreaVO area = makeArea(rs);
 					arealist.add(area);
@@ -212,5 +212,34 @@ public class ServiceAreaDAO {
 			return routes;
 
 		}
+		
+		public List<ServiceAreaVO> selectAddressArea2(List<String> city) {
+			List<ServiceAreaVO> arealist = new ArrayList<>();
+			Connection conn = DBUtil.getConnection();
+			Statement st= null;
+			ResultSet rs = null;
+			String sql = "select * from service_area";
+			
+			for(int i=0; i<city.size(); i++) {
+				if(i==0) sql+=" where address like '"+city.get(i)+"%'";
+				else sql+=" or address like '"+city.get(i)+"%'";
+			}
+			try {
+				st= conn.createStatement();
+				rs = st.executeQuery(sql);
+				while (rs.next()) {
+					ServiceAreaVO area = makeArea(rs);
+					arealist.add(area);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBUtil.dbClose(rs, st, conn);
+			}
+			return arealist;
+
+		}
+
 
 }

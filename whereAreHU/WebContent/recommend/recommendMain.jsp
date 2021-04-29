@@ -29,7 +29,7 @@ header{
 	display: inline-block;
 	width: 400px;
 	text-align: left;
-	background-color: rgba(000, 255, 153, 0.6);
+	background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 6px; /* 모서리 둥글게 */
 	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
 }
@@ -39,7 +39,9 @@ input[type=checkbox] {
 #bottom{ 
 	text-align: right;
 }
-.main_search_link{ color:white; }
+.main_search_link{ 
+	color:white; 
+}
 #bottom{
 	margin-top: 10px;
 	margin-right: 50px;
@@ -62,6 +64,21 @@ input[type=checkbox] {
 	border-radius: 6px; /* 모서리 둥글게 */
 }
 </style>
+<script>
+function chkchk (form){ 
+    var arr_form = document.getElementsByName('region'); 
+    var num = 0; 
+    for(var i=0; i<arr_form.length; i++){ 
+        if(arr_form[i].checked){ 
+            num++; 
+        } 
+    } 
+    if(!num){ 
+        alert('하나 이상 선택해주시기 바랍니다'); 
+        return false; 
+    } 
+} 
+</script> 
 </head>
 <body><!-- block: 사이즈 완전 딱 맞게, 즉 높이랑 넓이 모두 조정 / inline-block: 넓이는 줄고, 높이는 그대로! -->
 		<header> <!-- 전체 -->
@@ -86,13 +103,13 @@ input[type=checkbox] {
 		  </div>
 		</nav>
 	
-		<section> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
-		  <div class = "main_search_link">
-		  	<h1>휴게소 추천</h1>
-		  </div>
-		</section>
+		 <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
+		<div class = "main_search_link">
+			<h1>휴게소 추천</h1>
+		</div>
 		
-		<form method="post" action="recommendAction">
+		
+		<form method="post" action="recommendAction"  onsubmit="return chkchk(this);">
 		<section class = "result_box">
 			<div class = "left_section">
 				<input type="checkbox" name="region" value="서울"/>서울<br>
