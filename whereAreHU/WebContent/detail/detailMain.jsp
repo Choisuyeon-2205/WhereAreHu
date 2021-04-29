@@ -14,6 +14,7 @@
 <script>
 $(function(){
 	var like_me = ${like_me};
+	var insertYn= 0;
 	
 	$("#back").click(function(){
 		window.history.back();
@@ -21,11 +22,14 @@ $(function(){
 	$("#like_button").on("click", function(){
 		if(like_me===1){
 			$(this).css("background-color", "lightgray");
+			insertYn=0;
 		}else {
 			$(this).css("background-color", "red");
+			insertYn=1;
 		}
 		$.ajax({
 			url:"updateGood?user_id=${sessionScope.user_id}&area_num=${sarea.area_num}",
+			data:{"insertYn":insertYn},
 			type: "post",
 			success: function(data){	
 				$("#like_num").text(data.like);

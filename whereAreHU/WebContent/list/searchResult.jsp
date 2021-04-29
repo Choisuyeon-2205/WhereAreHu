@@ -9,9 +9,6 @@
 <title>Where? 휴식이 있는 곳!</title>
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="image/small_logo_icon.png">
 <link rel="stylesheet" href="css/styles.css"/>
-
-
-
 <style>
 
 
@@ -192,12 +189,8 @@ header{
 				  </c:forEach>
 				  
 
-
-				  </main>
-
-			  	
+				  </main>	  	
 			  </div>
-			
 			</section>
 		</section>
 	</header>

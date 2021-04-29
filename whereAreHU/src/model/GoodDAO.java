@@ -89,9 +89,10 @@ public class GoodDAO {
 					//처음 누를 때
 					sql2= "insert into good(user_id,area_num,isgood) values (?,?,1)";
 				}else {
-					sql2= "update good set isgood=decode(isgood,1,0,1) where user_id=? and area_num=?";
+					sql2= "update good set isgood=1 where user_id=? and area_num=?";
 				}
 				
+				String sql3= "update service_area set thumbsup=thumbsup+1 where area_num=?";
 				Connection conn= DBUtil.getConnection();
 				PreparedStatement st= null;
 				try {
@@ -99,6 +100,14 @@ public class GoodDAO {
 					st.setString(1, user_id);
 					st.setString(2, area_num);
 					result2= st.executeUpdate(); 
+					
+					if(result2<=0) {
+						System.out.println("좋아요 실패");
+					}else {
+					st= conn.prepareStatement(sql3);
+					st.setString(1, area_num);
+					result= st.executeUpdate();
+					}
 
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -131,6 +140,36 @@ public class GoodDAO {
 					DBUtil.dbClose(rs, st, conn);
 				}
 				return isgood;
+			}
+
+			public int isNotGood(String user_id, String area_num) {
+				//좋아요 누른적이 있는지 확인
+				int result=0;
+				String sql= "update good set isgood=0 where user_id=? and area_num=?";
+				String sql2= "update service_area set thumbsup=thumbsup-1 where area_num=?";
+		
+				Connection conn= DBUtil.getConnection();
+				PreparedStatement st= null;
+				try {
+					st= conn.prepareStatement(sql);
+					st.setString(1, user_id);
+					st.setString(2, area_num);
+					result= st.executeUpdate();
+					
+					if(result<=0) {
+						System.out.println("취소 실패");
+					}else {
+					st= conn.prepareStatement(sql2);
+					st.setString(1, area_num);
+					result= st.executeUpdate();
+					}
+				 }catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					DBUtil.dbClose(null, st, conn);
+				}
+				return result;
 			}
 			
 			
