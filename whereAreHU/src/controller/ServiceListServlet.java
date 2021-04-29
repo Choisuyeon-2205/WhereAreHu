@@ -45,6 +45,9 @@ public class ServiceListServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String searcharea = request.getParameter("search");
+		ServiceAreaDAO dao = new ServiceAreaDAO();
+		
 	}
 
 }

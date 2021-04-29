@@ -236,9 +236,10 @@ button_wrap:link{
 		<input type="button" class="btns" id="brand" value="브랜드매장" onclick="location.href='selectDetailBrand?area_num=${sarea.area_num}&area_name=${sarea.area_name}'"/>
 	</div>
 	<div id="revinsert">
+	
 	<jsp:include page="../review/review_insert.jsp">
 		<jsp:param name="rev" value="${review}" />
-	</jsp:include>
+	</jsp:include>  
 	</div>
 	<div id="revlist">
 	</div>
