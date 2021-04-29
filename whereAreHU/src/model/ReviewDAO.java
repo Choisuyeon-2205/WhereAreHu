@@ -12,16 +12,36 @@ import util.DBUtil;
 
 public class ReviewDAO {
 
-	public int updateReview(int review_id, String pName) {
+	public int deleteReviewByReviewID(int review_id) {
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null;
 		int result = 0;
-		String sql = "update review set photo = ? where review_id = ?";
+		String sql = "delete from review where review_id = ?";
 		
 		try {
 			st = conn.prepareStatement(sql);
-			st.setString(1, pName);
-			st.setInt(2, review_id);
+			st.setInt(1, review_id);
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(null, st, conn);
+		}
+		return result;
+	}
+	
+	public int updateReviewByReviewID(ReviewVO review) {
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement st = null;
+		int result = 0;
+		String sql = "update review set review = ?, rate = ?, photo = ? where review_id = ?";
+		
+		try {
+			st = conn.prepareStatement(sql);
+			st.setString(1, review.getReview());
+			st.setDouble(2, review.getRate());
+			st.setString(3, review.getPhoto());
+			st.setInt(4, review.getReview_id());
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

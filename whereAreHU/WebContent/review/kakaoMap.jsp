@@ -64,15 +64,13 @@ $(function() {
 	    		        
 	    		        var myLoc = position.coords.latitude + ',' + position.coords.longitude;
 						var msg = "https://map.kakao.com/link/from/현위치," + myLoc + "/to/${sarea.area_name }," + result[0].y + "," + result[0].x;
-						console.log(msg); //로그에서 길찾기 URL 확인
 						f1(msg);
 	    		     });
 	    		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
-	    			//var locPosition = new kakao.maps.LatLng(33.450701, 126.570667);  
-					var msg = "https://map.kakao.com/link/to/${sarea.area_name }," + result[0].y + "," + result[0].x;
-					console.log(msg); //로그에서 길찾기 URL 확인
-					f1(msg);
+	    				//var locPosition = new kakao.maps.LatLng(33.450701, 126.570667);  
+						var msg = "https://map.kakao.com/link/to/${sarea.area_name }," + result[0].y + "," + result[0].x;
+						f1(msg);
 	    		}	   
 	     } 
 		    

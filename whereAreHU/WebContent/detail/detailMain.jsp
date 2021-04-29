@@ -187,19 +187,14 @@ button_wrap:link{
 		 <div class = "logo"><button type="button"><img src="../list/image/logo1.png" alt="로고가 있는 자리" width = "100" height = "44"></button><svg width="102" height="32" fill="currentcolor" style="display:inline-block"></svg></div>
 		 <div class = "menu">
 		  <ul class = "login_and_out">
-		  	<%
-		  		Object user_id = session.getAttribute("user_id");
-				if(user_id == null){
-			%> 
-		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../user/loginChk'">로그인</button></li>
-		  	<%
-				} else {
-		  	%>
-		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../mypage/MyPage.jsp'">마이페이지</button></li>
-		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='logout'">로그아웃</button></li>
-		  	<%
-				}
-		  	%>	
+		  		<c:if test="${not empty sessionScope.user_id}">
+				<li><button class = "button_wrap" type = "button" onclick = "location.href='../mypage/MyPage.jsp'">마이페이지</button></li>
+		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../list/logout'">로그아웃</button></li>
+				</c:if>
+				<c:if test="${empty sessionScope.user_id}">
+				<p>비회원<p>
+				<li><button class = "button_wrap" type = "button" onclick = "location.href='../user/loginChk'">로그인</button></li>
+				</c:if>
 		  </ul>
 		 </div>
 	</nav>
