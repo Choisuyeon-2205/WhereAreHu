@@ -8,109 +8,58 @@
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="../list/image/small_logo_icon.png">
 <link rel="stylesheet" href="../list/css/styles.css"/>
 <style>
-
-
 header{
-
 	background-image: url("../list/image/highway_3.jpg"); 
 	background-repeat: no-repeat;
 	height: 880px;
 	background-size: 100% /* 그림 사이즈 딱 맞게~ */
 }
-
 .result_box{
-	width: 80%;
-	height: 550px;
-	display: grid;
-	grid-template-columns: 250px 30px auto;
+	width: 70%;
+	height: 600px;
 	background-color: rgba(215, 251, 232, 0.6);
-	padding: 20px 30px;
-	position: relative; /* 위치 이동 */
-	top: 20px;
-	left: 100px;
-	
 	border-radius: 6px; /* 모서리 둥글게 */
 	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
-
+	text-align: center;
 }
-
-.left_section{
-	margin-left: 90px;
-}
-
-.left_section ul{
-	height: 100px;
-
-}
-
-
-.left_section ul li{
-	list-style:none;
-	line-height: 70px;
-	
-	
-}
-.left_section ul li a{
-	color: hotpink;
-	text-decoration: none;
-	list-style-type : none;
-
-	
-	cursor: pointer;
-}
-
-.right_section{
-	background-color: rgba(68,114,196, 0.4);
-	padding:0;
-	margin:0;
-}
-
-.right_section p{
-	color:white;
+.middle_section , .left_section {
+	margin-left: 50px;
+	margin-top: 50px;
 	padding: 20px;
-	line-height:35px;
+	display: inline-block;
+	width: 400px;
+	text-align: left;
+	background-color: rgba(000, 255, 153, 0.6);
+	border-radius: 6px; /* 모서리 둥글게 */
+	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
 }
-::-webkit-scrollbar{
-	widht:25px;
+input[type=checkbox] {
+	margin: 10px;
 }
-::-webkit-scrollbar-track{
-	border:7px solid #232943;
-	box-shadow: inset 0 0 2.5px 2px rgba(0,0,0,0.5);
+#bottom{ 
+	text-align: right;
 }
-::-webkit-scrollbar-thumb{
-	background: #f00;
-	border-radius: 3px;
+.main_search_link{ color:white; }
+#bottom{
+	margin-top: 10px;
+	margin-right: 50px;
+	margin-bottom: 10px;
 }
-
-
-#vertical{
-	width: 5px;
-	height: 80%;
-	background-color: black;
+#reset{
+	width: 80px;
+	height: 40px;
+	margin-right: 20px;
+	margin-left: 20px;
+	font-size: 15px;
+	background-color: lightgray;
+	border-radius: 6px; /* 모서리 둥글게 */
 }
-
-#section1{
-    width: 20%;
-
-}
-
-#section2{
-    margin: 30px;
-    padding: 30px;
-    width: 20%;
-    
-}
-#section3{
-    margin: 30px;
-    padding: 30px;
-    width: 60%;
-    
-}
-
-
-.main_search_link h1 {
-	color: white;
-	font-size: 22px;
+#submit{
+	width: 120px;
+	height: 40px;
+	font-size: 15px;
+	background-color: lightgray;
+	border-radius: 6px; /* 모서리 둥글게 */
 }
 </style>
 </head>
@@ -137,58 +86,38 @@ header{
 		  </div>
 		</nav>
 	
-	
 		<section> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
 		  <div class = "main_search_link">
-		  	<h1>조회 결과</h1>
-		  
+		  	<h1>휴게소 추천</h1>
 		  </div>
 		</section>
 		
+		<form method="post" action="recommendAction">
 		<section class = "result_box">
-			<section id="section1"> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
-			  <div class = "left_section">
+			<div class = "left_section">
+				<input type="checkbox" name="region" value="서울"/>서울<br>
+				<input type="checkbox" name="region" value="경기"/>경기<br>
+				<input type="checkbox" name="region" value="부산"/>부산<br>
+				<input type="checkbox" name="region" value="대구"/>대구<br>
+				<input type="checkbox" name="region" value="울산"/>울산<br>
+				<input type="checkbox" name="region" value="대전"/>대전<br>
+				<input type="checkbox" name="region" value="인천"/>인천<br>
+				<input type="checkbox" name="region" value="전북"/>전북<br>
+				<input type="checkbox" name="region" value="전남"/>전남<br>
+				<input type="checkbox" name="region" value="충북"/>충북<br>
+				<input type="checkbox" name="region" value="충남"/>충남<br>
+				<input type="checkbox" name="region" value="강원"/>강원<br>
+				<input type="checkbox" name="region" value="경상북도"/>경상북도
+			</div>
 		
-					<li><input type="checkbox" name="region" id="region" value="부산"/></li>
-					<li><a href="#">cdb</a></li>
-					<li><a href="#">efd</a></li>
-					<li><a href="#">gwt</a></li>
-					<li><a href="#">sdc</a></li>
-					<li><a href="#">bzjo</a></li>
-				</ul>
-			  	
-			  </div>
-			</section>
+			<div class = "middle_section">
+				<input type="radio" name="etc" value="good"/>추천순<br>
+				<input type="radio" name="etc" value="size"/>크기순<br>
+			</div>
 			
-			<section id = "vertical"></section>
-			<section id="section2"> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
-			  <div class = "middle_section">
-		
-					<li><input type="checkbox" name="good" id="good" value="추천순"/></li>
-					<li><a href="#">cdb</a></li>
-					<li><a href="#">efd</a></li>
-					<li><a href="#">gwt</a></li>
-					<li><a href="#">sdc</a></li>
-					<li><a href="#">bzjo</a></li>
-				</ul>
-			  	
-			  </div>
-			</section>
-			<section id = "vertical"></section>
-			<section id="section3">
-			  <div class = "right_section" style="overflow:scroll; width: 800px; height: 400px;">
-			 	<h2>검색 결과</h2>
-				  <main>
-				  <c:forEach var="search" items="${servicesearch}" > 
-				  	<div id = result_section>
-				  		<p><a href="../detail/selectDetail?area_num=${search.area_num }">휴게소명: ${search.area_name }</a></p>
-				  	</div>
-				  </c:forEach>
-		
-				  </main>	  	
-			  </div>
-			</section>
+			<p id="bottom"><input id="submit" type="submit" value="recommend"> <input id="reset" type="reset" value="reset"></p>
 		</section>
+		</form>
 	</header>
 	
 	

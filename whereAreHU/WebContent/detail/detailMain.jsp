@@ -10,7 +10,6 @@
 <title>Where? 휴식이 있는 곳!</title>
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="../list/image/small_logo_icon.png">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 <script>
 $(function(){
 	var like_me = ${like_me};
@@ -47,10 +46,9 @@ $(function(){
 	
 });
 </script>
-<style type="text/css">
+<style>
 .header, .detail, #buttons {
 	text-align: center;
-	margin-top: 10px;
 }
 
 h1 {
@@ -121,21 +119,97 @@ p {
 	float: right;
 	
 }
-.detail{
-	background-color: lightgray;
-}
 .header{
-	background-color: lightgray;
+	background-color : rgba(172, 172, 172, 0.7);
 }
 
+*{
+	/* 헤더에 배경사진 적용하면 그림파일 특성상 넣으면서 여백이 생김 -> padding과 margin으로 여백 없도록 하기! */
+	padding:0px;
+	margin:0px;
+	box-sizing: border-box;
+}
+.logo button{
+	background-color : white;
+	color: white;
+	width: 100px;
+	height: 44px;
+	font-size: 15px;
+	font-weight: 700;
+	border-radius: 6px;
+	border: 0;
+    background-color: rgba( 255, 255, 255, 0 );
+	cursor: pointer; /* 커서 들이대면 커서가 변경됨 */
+}
+.menu_section{
+	display: grid;
+	grid-template-columns: auto auto; /* 1:1 비율로 나누어줌 (=1fr 1fr) */
+	justify-content: space-between; /* 양끝으로 가게 만들어~ */
+	background-color : rgba(172, 172, 172, 0.7);
+}
+.logo{
+	color: white;
+	font-size: 35px;
+	font-weight: 800;
+	margin: 12px 0 0 20px /* 12 3 6 9시 방향 띄우기 */
+}
+/* 로그인 버튼 관련 */
+.button_wrap{
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  border-radius: 8px;
+}
+.button_wrap:hover{
+  color:white;
+  background-color: rgb(31,171,137);
+}
+.button_wrap .icon{
+  display: none;
+}
+button_wrap:link{
+  text-decoration: none;
+}
+.menu ul{
+	display: grid;
+	grid-template-columns: auto auto auto; /* 3개라서 auto를 3번 준다 */
+	grid-gap: 30px; /* ul마다 30px씩 떨어뜨림! */
+	list-style-type : none; /* 링크 누르면 색 변하는 거 제거 */
+	
+	margin: 20px 20px 0 0 /* 12 3 6 9시 방향 띄우기 */
+}
+.menu ul a {
+	text-decoration: none; /* 링크 밑줄 제거 */
+	color: white;
+	font-weight: 800; /* 글자 굵기 설정 */
+}
 </style>
 </head>
 <body>
-	<img src="images/back.png" id="back" width="30px" height="30px">
+	<nav class = "menu_section"> <!-- 최상단 ~ 로고 있는 부분 하나 / 메뉴 있는 부분 하나 해서 두 개로 나눔 -->
+		 <div class = "logo"><button type="button"><img src="../list/image/logo1.png" alt="로고가 있는 자리" width = "100" height = "44"></button><svg width="102" height="32" fill="currentcolor" style="display:inline-block"></svg></div>
+		 <div class = "menu">
+		  <ul class = "login_and_out">
+		  	<%
+		  		Object user_id = session.getAttribute("user_id");
+				if(user_id == null){
+			%> 
+		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../user/loginChk'">로그인</button></li>
+		  	<%
+				} else {
+		  	%>
+		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../mypage/MyPage.jsp'">마이페이지</button></li>
+		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='logout'">로그아웃</button></li>
+		  	<%
+				}
+		  	%>	
+		  </ul>
+		 </div>
+	</nav>
 	<div class="header">
 		<h1>${sarea.area_name}</h1>
-		<span id="login_header"><jsp:include page="../common/header.jsp"/></span>
-		&nbsp;
 		<div id="like">
 			<button type="button" id="like_button">♡</button>
 			<h5><div id="like_num">좋아요 수: ${like_num}</div></h5>
