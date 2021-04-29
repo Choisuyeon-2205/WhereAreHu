@@ -29,7 +29,9 @@ tr:first-of-type { background-color: #d7fbe8; }
 	
 </tr>
 <tr>
-	<td colspan="4">${rev.review }</td><td><img src="${cPath }/upload/${rev.photo}" width="100px" height="100px"/>
+	<td colspan="4">${rev.review }</td>
+	<td><c:if test="${empty rev.photo }">사진 없음</c:if> <%-- 사진이 없을 경우 사진 없음으로 표기 --%>
+	<c:if test="${not empty rev.photo }"><img src="${cPath }/upload/${rev.photo}" width="100px" height="100px"/></c:if></td>
 </tr>
 </c:forEach>
 </table>

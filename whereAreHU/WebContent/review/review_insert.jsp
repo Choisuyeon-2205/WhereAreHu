@@ -68,6 +68,7 @@ $(function() {
 			readonly : true
 		});
  
+ 		//리뷰 조회 ajax
 		$.ajax({
 			url : "../review/reviewList",
 			type : "get",
@@ -81,6 +82,7 @@ $(function() {
 			}
 		});
 		
+ 		//리뷰 입력 후 등록 누를시 리뷰 조회 페이지 새로고침 및 리뷰 DB 입력 ajax
 		$("#instBtn").on("click", function() {
 			$("#revForm").ajaxForm({
 				url : "../review/reviewInsert",
@@ -88,6 +90,7 @@ $(function() {
 				enctype : "multipart/form-data",
 				processData : false,
 				contentType : false,
+				cache : false,
 				success : function(responseText) {
 					$("#revlist").html(responseText);
 					$("#revText").val('');
@@ -99,6 +102,14 @@ $(function() {
 				}
 			});
 		});
+		
+		//로그인 상태가 아닌데 리뷰 작성을 누를 시 자동 redirect
+		$("#revText").on("click", function() {
+			if ("${sessionScope.user_id}" == null || "${sessionScope.user_id}" == "undefined" || "${sessionScope.user_id}" == "") {
+				location.replace('../user/loginChk');
+			}
+		});
+		
 	});
 </script>
 </head>
@@ -115,7 +126,7 @@ $(function() {
 		<textarea id="revText" name="review" cols="80" rows="6"></textarea><br>
 		<input type="hidden" name="area_num" value=${sarea.area_num }>
 		<input type="file" id="upload" name="photo">
-		<button id="instBtn">등록하기</button>	
+		<button id="instBtn">등록하기</button>
 	</form>
 </div>
 <body>
