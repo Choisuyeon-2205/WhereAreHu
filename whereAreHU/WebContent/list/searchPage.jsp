@@ -121,7 +121,7 @@ header{
 		  <div class = "main_search_link">
 		  	<ul>
 		  		<li><a href="../list/searchResultOil" class="_p4ul2ts" >주유소 조회</a></li>
-		  		<li><a href="/s/experiences/online" class="_p4ul2ts" >고속도로별 조회</a></li>
+		  		<li><a href="../list/searchResultRoute" class="_p4ul2ts" >고속도로별 조회</a></li>
 		  	</ul>
 		  
 		  </div>
