@@ -104,14 +104,9 @@ body{
 			</h1>
 			<nav id="nav">
 				<ul>
-					<li class="current"><a href="index.html">Welcome</a></li>
-					<%
-						Object user_id = session.getAttribute("user_id");
-			
-						if(user_id != null){
-					%>
-					
-					<li class="submenu"><a href="#">menu</a>
+					   <c:if test="${not empty sessionScope.user_id}">
+  						 <p>${username}님 환영합니다<p>
+ 						 	<li class="submenu"><a href="#">menu</a>
 						<ul>
 
 							<li class="submenu"><a href="#">LookUP</a>ㅠ
@@ -119,22 +114,22 @@ body{
 									<li><a href="#"> gas station</a></li>
 									<li><a href="#">highway</a></li>
 								</ul>
-							<li><a href="left-sidebar.html">Search</a></li>
+							<li><a href="#">Search</a></li>
 							<li><a href="../mypage/MyPage.jsp">MyPage</a></li>
 							<li><a href="contact.html">Contact</a></li>
 
 						</ul></li>
-					<li><a href="logout" class="button primary">Logout</a></li>
-					
-					<%
-						} else {
-					%>
+						<li><a href="logout" class="button primary">Logout</a></li>
+						
+   					  </c:if>
+   					  
+					   <c:if test="${empty sessionScope.user_id}">
+					   <p>비회원<p>
+					  
 					
 					<li><a href="../user/loginChk" class="button primary">Login</a></li>
-					
-					<%
-						}
-					%>
+					</c:if>
+		
 
 				</ul>
 			</nav>
