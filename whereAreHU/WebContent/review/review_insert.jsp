@@ -45,6 +45,11 @@
 	}
 	
 	textarea:focus {outline:none;}
+	
+	#instBtn {
+		position: absolute;
+		right: 0%;
+	}
 </style>
 <script>
 $(function() {
@@ -75,29 +80,8 @@ $(function() {
 			error : function() {
 			}
 		});
-		
- 		//리뷰 입력 후 등록 누를시 리뷰 조회 페이지 새로고침 및 리뷰 DB 입력 ajax
-	
-/* 		$("#instBtn").on("click", function() {
-			$("#revForm").ajaxForm({
-				url : "../review/reviewInsert",
-				type : "post",
-				enctype : "multipart/form-data",
-				processData : false,
-				contentType : false,
-				cache : false,
-				success : function(responseText) {
-					$("#revlist").html(responseText);
-					$("#revText").val('');
-					$("#upload").val('');
-					$('#revStar').barrating('clear');
-				},
-				error : function(e) {
-					console.log(e);
-				}
-			});
-		}); */
  		
+		//리뷰 입력 ajax 		
 	   $("#instBtn").on("click", function(){
 		    // Get form
 	        var form = $('#revForm')[0];
@@ -125,14 +109,12 @@ $(function() {
 	        });
 	   });
 
-	
 		//로그인 상태가 아닌데 리뷰 작성을 누를 시 자동 redirect
 		$("#revText").on("click", function() {
 			if (${empty sessionScope.user_id}) { //session값이 비었는지 확인해줌
 				location.replace('../user/loginChk');
 			}
 		});
-
 	});
 </script>
 </head>
@@ -146,7 +128,7 @@ $(function() {
 			<option value="4">4</option>
 			<option value="5">5</option>
 		</select><br>
-		<textarea id="revText" name="review" cols="80" rows="6"></textarea><br>
+		<textarea id="revText" name="review" cols="80" rows="6" placeholder="여기에 리뷰를 작성해주세요. 별점 체크도 필수!"></textarea><br>
 		<input type="hidden" name="area_num" value=${sarea.area_num }>
 		<input type="file" id="upload" name="photo">
 		<input type="button" id="instBtn" value="등록하기">

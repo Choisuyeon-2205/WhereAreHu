@@ -8,45 +8,86 @@
 <head>
 <meta charset="UTF-8">
 <title>리뷰 목록</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="../review/imgbox.css">
 <style>
-table, td {border: 1px solid gray; border-collapse: collapse; }
-table { width: 720px; margin: 20px auto; text-align: center;}
-td { width: 120px; padding: 5px; }
-tr:nth-child(odd) td:nth-child(odd) { background-color: #d7fbe8; }
-/* tr td:last-of-type { width: 150px; } */
-tr:nth-child(even) { height: 100px; }
-.star {color: #cc9900;}
+table { width: 600px; margin: 20px auto; border-collapse: collapse; }
+tr:nth-child(odd) {padding: 5px;}
+tr:nth-child(even) { background-color:#FAFAFA; height: 100px; } 
+.star {width: 120px; }
+.writeinfo {color: gray; font-size: 11px;}
+.writeDel { color: gray; font-size: 11px; text-align: right; }
+.img1 {border:white; width: 120px; height: 120px; text-align: center; vertical-align:middle; }
+.img2 {border:white; width: 120px; height: 120px; text-align: center; vertical-align:middle; cursor: pointer;}
+#delRev { cursor: pointer; font-weight: normal;}
 </style>
+<script>
+$(function() {
+	$(".pic").on("click", function() {
+			fnImgPop(this.src);
+	});
+		
+	function fnImgPop(url){
+		boximg.src=url
+		imgbox.style.display="block";
+	}	  
+	
+	$("#imgbox").on("click", function() {
+			imgbox.style.display="none"
+	});
+	
+});
+
+	//리뷰 삭제
+	function delRev(id, area) {
+		if (confirm("정말 삭제하시겠습니까?")) {
+			$.ajax({
+				url : "../review/reviewDelete",
+				type : "get",
+				data : {
+					"review_id" : id, 
+					"area_num" : area
+				},
+				success : function(responseData) {
+					$("#revlist").html(responseData);
+				},
+				error : function() {
+				}
+			});
+		} else {
+			
+		}
+	}
+</script>
 </head>
 <body>
-<c:set var="cPath" value="${pageContext.request.contextPath }"/>
+<c:set var="cPath" value="${pageContext.request.contextPath}/upload/"/>
 <table>
 <c:forEach var="rev" items="${revlist }">
 <tr>
-	<%-- <td>${rev.review_id }</td> --%>
-	<td>아이디</td>
-	<td>${rev.user_id }</td>
-	<%-- <td>${rev.area_num }</td> --%>
-	<td>별점</td>
-	<td class="star"><c:choose> 
-		<c:when test="${rev.rate == '1'}">★☆☆☆☆</c:when>
-		<c:when test="${rev.rate == '2'}">★★☆☆☆</c:when>
-		<c:when test="${rev.rate == '3'}">★★★☆☆</c:when>
-		<c:when test="${rev.rate == '4'}">★★★★☆</c:when>
-		<c:when test="${rev.rate == '5'}">★★★★★</c:when>
-	</c:choose></td>
-	<td>작성일</td>
-	<td>${rev.write_day }</td>
-	
+	<td class="star">
+	<c:forEach var="i" step="1" begin="1" end="${rev.rate }">
+	<img src="../review/star.png" width="15" height="15">
+	</c:forEach>
+	<c:forEach var="i" step="1" begin="${rev.rate }" end="4">
+	<img src="../review/star2.png" width="15" height="15">
+	</c:forEach> 
+	</td>
+	<td class="writeinfo">${rev.user_id } | ${rev.write_day }</td>
+	<td class="writeDel">
+	<c:if test="${rev.user_id == sessionScope.user_id}"><strong id="delRev" onclick="delRev(${rev.review_id}, '${rev.area_num }')">삭제</strong>
+	</c:if></td>
+	<td><c:if test="${rev.user_id != sessionScope.user_id}"></c:if></td>
 </tr>
 <tr>
-	<c:if test="${empty rev.photo }"><td colspan="6">${rev.review }</td></c:if>
-	<c:if test="${not empty rev.photo }">
-	<td colspan="5">${rev.review }</td>
-	<td ><img src="${cPath }/upload/${rev.photo}" width="100px" height="100px"/></td>
-	</c:if>
+	<td colspan="2">${rev.review }</td>
+	<c:if test="${empty rev.photo }"><td class="img1"></td></c:if>
+	<c:if test="${not empty rev.photo }"><td class="img2"><img src="${cPath }${rev.photo}" width="100px" height="100px" class="pic"></td></c:if>	
 </tr>
 </c:forEach>
 </table>
+<div id="imgbox">
+	<img src="${cPath }/upload/${rev.photo}" alt="" id="boximg">
+</div>
 </body>
 </html>

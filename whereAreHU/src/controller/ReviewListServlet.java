@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -25,7 +26,6 @@ public class ReviewListServlet extends HttpServlet {
 		String area_num = (request.getParameter("area_num"));
 		List<ReviewVO> rlist = dao.selectAllReviewsByRestStop(area_num);
 		request.setAttribute("revlist", rlist);
-//		System.out.println(rlist);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("rev_list.jsp");
 		rd.forward(request, response);
