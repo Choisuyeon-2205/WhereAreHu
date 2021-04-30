@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -140,6 +141,54 @@ public class GoodDAO {
 					DBUtil.dbClose(rs, st, conn);
 				}
 				return isgood;
+			}
+			
+			 public int updateGood() {
+			      int result = 0;
+			      Connection conn;
+			      CallableStatement cst = null;
+			      String sql = "{call updateGood()}";
+			      conn = DBUtil.getConnection();
+			      try {
+			         cst = conn.prepareCall(sql);
+			         result = cst.executeUpdate();
+			      } catch (SQLException e) {
+			         e.printStackTrace();
+			      } finally {
+			         DBUtil.dbClose(null, cst, conn);
+			      }
+			      return result;
+			   }
+
+			//좋아요 업데이터
+			public int updateGood(String user_id, String area_num) {
+				//좋아요 누른적이 있는지 확인
+				int result= selectByOne(user_id,area_num);
+				String sql=""; 
+				int result2=0;
+				if(result==-1) {
+					//처음 누를 때
+					sql= "insert into good(user_id,area_num,isgood) values (?,?,1)";
+				}else {
+					sql= "update good set isgood= decode(isgood,1,0,1) where user_id=? and area_num=?";
+				}
+				
+				Connection conn= DBUtil.getConnection();
+				PreparedStatement st= null;
+				try {
+					st= conn.prepareStatement(sql);
+					st.setString(1, user_id);
+					st.setString(2, area_num);
+					result2= st.executeUpdate(); 
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					DBUtil.dbClose(null, st, conn);
+				}
+				
+				if(updateGood()>0) System.out.println("thumbsup 업데이트 성공");
+				return result2;
 			}
 
 			public int isNotGood(String user_id, String area_num) {

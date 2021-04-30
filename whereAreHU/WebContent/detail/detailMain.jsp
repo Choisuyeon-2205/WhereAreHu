@@ -15,32 +15,24 @@
 <script>
 $(function(){
 	var like_me = ${like_me};
-	var insertYn= 0;
 	
 	$("#back").click(function(){
 		window.history.back();
 	});
 	$("#like_button").on("click", function(){
-		if(like_me===1){
-			$(this).css("background-color", "lightgray");
-			insertYn=0;
-		}else {
-			$(this).css("background-color", "red");
-			insertYn=1;
-		}
+		$(this).toggleClass("liked");
 		$.ajax({
 			url:"updateGood?user_id=${sessionScope.user_id}&area_num=${sarea.area_num}",
-			data:{"insertYn":insertYn},
 			type: "post",
 			success: function(data){	
-				$("#like_num").text(data.like);
-				location.reload();
+				alert(data);
+				$("#like_num2").text(data);
 			},
 			error: function(){}
 		});
 	});
-	if(like_me===1)
-		$("#like_button").css("background-color", "red");
+	
+	if(like_me==1) {$("#like_button").toggleClass("liked"); like_me=0;}
 	
 	
 	if(${fn:indexOf(sarea.area_name, '휴')}<=0)
@@ -87,9 +79,9 @@ $(function(){
 		<div class="header">
 			<h1>${sarea.area_name}</h1>
 			<div id="like">
-				<button type="button" id="like_button">♡</button>
+				<div id="like_button">♥</div>
 				<h5>
-					<div id="like_num">좋아요 수: ${like_num}</div>
+					<div id="like_num">좋아요 수: <span id="like_num2">${like_num}</span></div>
 				</h5>
 			</div>
 		</div>
@@ -104,10 +96,9 @@ $(function(){
 				<span class="detail_span">지사명: ${sarea.fname}</span><br>
 				<span class="detail_span">주유소/휴게소: ${sarea.isGas==1?"주유소":"휴게소"}</span><br> 
 				<span class="detail_span">상/하행:${sarea.descend==1?"하행":"상행"}</span><br> 
-				<span class="detail_span">대표 전화번호: ${sarea.minicar}</span><br>
-				<span class="detail_span">소형차 주차대수: ${sarea.largecar}</span><br> 
-				<span class="detail_span">대형차 주차대수: ${sarea.othercar}</span><br>
-				<span class="detail_span">장애인 주차대수: ${sarea.thumbsup}</span><br>
+				<span class="detail_span">소형차 주차대수: ${sarea.minicar}</span><br> 
+				<span class="detail_span">대형차 주차대수: ${sarea.largecar}</span><br>
+				<span class="detail_span">장애인 주차대수: ${sarea.othercar}</span><br>
 			</div> 
 			<div class="et-detail" id="map"> 
 			<jsp:include page="../review/kakaoMap.jsp" />

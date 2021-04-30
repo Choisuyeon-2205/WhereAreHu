@@ -25,22 +25,16 @@ public class DetailUpdateGoodServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		JSONObject jsonObject = new JSONObject();
 		PrintWriter out = response.getWriter();
 		
 		GoodDAO goodDAO= new GoodDAO();
 		String user_id= request.getParameter("user_id");
 		String area_num= request.getParameter("area_num");
-		int insertYn= Integer.valueOf(request.getParameter("insertYn"));
-		int result=0;
-		if(insertYn==1) {
-			result= goodDAO.isGood(user_id, area_num);
-		}else {
-			result= goodDAO.isNotGood(user_id, area_num);
-		}
+		
+		int result= goodDAO.updateGood(user_id, area_num);
+	
 		if(result==1) {
-			jsonObject.put("like", goodDAO.selectByOne(user_id, area_num));
-			response.getWriter().write(jsonObject.toJSONString());
+			out.print(goodDAO.selectByAreaNum(area_num));
 		}else {
 			System.out.println("좋아요 실패");
 		}
