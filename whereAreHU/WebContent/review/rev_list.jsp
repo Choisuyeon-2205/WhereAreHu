@@ -17,9 +17,9 @@ tr:nth-child(even) { background-color:#FAFAFA; height: 100px; }
 .star {width: 120px; }
 .writeinfo {color: gray; font-size: 11px;}
 .writeDel { color: gray; font-size: 11px; text-align: right; }
-.img1 {border:white; width: 120px; height: 120px; text-align: center; vertical-align:middle; }
-.img2 {border:white; width: 120px; height: 120px; text-align: center; vertical-align:middle; cursor: pointer;}
+.img {border:white; width: 120px; height: 120px; text-align: center; vertical-align:middle; cursor: pointer;}
 #delRev { cursor: pointer; font-weight: normal;}
+#writeRev {color: gray; font-size: 0.9em;}
 </style>
 <script>
 $(function() {
@@ -80,9 +80,8 @@ $(function() {
 	<td><c:if test="${rev.user_id != sessionScope.user_id}"></c:if></td>
 </tr>
 <tr>
-	<td colspan="2">${rev.review }</td>
-	<c:if test="${empty rev.photo }"><td class="img1"></td></c:if>
-	<c:if test="${not empty rev.photo }"><td class="img2"><img src="${cPath }${rev.photo}" width="100px" height="100px" class="pic"></td></c:if>	
+	<c:if test="${empty rev.photo }"><td id="writeRev" colspan="3">${rev.review }</td></c:if>
+	<c:if test="${not empty rev.photo }"><td id="writeRev" colspan="2">${rev.review }</td><td class="img"><img src="${cPath }${rev.photo}" width="100px" height="100px" class="pic"></td></c:if>	
 </tr>
 </c:forEach>
 </table>

@@ -47,8 +47,10 @@
 	textarea:focus {outline:none;}
 	
 	#instBtn {
+		padding: 1px 6px;
 		position: absolute;
 		right: 0%;
+		cursor: pointer;
 	}
 </style>
 <script>
