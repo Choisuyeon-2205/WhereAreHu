@@ -12,8 +12,12 @@
 <link rel="stylesheet" href="../review/dist/themes/fontawesome-stars.css">
 <script type="text/javascript" src="../review/dist/jquery.barrating.min.js"></script>
 <title>리뷰 입력</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 
 <style>
+.* {
+    font-family: 'NanumSquare', sans-serif !important;
+}
 	#revText
 	{
 		border-radius: 10px;
