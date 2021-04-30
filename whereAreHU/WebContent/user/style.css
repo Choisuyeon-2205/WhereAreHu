@@ -7,7 +7,9 @@
 }
 
 body {
-  background-color:#d7fbe8;
+ 
+  background-image: url('back1.jpg');
+  background-size: 120%;
 }
 
 .loginForm {
@@ -15,7 +17,7 @@ body {
   width:300px;
   height:500px;
   padding: 30px, 20px;
-  background-color:#FFFFFF;
+  background-color: rgba(255,255,255,0.8);
   text-align:center;
   top:50%;
   left:50%;

@@ -39,7 +39,7 @@ function check() {
 				$('#password').val("");
 				$('#id').focus();
 			}else{
-				location.href="../list/mainPage.jsp"
+				location.href="../list/index.jsp"
 			}
 		}
 	})
@@ -120,7 +120,7 @@ PW<input type="password" name="user_pw" class="pw" id="password"><br>
 
 <!-- 네이버아디디로로그인 초기화 Script -->
 <script type="text/javascript">
-	var naver_id_login = new naver_id_login("LzGGjtT_5CpyZZFjnLWk", "http://192.168.0.120:9090/whereAreHU/user/callback.jsp");
+	var naver_id_login = new naver_id_login("LzGGjtT_5CpyZZFjnLWk", "http://localhost:9090/whereAreHU/user/callback.jsp");
 	var state = naver_id_login.getUniqState();
 	naver_id_login.setButton("white", 2,40);
 	naver_id_login.setDomain(".service.com");

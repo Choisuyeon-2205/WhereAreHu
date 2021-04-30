@@ -23,11 +23,12 @@ public class SearchRouteServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String route = request.getParameter("route");
+		//String route = request.getParameter("route");
+
 		
 		ServiceAreaDAO dao = new ServiceAreaDAO();
 		
-		List<String> routelist = dao.selectAllRoute(route);
+		List<String> routelist = dao.selectAllRoute();
 		request.setAttribute("routelist", routelist);
 		System.out.println(routelist);
 		
@@ -39,16 +40,13 @@ public class SearchRouteServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		Object[] selectroute = request.getParameterValues("selectroute");
-		String isoil = request.getParameter("isoil");
-		String upndown = request.getParameter("upndown");
-		
-		
-		
-		System.out.println(selectroute);
-		System.out.println(isoil);
-		System.out.println(upndown);
-		System.out.println(Arrays.deepToString(selectroute));
+		String route = request.getParameter("route");
+		String oil = request.getParameter("oil");
+		String updown = request.getParameter("updown");
+		ServiceAreaDAO dao = new ServiceAreaDAO();
+		request.setAttribute("routelist", dao.selectRoutePlus(route, oil, updown));
+		RequestDispatcher rd = request.getRequestDispatcher("otherRouteResult.jsp");
+		rd.forward(request, response);
 	}
 
 }
