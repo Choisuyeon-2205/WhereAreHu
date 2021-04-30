@@ -33,14 +33,28 @@
 		 console.log(naver_id_login.getProfileData('email'));
 		 console.log(naver_id_login.getProfileData('name'));
 		 console.log(naver_id_login.getProfileData('mobile'));
-		 sessionStorage.setItem("username",naver_id_login.getProfileData('name'));
-	     	sessionStorage.setItem("user_email",naver_id_login.getProfileData('email'));
+		 //sessionStorage.setItem("username",naver_id_login.getProfileData('name'));
+	     	//sessionStorage.setItem("user_email",naver_id_login.getProfileData('email'));
 	     	//sessionStorage.getItem("user_email");
 	     	//sessionStorage.getItem("username");
-		window.close();
+	     	
+	     	 $.ajax({
+		               url : "../user/loginNaver",
+		               type : "get",
+		               data : {
+		                  "navername" : naver_id_login.getProfileData('name'),
+		                  "naveremail" : naver_id_login.getProfileData('email')
+		               },
+		               success : function(responseData) {
+		           		window.close();;
+		               },
+		               error : function() {
+		               }
+		            });   
+	     	
 		
 		
-		top.opener.location="../list/mainPage.jsp?name="
+		top.opener.location="../list/index.jsp?name="
 				+naver_id_login.getProfileData('name')
 				+"&email=" + naver_id_login.getProfileData('email');
 

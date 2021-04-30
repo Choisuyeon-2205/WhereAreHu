@@ -99,14 +99,19 @@ PW<input type="password" name="user_pw" class="pw" id="password"><br>
 			      console.log(kakao_account.profile.nickname);
 			      
 			  
-			      //location.href = "http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/whereAreHU/user/loginChk?kakaonickname="
-			    		  //+kakaonickname+"&kakao_email="+account_email); 
-			     	 window.location.href="../list/mainPage.jsp?kakaonickname="
-			    		  +kakaonickname+"&kakao_email="+kakao_email;		
-			     	sessionStorage.setItem("username",kakaonickname);
-			     	sessionStorage.setItem("user_email",kakao_email);
-			      	//sessionStorage.getItem("user_email");
-			     	//sessionStorage.getItem("username"); 가져오기 
+			      $.ajax({
+		               url : "../user/loginKakao",
+		               type : "get",
+		               data : {
+		                  "kakaonick" : kakaonickname,
+		                  "kakaoemail" : kakao_email
+		               },
+		               success : function(responseData) {
+		                  location.replace("../list/index.jsp");
+		               },
+		               error : function() {
+		               }
+		            });   
 
 			     	
 					}

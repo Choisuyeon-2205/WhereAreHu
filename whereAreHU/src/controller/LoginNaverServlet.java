@@ -1,0 +1,35 @@
+package controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+/**
+ * Servlet implementation class LoginNaverServlet
+ */
+@WebServlet("/user/loginNaver")
+public class LoginNaverServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String navername = request.getParameter("navername");
+		String naveremail = request.getParameter("naveremail");
+		HttpSession sess = request.getSession();
+		
+		sess.setAttribute("navername", navername);
+		sess.setAttribute("naveremail", naveremail);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("../user/Login.jsp");
+		rd.forward(request, response);
+	}
+
+
+
+
+}

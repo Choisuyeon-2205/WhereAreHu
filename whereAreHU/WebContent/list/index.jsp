@@ -1,14 +1,16 @@
+<%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<!--
-	Twenty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+
+
 <title>Main</title>
 <meta charset="utf-8" />
 <meta name="viewport"
@@ -22,6 +24,9 @@
 	<link rel="stylesheet" href="assets/css/noscript.css" />
 </noscript>
 </head>
+
+
+
 <body class="index is-preload">
 	<div id="page-wrapper">
 
@@ -34,37 +39,37 @@
 			<nav id="nav">
 				<ul>
 					<li class="current"><a href="index.html">Welcome</a></li>
-					<%
-						Object user_id = session.getAttribute("user_id");
-			
-						if(user_id != null){
-					%>
 					
-					<li class="submenu"><a href="#">menu</a>
-						<ul>
+					   <c:if test="${(not empty sessionScope.kakaonick) or (not empty sessionScope.user_id) or (not empty sessionScope.navername)}">
+					   		<c:if test="${not empty sessionScope.kakaonick }"> <p>${sessionScope.kakaonick}님 환영합니다</p></c:if>
+					  		 <c:if test="${not empty sessionScope.user_id }"> <p>${sessionScope.user_id}님 환영합니다</p></c:if>
+					  		  <c:if test="${not empty sessionScope.navername }"> <p>${sessionScope.navername}님 환영합니다</p></c:if>
+					   <ul>
 
-							<li class="submenu"><a href="#">LookUP</a>
+							<li class="submenu"><a href="#">LookUP</a>ㅠ
 								<ul>
 									<li><a href="#"> gas station</a></li>
 									<li><a href="#">highway</a></li>
 								</ul>
-							<li><a href="left-sidebar.html">Search</a></li>
+							<li><a href="#">Search</a></li>
 							<li><a href="../mypage/MyPage.jsp">MyPage</a></li>
 							<li><a href="contact.html">Contact</a></li>
 
-						</ul></li>
-					<li><a href="logout" class="button primary">Logout</a></li>
-					
-					<%
-						} else {
-					%>
-					
-					<li><a href="../user/loginChk" class="button primary">Login</a></li>
-					
-					<%
-						}
-					%>
-
+						</ul>
+						<li><a href="logout" class="button primary">Logout</a></li>
+					   </c:if>
+					   
+					   
+					   <c:if test="${(empty sessionScope.user_id) and (empty sessionScope.kakaonick) and (empty sessionScope.navername)}">
+					   <p>비회원</p>
+						<li><a href="../user/loginChk" class="button primary">Login</a></li>
+					  </c:if>
+							
+		
+						 
+						 
+						 
+						 
 				</ul>
 			</nav>
 		</header>

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.UserDAO;
 import model.UserVO;
@@ -19,21 +20,15 @@ import model.UserVO;
 public class LoginKakaoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String user_id = request.getParameter("user_id");
-		String user_name = request.getParameter("user_name");
-		UserVO user= new UserVO();
-		user.setUser_id(user_id);
-		user.setUser_name(user_name);
-		user.setUser_pw("0000");
-		UserDAO	userDAO= new UserDAO();
-		int result= userDAO.join(user);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String kakaonick = request.getParameter("kakaonick");
+		String kakaoemail = request.getParameter("kakaoemail");
+		HttpSession sess = request.getSession();
 		
-		if(result>0) {
-			System.out.println("가입완료!");
-		}
+		sess.setAttribute("kakaonick", kakaonick);
+		sess.setAttribute("kakaoemail", kakaoemail);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("../list/mainPage.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("../user/Login.jsp");
 		rd.forward(request, response);
 		
 	}
