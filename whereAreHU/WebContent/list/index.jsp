@@ -23,7 +23,13 @@
 	<link rel="stylesheet" href="assets/css/noscript.css" />
 </noscript>
 </head>
+<style>
 
+#inline{
+	display: inline-block; 
+}
+
+</style>
 
 
 <body class="index is-preload">
@@ -32,7 +38,7 @@
 		<!-- Header -->
 		<header id="header" class="alt">
 			<h1 id="logo">
-				<a href="index.html"><strong> <span>whereR</span>Hu
+				<a href="index.jsp"><strong> <span>whereR</span>Hu
 				</strong> </a>
 			</h1>
 			<nav id="nav">
@@ -41,18 +47,19 @@
 					
 					   <c:if test="${(not empty sessionScope.kakaonick) or (not empty sessionScope.user_id) or (not empty sessionScope.navername)}">
 					 <%--   		<c:if test="${not empty sessionScope.kakaonick }"> <p>${sessionScope.kakaonick}님 환영합니다</p></c:if> --%>
-					  		 <c:if test="${not empty sessionScope.user_id }"> <p>${sessionScope.user_id}님 환영합니다</p></c:if>
-					  		  <c:if test="${not empty sessionScope.navername }"> <p>${sessionScope.navername}님 환영합니다</p></c:if>
-					   <ul>
-
-							<li class="submenu"><a href="#">LookUP</a>ㅠ
+					  		 <c:if test="${not empty sessionScope.user_id }"> <p id="inline">${sessionScope.user_id}님 환영합니다</p></c:if>
+					  		  <c:if test="${not empty sessionScope.navername }"> <p id="inline">${sessionScope.navername}님 환영합니다</p></c:if>
+					   
+							<li class="submenu"><a href="#">menu</a>
 								<ul>
-									<li><a href="#"> gas station</a></li>
-									<li><a href="#">highway</a></li>
-								</ul>
-							<li><a href="#">Search</a></li>
-							<li><a href="../mypage/MyPage.jsp">MyPage</a></li>
-							<li><a href="contact.html">Contact</a></li>
+								<li class="submenu"><a href="#">LookUP</a>
+									<ul>
+										<li><a href="#"> gas station</a></li>
+										<li><a href="#">highway</a></li>
+									</ul>
+								<li><a href="../list/searchPage.jsp">Search</a></li>
+								<li><a href="../mypage/MyPage.jsp">MyPage</a></li>
+								<li><a href="https://edu.kosta.or.kr">Contact</a></li>
 
 						</ul>
 						<li><a href="logout" class="button primary">Logout</a></li>
@@ -60,15 +67,9 @@
 					   
 					   
 					   <c:if test="${(empty sessionScope.user_id) and (empty sessionScope.kakaonick) and (empty sessionScope.navername)}">
-					   <p>비회원</p>
+					   <p id="inline">비회원</p>
 						<li><a href="../user/loginChk" class="button primary">Login</a></li>
 					  </c:if>
-							
-		
-						 
-						 
-						 
-						 
 				</ul>
 			</nav>
 		</header>
