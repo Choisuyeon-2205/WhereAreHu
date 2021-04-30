@@ -134,7 +134,8 @@ public class UserDAO {
 		return result;
 	}
 	
-	public boolean confirmID(String user_id) {
+	public UserVO confirmID(String user_id) {
+		UserVO user = new UserVO();
 		boolean result = false;
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null;
@@ -145,7 +146,7 @@ public class UserDAO {
 			st.setString(1, user_id);
 			rs = st.executeQuery();
 		if(rs.next()) {
-			result =true;
+			user = makeUser(rs);
 		}
 		} catch (Exception e){
 				e.printStackTrace();
@@ -153,7 +154,7 @@ public class UserDAO {
 				DBUtil.dbClose(rs, st, conn);
 			}
 		
-		return result;
+		return user;
 	}
 	public List<UserVO> All() {
 		List<UserVO> userlist = new ArrayList<>();

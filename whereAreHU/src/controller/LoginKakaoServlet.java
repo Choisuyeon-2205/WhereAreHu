@@ -25,6 +25,22 @@ public class LoginKakaoServlet extends HttpServlet {
 		String kakaoemail = request.getParameter("kakaoemail");
 		HttpSession sess = request.getSession();
 		
+		UserDAO dao = new UserDAO();
+		if (dao.confirmID("kakaonick") != null) {
+			sess.setAttribute("user_id", kakaonick);
+			sess.setAttribute("user_pw", kakaonick);
+		} else {
+			UserVO user = new UserVO();
+			user.setUser_id(kakaonick);
+			user.setUser_pw(kakaonick);
+			user.setUser_email(kakaoemail);
+			user.setUser_name(kakaonick);
+			int result = dao.join(user);
+			if (result > 0) {
+				sess.setAttribute("user_id", kakaonick);
+				sess.setAttribute("user_pw", kakaonick);
+			}
+		}
 		sess.setAttribute("kakaonick", kakaonick);
 		sess.setAttribute("kakaoemail", kakaoemail);
 		

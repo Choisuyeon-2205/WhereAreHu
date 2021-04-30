@@ -1,4 +1,3 @@
-<%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -41,7 +40,7 @@
 					<li class="current"><a href="index.html">Welcome</a></li>
 					
 					   <c:if test="${(not empty sessionScope.kakaonick) or (not empty sessionScope.user_id) or (not empty sessionScope.navername)}">
-					   		<c:if test="${not empty sessionScope.kakaonick }"> <p>${sessionScope.kakaonick}님 환영합니다</p></c:if>
+					 <%--   		<c:if test="${not empty sessionScope.kakaonick }"> <p>${sessionScope.kakaonick}님 환영합니다</p></c:if> --%>
 					  		 <c:if test="${not empty sessionScope.user_id }"> <p>${sessionScope.user_id}님 환영합니다</p></c:if>
 					  		  <c:if test="${not empty sessionScope.navername }"> <p>${sessionScope.navername}님 환영합니다</p></c:if>
 					   <ul>
