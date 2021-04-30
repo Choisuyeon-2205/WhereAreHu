@@ -54,7 +54,7 @@
 			  url:"changeByUserList",
 			 
 			  success:function(responseData){
-				  alert(responseData);
+				
 				  $("#here").html(responseData);
 			  }
 		  });
@@ -66,7 +66,7 @@
 			  url:"reviewByUserList",
 			  data: {"user_id":"${user_id}"},
 			  success:function(responseData){
-				  alert(responseData);
+				
 				  $("#here").html(responseData);
 			  }
 		  });
@@ -78,7 +78,7 @@
 			  url:"GoodByUserList",
 			  data: {"user_id":"${user_id}"},
 			  success:function(responseData){
-				  alert(responseData);
+				  
 				  $("#here").html(responseData);
 			  }
 		  });
@@ -90,7 +90,7 @@
 			  url:"Deleteuser",
 			  data: {"user_id":"${user_id}"},
 			  success:function(responseData){
-				  alert(responseData);
+				 
 				  $("#here").html(responseData);
 			  }
 		  });
@@ -134,17 +134,477 @@
 </script>
 	
 <link rel="stylesheet" type="text/css" href="./css/mypage.css">
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<noscript>
+	<link rel="stylesheet" href="assets/css/noscript.css" />
+</noscript>
 </head>
-<body>
+
+<style>
+#header h1 {
+			font-weight: 900;
+			margin: 0;
+		}
+
+			#header h1 span {
+				font-weight: 300;
+			}
+
+		#header nav {
+			letter-spacing: 0.075em;
+			position: absolute;
+			right: 1.5em;
+			text-transform: uppercase;
+			top: 0.75em;
+		}
+
+			#header nav ul {
+				list-style: none;
+				padding-left: 0;
+			}
+
+				#header nav ul li {
+					display: inline-block;
+					margin-left: 1.5em;
+					padding-left: 0;
+				}
+
+					#header nav ul li > ul {
+						display: none;
+					}
+
+					#header nav ul li a {
+						border: solid 1px transparent;
+						color: inherit;
+						display: inline-block;
+						line-height: 1em;
+						padding: 0.6em 0.75em;
+						text-decoration: none;
+					}
+
+					#header nav ul li input[type="button"],
+					#header nav ul li input[type="submit"],
+					#header nav ul li input[type="reset"],
+					#header nav ul li button,
+					#header nav ul li .button {
+						font-size: 1em;
+						min-width: 0;
+						width: auto;
+					}
+
+					#header nav ul li.submenu > a {
+						text-decoration: none;
+					}
+
+						#header nav ul li.submenu > a:before {
+							-moz-osx-font-smoothing: grayscale;
+							-webkit-font-smoothing: antialiased;
+							display: inline-block;
+							font-style: normal;
+							font-variant: normal;
+							text-rendering: auto;
+							line-height: 1;
+							text-transform: none !important;
+							font-family: 'Font Awesome 5 Free';
+							font-weight: 900;
+						}
+
+						#header nav ul li.submenu > a:before {
+							content: '\f107';
+							margin-right: 0.65em;
+						}
+
+					#header nav ul li.active > a, #header nav ul li:hover > a {
+						-moz-transition: all 0.2s ease-in-out;
+						-webkit-transition: all 0.2s ease-in-out;
+						-ms-transition: all 0.2s ease-in-out;
+						transition: all 0.2s ease-in-out;
+						background: rgba(188, 202, 206, 0.15);
+					}
+
+					#header nav ul li.current > a {
+						font-weight: 900;
+					}
+
+		#header.reveal {
+			-moz-animation: reveal-header 0.5s;
+			-webkit-animation: reveal-header 0.5s;
+			-ms-animation: reveal-header 0.5s;
+			animation: reveal-header 0.5s;
+		}
+
+		#header.alt {
+			-moz-animation: none;
+			-webkit-animation: none;
+			-ms-animation: none;
+			animation: none;
+			background: transparent;
+			box-shadow: none;
+			color: #fff;
+			padding: 2em 2.5em;
+			position: absolute;
+		}
+
+			#header.alt nav {
+				right: 2.5em;
+				top: 1.75em;
+			}
+
+				#header.alt nav ul li.active > a, #header.alt nav ul li:hover > a {
+					border: solid 1px;
+				}
 
 
-</head>
-<body>
+
+	.dropotron {
+		list-style: none;
+		padding-left: 0;
+		background: #fff;
+		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
+		line-height: 2.25em;
+		min-width: 13em;
+		padding: 1em 0;
+		text-transform: uppercase;
+		margin-top: calc(-1em + 1px);
+	}
+
+		.dropotron.level-0 {
+			font-size: 0.7em;
+			font-weight: 400;
+			margin-top: 1.5em;
+		}
+
+			.dropotron.level-0:before {
+				border-bottom: solid 0.5em #fff;
+				border-left: solid 0.5em transparent;
+				border-right: solid 0.5em transparent;
+				content: '';
+				left: 0.75em;
+				position: absolute;
+				top: -0.45em;
+			}
+
+		.dropotron > li {
+			border-top: solid 1px rgba(124, 128, 129, 0.2);
+			padding-left: 0;
+		}
+
+			.dropotron > li > a {
+				-moz-transition: none;
+				-webkit-transition: none;
+				-ms-transition: none;
+				transition: none;
+				color: inherit;
+				text-decoration: none;
+				padding: 0 1em;
+				border: 0;
+			}
+
+			.dropotron > li:hover > a {
+				background: #83d3c9;
+				color: #fff;
+			}
+
+			.dropotron > li:first-child {
+				border-top: 0;
+			}
+			*:before, *:after {
+    		box-sizing: inherit;
+			}
+			#header nav ul li a {
+		    border: solid 1px transparent;
+		    /* color: inherit; */
+		    /* display: inline-block; */
+		    line-height: 1em;
+		    padding: 0.6em 0.75em;
+		    text-decoration: none;
+			
+			}
+			
+			#header nav ul li.submenu > a:before {
+		    content: '\f107';
+		    margin-right: 0.65em;
+			}
+			
+			#header nav ul li.submenu > a:before {
+		    -moz-osx-font-smoothing: grayscale;
+		    -webkit-font-smoothing: antialiased;
+		    display: inline-block;
+		    font-style: normal;
+		    font-variant: normal;
+		    text-rendering: auto;
+		    line-height: 1;
+		    text-transform: none !important;
+		    font-family: 'Font Awesome 5 Free';
+		    font-weight: 900;
+		    
+		    @-moz-keyframes reveal-header {
+		0% {
+			top: -5em;
+		}
+
+		100% {
+			top: 0;
+		}
+	}
+
+	@-webkit-keyframes reveal-header {
+		0% {
+			top: -5em;
+		}
+
+		100% {
+			top: 0;
+		}
+	}
+
+	@-ms-keyframes reveal-header {
+		0% {
+			top: -5em;
+		}
+
+		100% {
+			top: 0;
+		}
+	}
+
+	@keyframes reveal-header {
+		0% {
+			top: -5em;
+		}
+
+		100% {
+			top: 0;
+		}
+	}
+
+	#header {
+		background: #fff;
+		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
+		color: inherit;
+		cursor: default;
+		font-size: 0.8em;
+		left: 0;
+		padding: 1em 1.5em;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 10000;
+	}
+
+		#header h1 {
+			font-weight: 900;
+			margin: 0;
+		}
+
+			#header h1 span {
+				font-weight: 300;
+			}
+
+		#header nav {
+			letter-spacing: 0.075em;
+			position: absolute;
+			right: 1.5em;
+			text-transform: uppercase;
+			top: 0.75em;
+		}
+
+			#header nav ul {
+				list-style: none;
+				padding-left: 0;
+			}
+
+				#header nav ul li {
+					display: inline-block;
+					margin-left: 1.5em;
+					padding-left: 0;
+				}
+
+					#header nav ul li > ul {
+						display: none;
+					}
+
+					#header nav ul li a {
+						border: solid 1px transparent;
+						color: inherit;
+						display: inline-block;
+						line-height: 1em;
+						padding: 0.6em 0.75em;
+						text-decoration: none;
+					}
+
+					#header nav ul li input[type="button"],
+					#header nav ul li input[type="submit"],
+					#header nav ul li input[type="reset"],
+					#header nav ul li button,
+					#header nav ul li .button {
+						font-size: 1em;
+						min-width: 0;
+						width: auto;
+					}
+
+					#header nav ul li.submenu > a {
+						text-decoration: none;
+					}
+
+						#header nav ul li.submenu > a:before {
+							-moz-osx-font-smoothing: grayscale;
+							-webkit-font-smoothing: antialiased;
+							display: inline-block;
+							font-style: normal;
+							font-variant: normal;
+							text-rendering: auto;
+							line-height: 1;
+							text-transform: none !important;
+							font-family: 'Font Awesome 5 Free';
+							font-weight: 900;
+						}
+
+						#header nav ul li.submenu > a:before {
+							content: '\f107';
+							margin-right: 0.65em;
+						}
+
+					#header nav ul li.active > a, #header nav ul li:hover > a {
+						-moz-transition: all 0.2s ease-in-out;
+						-webkit-transition: all 0.2s ease-in-out;
+						-ms-transition: all 0.2s ease-in-out;
+						transition: all 0.2s ease-in-out;
+						background: rgba(188, 202, 206, 0.15);
+					}
+
+					#header nav ul li.current > a {
+						font-weight: 900;
+					}
+
+		#header.reveal {
+			-moz-animation: reveal-header 0.5s;
+			-webkit-animation: reveal-header 0.5s;
+			-ms-animation: reveal-header 0.5s;
+			animation: reveal-header 0.5s;
+		}
+
+		#header.alt {
+			-moz-animation: none;
+			-webkit-animation: none;
+			-ms-animation: none;
+			animation: none;
+			background: transparent;
+			box-shadow: none;
+			color: #fff;
+			padding: 2em 2.5em;
+			position: absolute;
+		}
+
+			#header.alt nav {
+				right: 2.5em;
+				top: 1.75em;
+			}
+
+				#header.alt nav ul li.active > a, #header.alt nav ul li:hover > a {
+					border: solid 1px;
+				}
+
+/* Dropotron */
+
+	.dropotron {
+		list-style: none;
+		padding-left: 0;
+		background: #fff;
+		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
+		line-height: 2.25em;
+		min-width: 13em;
+		padding: 1em 0;
+		text-transform: uppercase;
+		margin-top: calc(-1em + 1px);
+	}
+
+		.dropotron.level-0 {
+			font-size: 0.7em;
+			font-weight: 400;
+			margin-top: 1.5em;
+		}
+
+			.dropotron.level-0:before {
+				border-bottom: solid 0.5em #fff;
+				border-left: solid 0.5em transparent;
+				border-right: solid 0.5em transparent;
+				content: '';
+				left: 0.75em;
+				position: absolute;
+				top: -0.45em;
+			}
+
+		.dropotron > li {
+			border-top: solid 1px rgba(124, 128, 129, 0.2);
+			padding-left: 0;
+		}
+
+			.dropotron > li > a {
+				-moz-transition: none;
+				-webkit-transition: none;
+				-ms-transition: none;
+				transition: none;
+				color: inherit;
+				text-decoration: none;
+				padding: 0 1em;
+				border: 0;
+			}
+
+			.dropotron > li:hover > a {
+				background: #83d3c9;
+				color: #fff;
+			}
+
+			.dropotron > li:first-child {
+				border-top: 0;
+			}
+		</style>    
+
+
+<header id="header" class="alt" style="
+		
+		color: inherit;
+		cursor: default;
+		font-size: 0.8em;
+		left: 0;
+		padding: 1em 1.5em;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 10000;">
+			
+			<h1 id="logo">
+				<a href="index.html" style="text-decoration: none; color: #3fb1a3" ><strong> <span>whereR</span>Hu
+				</strong> </a>
+			</h1>
+			<nav id="nav">
+				<ul>
+					<li class="current"><a href="../WebContent/list/index.jsp">Welcome</a></li>
+					<li class="submenu"><a href="../list/index.jsp">menu</a>
+						<ul>
+
+							<li class="submenu"><a href="#">LookUP</a>
+								<ul>
+									<li><a href="#"> gas station</a></li>
+									<li><a href="#">highway</a></li>
+								</ul>
+							<li><a href="left-sidebar.html">Search</a></li>
+							<li><a href="right-sidebar.html">MyPage</a></li>
+							<li><a href="contact.html">Contact</a></li>
+
+						</ul></li>
+					<li><a href="../user/loginChk" class="button primary">Login</a></li>
+				</ul>
+			</nav>
+		</header>
+
+
+
+
+
     
 	<div class="container">
-		<div class="profile-header">
+		<div class="profile-header" style="background: rgba(233, 233, 233,0.7) ">
 			<div class="profile-img">
 				<img src="./img/login_icon1.png" width="200" alt="Profile Image">
 			</div>
@@ -161,8 +621,8 @@
 		</div>
 	</div>
 	<div class="main-bd">
-		<div class="left-side">
-			<div class="profile-side">
+		<div class="left-side" style="background: rgba(233, 233, 233,0)">
+			<div class="profile-side" style="background: rgba(233, 233, 233, 0.7)">
 				<div>
 				<p>${username}님 환영합니다</p>
 				
@@ -182,20 +642,7 @@
 					</button>
 
 				</div>
-				<div class="user-rating">
-					<h3 class="rating">4.5</h3>
-					<div class="rate">
-						<div class="star-outer">
-							<div class="star-inner">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i>
-							</div>
-						</div>
-						<span class="no-of-user-rate"><span>123</span>&nbsp;&nbsp;reviews</span>
-					</div>
-
-				</div>
+				
 			</div>
 
 		</div>
@@ -206,76 +653,19 @@
 		
 		<div class="right-side">
 
-			<div class="nav">
+			<div class="nav" >
 				<ul>
-					<li onclick="tabs(0)" class="userInfo">회원정보수정</li>
-					<li onclick="tabs(1)" class="review">리뷰조회</li>
-					<li onclick="tabs(2)" class="starview">좋아요조회</li>
-					<li onclick="tabs(3)" class="out">회원탈퇴</li>
+					<li onclick="tabs(0)" class="userInfo"  style="background: rgba(233, 233, 233,0.7)">회원정보수정</li>
+					<li onclick="tabs(1)" class="review"  style="background: rgba(233, 233, 233,0.7)">리뷰조회</li>
+					<li onclick="tabs(2)" class="starview"  style="background: rgba(233, 233, 233,0.7)">좋아요조회</li>
+					<li onclick="tabs(3)" class="out"  style="background: rgba(233, 233, 233,0.7)">회원탈퇴</li>
 				</ul>
 			</div>
 			
 			
 			<div class="profile-body" id="here">
-			
-			 여기
-			 
-			
-			
-			
-				 <div class="profile-user tab">
-					<!--<h1>회원정보 수정</h1>
-					<div>
-						<ul id="ChangeInfo">
-							<li><label for="user_id">아이디</label> <input type="text"
-								id="user_id" readonly="readonly"></li>
-							<li><label for="user-name">이름</label> <input type="text"
-								id="user-name" readonly="readonly"></li>
 
-							<li><label for="mail">이메일</label> <input type="email"
-								id="mail" readonly="readonly"></li>
-							<li><label for="phone">연락처</label> <input type="tel"
-								id="phone" readonly="readonly"></li>
-						</ul>
-					</div>-->
-				</div> 
-
-				<div class="profile-reviews tab">
-					<!-- <h1>내가쓴 리뷰 확인하기</h1>
-					<table class="reviewCheck">
-						<thead>
-							<tr>
-								<th>리뷰내용</th>
-								<th>사진</th>
-								<th>별점</th>
-								<th>작성일자</th>
-
-							</tr>
-						</thead>
-					</table> -->
-
-				</div>
-				<div class="profile-good tab">
-					<!-- <h1>내가누른 좋아요 확인하기</h1>
-					<table class="goodCheck">
-						<thead>
-							<tr>
-								<th>휴게소 정보</th>
-							</tr>
-						</thead>
-					</table> -->
-				</div>
-				<div class="profile-out tab">
-					<!-- <h1>만족할만한 서비스 였나요?</h1>
-					<textarea rows="13" cols="60"
-						style="resize: none; font-size: 20px; border-color: green;"
-						placeholder="후기 남겨주세요"></textarea>
-					<div>
-						<a><button class="outButton1" type="submit">탈퇴하기</button></a>
-						<button class="outButton2" type="submit">뒤로가기</button>
-					</div> -->
-				</div>
-			</div>
+		</div>
 		</div>
 	</div>
 

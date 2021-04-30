@@ -11,24 +11,31 @@
 <style>
 </style>
 </head>
+ <style>
+    table, th, td {
+      border:1px solid #ccc;
+      border-collapse: collapse;
+    }
+    th, td { padding:10px 20px; }
+  </style>
 <body>
 	<c:set var="cPath" value="${pageContext.request.contextPath }" />
-	<div class="profile-reviews tab">
+	<div class="profile-reviews tab" >
 		<h1>내가쓴 리뷰 확인하기</h1>
-		<table class="reviewCheck">
-			<thead>
+		<table class="reviewCheck" >
+			<thead style="background: rgba(233, 233, 233, 1)">
 				<tr>
-					<td>리뷰 번호</td>
-					<td>회원ID</td>
-					<td>휴게소 번호</td>
-					<td>별점</td>
-					<td>작성일자</td>
-					<td>사진</td>
+					<th>리뷰 번호</th>
+					<th>회원ID</th>
+					<th>휴게소 번호</th>
+					<th>별점</th>
+					<th>작성일자</th>
+					<th>사진</th>
 				</tr>
 			</thead>
-			
+			<tbody>
 			<c:forEach var="rev" items="${revlist }">
-				<tr>
+				<tr style="background: rgba(233, 233, 233,0.7)">
 					<td>${rev.review_id }</td>
 					<td>${rev.user_id }</td>
 					<td>${rev.area_num }</td>
@@ -37,10 +44,8 @@
 					<td><img src="${cPath }/upload/${rev.photo}" width="100px"
 						height="100px" />
 				</tr>
-				<tr>
-					<td colspan="6">${rev.review }</td>
-				</tr>
 			</c:forEach>
+			</tbody>
 		</table>
 		</div>
 		

@@ -6,29 +6,37 @@
 <head>
 <meta charset="UTF-8">
 <title>나의 좋아요 목록</title>
-<style>
-</style>
+  <style>
+    table, th, td {
+      border:1px solid #ccc;
+      border-collapse: collapse;
+    }
+    th, td { padding:10px 20px; }
+  </style>
+
 </head>
 <body>
 	<c:set var="cPath" value="${pageContext.request.contextPath }" />
-	<div class="profile-good tab">
+	<div class="profile-good tab"  >
 		<h1>내가누른 좋아요 확인하기</h1>
 		<table class="goodCheck">
 			<thead>
-				<tr>
-					<td>휴게소 이름</td>
-					<td>휴게소 주소</td>
-					<td>휴게소 추천</td>
+				<tr style="background: rgba(233, 233, 233,1)">
+					<th>휴게소 이름</th>
+					<th>휴게소 주소</th>
+					<th>휴게소 추천</th>
 				</tr>
 			</thead>
-
+			
+			<tbody>
 			<c:forEach var="good" items="${arealist}">
-				<tr>
+				<tr style="background: rgba(233, 233, 233,0.7)">
 					<td>${good.area_name }</td>
 					<td>${good.address }</td>
 					<td>${good.thumbsup }</td>
 				</tr>
 			</c:forEach>
+			</tbody>
 		</table>
 	</div>
 </body>
