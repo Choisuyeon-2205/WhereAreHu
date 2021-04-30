@@ -173,32 +173,32 @@ tr:hover td{
 			<section id="section1"> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
 			  <div class = "left_section">
 				<h2>추가 검색 박스</h2><br>
-				  <form method="post" action="SearchRouteServlet">
+				  <form id="searchForm">
 				  	<h4>노선별 선택</h4>
 				  		<div>
 				  						  		
-				  		<select name="selectroute" >
-						    <option value="route">모두 선택</option>
+				  		<select name="route" >
+						    <option value="all">모두 선택</option>
 						    <c:forEach var="route" items="${routelist}" > 
-						    	<option value="route">${route}</option>
+						    	<option>${route}</option>
 				  			</c:forEach>
 						</select>
 						</div>
 					<br><br>
 					<h4>주유소 여부</h4>
 						<div>
-						<input type="radio" id="isoil" name="isoil" value="all" checked="checked"> 구분 없음
-						<input type="radio" id="isoil" name="isoil" value="yes"> O
-						<input type="radio" id="isoil" name="isoil" value="no"> X
+						<input type="radio" id="isoil" name="oil" value="all" checked="checked"> 구분 없음
+						<input type="radio" id="isoil" name="oil" value="yes"> O
+						<input type="radio" id="isoil" name="oil" value="no"> X
 						</div>
 					<br><br>
 					<h4>상행/하행 구분</h4>
 						<div>
-						<input type="radio" id="upndown" name="upndown" value="all" checked="checked"> 모두 선택
-						<input type="radio" id="upndown" name="upndown" value="ascend"> 상행
-						<input type="radio" id="upndown" name="upndown" value="descend"> 하행
+						<input type="radio" id="upndown" name="updown" value="all" checked="checked"> 모두 선택
+						<input type="radio" id="upndown" name="updown" value="ascend"> 상행
+						<input type="radio" id="upndown" name="updown" value="descend"> 하행
 						</div>
-						<input type="submit" value="확인">
+						<input type="button" value="확인" id="okButton">
 				  </form>
 			  </div>
 			</section>
@@ -209,30 +209,29 @@ tr:hover td{
 			 
 			 <h2>검색 결과</h2><br>
 			 
-			  <table class = "right_section" id="table" cellspacing="3" cellpadding="3" border="3" >
-			 	
-				  <tr class = "service_table">
-				  		<th onclick="sortTable(0)" class="service1" ><span class="smalltext"><strong>휴게소명</strong></span></th>
-						<th onclick="sortTable(1)" class="service2" ><span class="smalltext"><strong>도로별</strong></span></th>
-						<th onclick="sortTable(2)" class="service2" ><span class="smalltext"><strong>주유소 여부</strong></span></th>
-				  </tr>
-				  <c:forEach var="route" items="${routelist}" > 
-				  	<tr id = result_section onclick="location.href='../detail/selectDetail?area_num=${route.area_name }'" ><td>${route.route }</td><td>${route.isGas }</td></tr>
-
-
-				  </c:forEach>
-				  
-
-
-
-
-			  	
-			  </table>
+			 <div id="here"></div>
 			
 			</section>
 		</section>
 	</header>
 	
+	<script>
+	  $(function(){
+		  //method="post" action="SearchRouteServlet"
+		 $("#okButton").click(function(){
+			 //alert( $("#searchForm").serialize());
+			 $.ajax({
+				 url:"searchResultRoute",
+				 type:"post",
+				 data: $("#searchForm").serialize(),
+				 success:function(responseData){
+					// alert(responseData);
+					 $("#here").html(responseData);
+				 }
+			 });
+		 });
+	  });
+	</script>
 	
 </body>
 </html>

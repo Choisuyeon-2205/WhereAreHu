@@ -191,7 +191,7 @@ public class ServiceAreaDAO {
 		}
 
 		//경로 전체 조회
-		public List<String> selectAllRoute(String city) {
+		public List<String> selectAllRoute() {
 			List<String> routes = new ArrayList<>();
 			Connection conn = DBUtil.getConnection();
 			Statement st = null;
@@ -242,4 +242,42 @@ public class ServiceAreaDAO {
 		}
 
 
+		public List<ServiceAreaVO> selectRoutePlus(String route, String oil, String updown){
+			List<ServiceAreaVO> routelist = new ArrayList<>();
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement st= null;
+			ResultSet rs = null;
+			String sql = "select * from service_area where 1 = 1 ";
+			
+			String route_where="";				
+			if(!route.equals("all"))  route_where = " and route= '" + route + "'";		
+
+		    String oil_where="";				
+			if(!oil.equals("all"))  
+				oil_where = " and isgas= " + (oil.equals("yes")?"1":"0") ;
+			 				
+		 
+			String updown_where="";				
+			if(!updown.equals("all"))  updown_where = " and descend= " +  (updown.equals("yes")?"1":"0");		
+			sql += route_where + oil_where + updown_where;
+            System.out.println(sql);
+			
+			try {
+				st= conn.prepareStatement(sql);
+				rs = st.executeQuery();
+				while (rs.next()) {
+					ServiceAreaVO area = makeArea(rs);
+					routelist.add(area);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBUtil.dbClose(rs, st, conn);
+			}
+			return routelist;
+
+		}
+
+		
 }

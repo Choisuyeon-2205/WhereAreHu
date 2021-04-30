@@ -174,13 +174,7 @@ tr:hover td{
 			  <div class = "left_section">
 				<h2>추가 검색 박스</h2><br>
 				  <form method="post" action="CheckboxServlet">
-				  	<h4>상행/하행</h4>
-				  		<div>
-				  		<input type="radio" id="upndown" name="upndown" value="all" checked="checked">모두 조회
-						<input type="radio" id="upndown" name="upndown" value="ascend">상행
-						<input type="radio" id="upndown" name="upndown" value="descend">하행
-						</div>
-					<br><br><br>
+				  	<br>
 					<h4>정렬</h4>
 						<div>
 						<input type="radio" id="isoil" name="isoil" value="all" checked="checked"> 명칭
