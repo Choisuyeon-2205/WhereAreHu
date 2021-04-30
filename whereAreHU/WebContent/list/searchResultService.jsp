@@ -9,6 +9,9 @@
 <title>Where? 휴식이 있는 곳!</title>
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="image/small_logo_icon.png">
 <link rel="stylesheet" href="css/styles.css"/>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.tablesorter.min.js"></script>
+
 
 
 
@@ -177,11 +180,12 @@ tr:hover td{
 				  	<br>
 					<h4>정렬</h4>
 						<div>
-						<input type="radio" id="isoil" name="isoil" value="all" checked="checked"> 명칭
+						<input type="radio" id="isoil" name="isoil" value="all"> 해당없음
+						<input type="radio" id="isoil" name="isoil" value="name" checked="checked"> 명칭
 						<input type="radio" id="isoil" name="isoil" value="thumbsup"> 추천수
 						</div>
 					<br> 
-						<input type="submit" value="확인">
+						<input type="button" value="확인" id = "okButton">
 				  </form>
 			  </div>
 			</section>
@@ -191,7 +195,7 @@ tr:hover td{
 			<section id="section2" style="overflow:scroll; width: 850px; height: 450px;">
 			 
 			 <h2>검색 결과</h2><br>
-			 
+			 <div id = "here">			 </div>
 			  <table class = "right_section" id="table" cellspacing="2" cellpadding="2" border="2" >
 			 	
 				  <tr class = "service_table">
@@ -215,6 +219,27 @@ tr:hover td{
 		</section>
 	</header>
 	
+	
+	
+	<script>
+		$(function(){
+			
+			$("#okButton").click(function(){
+				$('#result_section').empty();
+				$.ajax({
+					url:""
+					type:""
+					data:$()
+					success:function(responseData){
+						$("#here").html(responseData);
+					}
+				});
+			});
+		});
+		
+	
+	
+	</script>
 	
 </body>
 </html>

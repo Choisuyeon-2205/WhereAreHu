@@ -219,7 +219,7 @@ tr:hover td{
 	  $(function(){
 		  //method="post" action="SearchRouteServlet"
 		 $("#okButton").click(function(){
-			 //alert( $("#searchForm").serialize());
+			 //alert( $("#searchForm").serialize())
 			 $.ajax({
 				 url:"searchResultRoute",
 				 type:"post",

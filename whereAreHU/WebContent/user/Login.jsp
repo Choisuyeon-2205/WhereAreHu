@@ -39,7 +39,7 @@ function check() {
 				$('#password').val("");
 				$('#id').focus();
 			}else{
-				location.href="../list/mainPage.jsp"
+				location.href="../list/index.jsp"
 			}
 		}
 	})
