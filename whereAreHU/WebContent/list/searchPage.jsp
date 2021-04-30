@@ -6,20 +6,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Where? 휴식이 있는 곳!</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="image/small_logo_icon.png">
-<link rel="stylesheet" href="css/styles.css"/>
+
 
 
 <style>
 
-
-header{
-
-	background-image: url("image/highway_5.jpg"); 
+body{
+	background-size: cover;        
+	background-image: url("../list/image/backimg3.jpg");
+	background-size: cover; 
 	background-repeat: no-repeat;
-	height: 880px;
-	background-size: 100% /* 그림 사이즈 딱 맞게~ */
+
 }
+
 
 /* 커서 액션 활성화 */
 .main_search_link ul a::after{
@@ -85,36 +89,57 @@ header{
 
 </style>
 
-
+<noscript>
+	<link rel="stylesheet" href="assets/css/noscript.css" />
+</noscript>
 
 </head>
-<body><!-- block: 사이즈 완전 딱 맞게, 즉 높이랑 넓이 모두 조정 / inline-block: 넓이는 줄고, 높이는 그대로! -->
-		<header> <!-- 전체 -->
-		<nav class = "menu_section"> <!-- 최상단 ~ 로고 있는 부분 하나 / 메뉴 있는 부분 하나 해서 두 개로 나눔 -->
-		  <div class = "logo"><button type="button" onclick=" location.href='../list/mainPage.jsp'"><img src="logo1.png" alt="로고가 있는 자리" width = "100" height = "44"></button><svg width="102" height="32" fill="currentcolor" style="display:inline-block"></svg></div>
-		  <div class = "menu">
-		  	<ul class = "login_and_out">
-		  	<%
-		  		Object user_id = session.getAttribute("user_id");
-		  	%>
-						
-			<%
-				if(user_id == null){
-			%> 
-		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../user/loginChk'">로그인</button></li>
+<body class="index is-preload">
+	<div id="page-wrapper">
+				<!-- Header -->
+		<header id="header" >
+			<h1 id="logo">
+				<a href="index.html"><strong> <span>whereR</span>Hu
+				</strong> </a>
+			</h1>
+			<nav id="nav">
+				<ul>
+					<li class="current"><a href="index.html">Welcome</a></li>
+					<%
+						Object user_id = session.getAttribute("user_id");
+			
+						if(user_id != null){
+					%>
+					
+					<li class="submenu"><a href="#">menu</a>
+						<ul>
 
-		  	<%
-				} else {
-		  	%>
-		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../mypage/MyPage.jsp'">마이페이지</button></li>
-		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='logout'">로그아웃</button></li>
-		  	<%
-				}
-		  	%>	
-		  		
-		  	</ul>
-		  </div>
-		</nav>
+							<li class="submenu"><a href="#">LookUP</a>ㅠ
+								<ul>
+									<li><a href="#"> gas station</a></li>
+									<li><a href="#">highway</a></li>
+								</ul>
+							<li><a href="left-sidebar.html">Search</a></li>
+							<li><a href="../mypage/MyPage.jsp">MyPage</a></li>
+							<li><a href="contact.html">Contact</a></li>
+
+						</ul></li>
+					<li><a href="logout" class="button primary">Logout</a></li>
+					
+					<%
+						} else {
+					%>
+					
+					<li><a href="../user/loginChk" class="button primary">Login</a></li>
+					
+					<%
+						}
+					%>
+
+				</ul>
+			</nav>
+		</header>
+
 	
 
 		<section> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
@@ -143,8 +168,8 @@ header{
 		  	
 		  </div>
 		</section>
-	</header>
+
 	
-	
+	</div>
 </body>
 </html>

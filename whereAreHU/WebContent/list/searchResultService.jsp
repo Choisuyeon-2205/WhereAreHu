@@ -9,9 +9,9 @@
 <title>Where? 휴식이 있는 곳!</title>
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="image/small_logo_icon.png">
 <link rel="stylesheet" href="css/styles.css"/>
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript" src="jquery.tablesorter.min.js"></script>
-
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="../list/assets/js/jquery.tablesorter.min.js"></script>
+<script src="../list/assets/js/jquery.tablesorter.widgets.min.js"></script>
 
 
 
@@ -52,7 +52,7 @@ header{
 }
 
 
-.right_section{
+.tablesorter{
 
 	padding:0;
 	margin:0;
@@ -62,7 +62,7 @@ header{
 	height: 400px;
 }
 
-.right_section p{
+.tablesorter p{
 	color:white;
 	padding: 10px;
 	line-height:35px;
@@ -109,9 +109,10 @@ transition: all 0.3s;
 }
 
 th {
-background: #181818;
+background: #fff;
 font-weight: bold;
 font-size: 13px;
+color:#27ae60
 }
 
 td {
@@ -119,8 +120,8 @@ background: #FAFAFA;
 text-align: center;
 }
 
-tr:nth-child(even) td { background: #423e3e; }
-tr:nth-child(odd) td { background: #181818; }
+tr:nth-child(even) td { background: #181818; }
+tr:nth-child(odd) td { background: #423e3e; }
 
 tr:hover td{
     background: rgb(31, 171, 137);
@@ -132,6 +133,7 @@ tr:hover td{
 
 
 </style>
+	
 
 
 
@@ -173,40 +175,27 @@ tr:hover td{
 		</section>
 		
 		<section class = "result_box">
-			<section id="section1"> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
-			  <div class = "left_section">
-				<h2>추가 검색 박스</h2><br>
-				  <form method="post" action="CheckboxServlet">
-				  	<br>
-					<h4>정렬</h4>
-						<div>
-						<input type="radio" id="isoil" name="isoil" value="all"> 해당없음
-						<input type="radio" id="isoil" name="isoil" value="name" checked="checked"> 명칭
-						<input type="radio" id="isoil" name="isoil" value="thumbsup"> 추천수
-						</div>
-					<br> 
-						<input type="button" value="확인" id = "okButton">
-				  </form>
-			  </div>
-			</section>
+		
 			
-			<section id = "vertical"></section>
-			
-			<section id="section2" style="overflow:scroll; width: 850px; height: 450px;">
+			<section id="section2" style="overflow:scroll; width: 900px; height: 450px;">
 			 
 			 <h2>검색 결과</h2><br>
+			 
+			 <h4>테이블명을 누르면 정렬이 실행됩니다</h4>
 			 <div id = "here">			 </div>
-			  <table class = "right_section" id="table" cellspacing="2" cellpadding="2" border="2" >
-			 	
+			  <table id="myTable" class="tablesorter" cellspacing="2" cellpadding="2" border="2" >
+			 	<thead>
 				  <tr class = "service_table">
 				  		<th onclick="sortTable(0)" class="service1" ><span class="smalltext"><strong>휴게소명</strong></span></th>
 						<th onclick="sortTable(1)" class="service2" ><span class="smalltext"><strong>추천수</strong></span></th>
 				  </tr>
+				  </thead>
+				  <tbody>
 				  <c:forEach var="search" items="${servicesearch}" > 
 				  	<tr id = result_section onclick="location.href='../detail/selectDetail?area_num=${search.area_num }'" ><td>${search.area_name }</td><td>${search.thumbsup }</td></tr>
-
-
+				  
 				  </c:forEach>
+				  </tbody>
 				  
 
 
@@ -219,28 +208,37 @@ tr:hover td{
 		</section>
 	</header>
 	
-	
-	
 	<script>
-		$(function(){
-			
-			$("#okButton").click(function(){
-				$('#result_section').empty();
-				$.ajax({
-					url:""
-					type:""
-					data:$()
-					success:function(responseData){
-						$("#here").html(responseData);
-					}
-				});
-			});
-		});
+	
+/* 	$(function() {
+		  $(".tablesorter").tablesorter({
+			  widthFixed: false,
+			  widgets: ['zebra', 'scroller'],
+			  widgetOptions: {scroller_height: 500}
+		  });
+		  
+		  $(window).bind('resize', window_resize);
+		  $(window).bind('resizeEnd', function(e){
+			  $(window).unbind('resize', window_resize);
+		  	$('table.tablesorter').each(function(n,t){
+		  		if(typeof t.resizeWidth === 'function') t.resizeWidth();
+		  	});
+		  	$(window).bind('resize', window_resize);
+		  })
+	});
+
+	$(function() {
+		  $(".tablesorter").tablesorter({ sortList: [[0,0], [1,0]] });
+		}); */
+	
 		
-	
-	
+	$(document).ready(function(){
+		$("#myTable").tablesorter();
+	});
+		
 	</script>
 	
+
 </body>
 </html>
 
