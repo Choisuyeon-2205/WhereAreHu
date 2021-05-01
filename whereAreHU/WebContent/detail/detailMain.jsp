@@ -8,10 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Where? 휴식이 있는 곳!</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="../list/assets/css/main.css" />
-<link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="image/small_logo_icon.png">
+<link rel="shortcut icon" sizes="76x76" type="image/x-icon"
+	href="../list/image/small_logo_icon.png">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
@@ -27,7 +25,6 @@ $(function(){
 			url:"updateGood?user_id=${sessionScope.user_id}&area_num=${sarea.area_num}",
 			type: "post",
 			success: function(data){	
-				alert(data);
 				$("#like_num2").text(data);
 			},
 			error: function(){}
@@ -42,54 +39,43 @@ $(function(){
 	
 });
 </script>
-
-
 <link rel="stylesheet" href="css/detailMain.css">
 </head>
-<body class="index is-preload">
-	<div id="page-wrapper">
-
-		<!-- Header -->
-		<header id="header" class="alt">
-			<h1 id="logo">
-				<a href="../list/index.jsp"><strong> <span>whereR</span>Hu
-				</strong> </a>
-			</h1>
-			<nav id="nav">
-				<ul>
-					<li class="current"><a href="../list/index.jsp">Welcome</a></li>
-					
-					   <c:if test="${(not empty sessionScope.kakaonick) or (not empty sessionScope.user_id) or (not empty sessionScope.navername)}">
-					 <%--   		<c:if test="${not empty sessionScope.kakaonick }"> <p>${sessionScope.kakaonick}님 환영합니다</p></c:if> --%>
-					  		 <c:if test="${not empty sessionScope.user_id }"> <p id="inline">${sessionScope.user_id}님 환영합니다</p></c:if>
-					  		  <c:if test="${not empty sessionScope.navername }"> <p id="inline">${sessionScope.navername}님 환영합니다</p></c:if>
-					   
-							<li class="submenu"><a href="#">menu</a>
-								<ul>
-								<li class="submenu"><a href="#">LookUP</a>
-									<ul>
-										<li><a href="#"> gas station</a></li>
-										<li><a href="#">highway</a></li>
-									</ul>
-								<li><a href="../list/searchPage.jsp">Search</a></li>
-								<li><a href="../mypage/MyPage.jsp">MyPage</a></li>
-								<li><a href="https://edu.kosta.or.kr">Contact</a></li>
-
-						</ul>
-						<li><a href="logout" class="button primary">Logout</a></li>
-					   </c:if>
-					   
-					   
-					   <c:if test="${(empty sessionScope.user_id) and (empty sessionScope.kakaonick) and (empty sessionScope.navername)}">
-					   <p id="inline">비회원</p>
-						<li><a href="../user/loginChk" class="button primary">Login</a></li>
-					  </c:if>
-				</ul>
-			</nav>
-		</header>
-	<section class = "wrapper">
+	
+	<nav class="menu_section">
+		<!-- 최상단 ~ 로고 있는 부분 하나 / 메뉴 있는 부분 하나 해서 두 개로 나눔 -->
+		<div class="logo">
+			<button type="button" onclick="location.href='../list/index.jsp'">
+				<img src="../list/image/logo1.png" alt="로고가 있는 자리" width="100"
+					height="44">
+			</button>
+			<svg width="102" height="32" fill="currentcolor"
+				style="display: inline-block"></svg>
+		</div>
+		<div class="menu">
+			<ul class="login_and_out">
+				<%
+				Object user_id = session.getAttribute("user_id");
+				if (user_id == null) {
+				%>
+				<li><button class="button_wrap" type="button"
+						onclick="location.href='../user/loginChk'">로그인</button></li>
+				<%
+				} else {
+				%>
+				<li><button class="button_wrap" type="button"
+						onclick="location.href='../mypage/MyPage.jsp'">마이페이지</button></li>
+				<li><button class="button_wrap" type="button"
+						onclick="location.href='../list/logout'">로그아웃</button></li>
+				<%
+				}
+				%>
+			</ul>
+		</div>
+	</nav>
+	<body>	 
 	<div id="detailMain">
-		<div class="header">
+		<div class="header2">
 			<h1>${sarea.area_name}</h1>
 			<div id="like">
 				<div id="like_button">♥</div>
@@ -103,7 +89,7 @@ $(function(){
 			<div class="et-detail" id="info">
 				<h2>상세 정보</h2>
 				<br>
-				<span class="detail_span"> 주소: ${sarea.address}</span><br> 
+				<span class="detail_span">주소: ${sarea.address}</span><br> 
 				<span class="detail_span">노선: ${sarea.route}</span><br>
 				<span class="detail_span">대표 전화번호: ${sarea.area_phone}</span><br>
 				<span class="detail_span">지사명: ${sarea.fname}</span><br>
@@ -132,10 +118,6 @@ $(function(){
 			</jsp:include>
 		</div>
 		<div id="revlist"></div>
-	</div>
-	
-	</section>
-	
 	</div>
 </body>
 </html>
