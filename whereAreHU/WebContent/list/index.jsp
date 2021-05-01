@@ -28,6 +28,17 @@
 #inline{
 	display: inline-block; 
 }
+#videoBG{
+
+ position:fixed;
+ z-index:-1;
+ width: 100%;
+ height: auto;
+}
+
+#banner{
+	z-index:-2;
+}
 
 </style>
 
@@ -43,7 +54,7 @@
 			</h1>
 			<nav id="nav">
 				<ul>
-					<li class="current"><a href="index.html">Welcome</a></li>
+					<li class="current"><a href="index.jsp">Welcome</a></li>
 					
 					   <c:if test="${(not empty sessionScope.kakaonick) or (not empty sessionScope.user_id) or (not empty sessionScope.navername)}">
 					 <%--   		<c:if test="${not empty sessionScope.kakaonick }"> <p>${sessionScope.kakaonick}님 환영합니다</p></c:if> --%>
@@ -76,9 +87,7 @@
 
 		<!-- Banner -->
 		<section id="banner">
-
-			<div class="inner">
-
+		<div class="inner">
 				<header>
 					<h2>WhereRHU</h2>
 				</header>
@@ -94,8 +103,11 @@
 				</footer>
 
 			</div>
-
 		</section>
+		
+		<video id = "videoBG" autoplay muted loop >
+     	<source src="videoplayback.mp4" type="video/mp4">
+   		</video>
 
 		<!-- Main -->
 		<article id="main">

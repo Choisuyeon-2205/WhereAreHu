@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Where? 휴식이 있는 곳!</title>
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="image/small_logo_icon.png">
-<link rel="stylesheet" href="css/styles.css"/>
+<link rel="stylesheet" href="../list/css/styles.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 

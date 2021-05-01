@@ -61,7 +61,9 @@ body{
 .search_box{
 	width: 630px;
 	display: inline-block;
-	background-color: rgba(215, 251, 232, 0.6);
+	background-color: rgba(215, 251, 232, 0.3);
+	color:white;
+	font-weight: bold;
 	padding: 20px 30px;
 	position: relative; /* 위치 이동 */
 	left: 400px;	
@@ -71,13 +73,13 @@ body{
 .search_input{
 	height: 45px;
 	width: 460px;
-	color: white;
+	font-weight: bold;
 	font-size: 15px;
 	border: 1px solid rgb(230,227,227);
 	margin-top:10px;
 	padding-left:10px;
 }
-.search_button a{
+.search_button{
 	text-decoration: none;
 	list-style-type : none; 
 	color: white;
@@ -109,7 +111,7 @@ body{
 			</h1>
 			<nav id="nav">
 				<ul>
-					<li class="current"><a href="index.html">Welcome</a></li>
+					<li class="current"><a href="index.jsp">Welcome</a></li>
 					
 					   <c:if test="${(not empty sessionScope.kakaonick) or (not empty sessionScope.user_id) or (not empty sessionScope.navername)}">
 					 <%--   		<c:if test="${not empty sessionScope.kakaonick }"> <p>${sessionScope.kakaonick}님 환영합니다</p></c:if> --%>
