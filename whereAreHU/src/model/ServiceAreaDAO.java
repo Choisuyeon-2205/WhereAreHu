@@ -17,7 +17,7 @@ public class ServiceAreaDAO {
 		Connection conn= null;
 		PreparedStatement st= null;
 		
-		String sql= "insert into service_area values(?,?,?,?,?,?,?,?,?,?,?)";
+		String sql= "insert into service_area values(?,?,?,?,?,?,?,?,?,?,?,0)";
 		
 		conn= DBUtil.getConnection();
 		

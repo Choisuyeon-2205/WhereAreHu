@@ -10,13 +10,10 @@
 </head>
 
 <style>
-header, main {
-  max-width: 1000px;
-  margin: 24vh auto;
+body {
+	background-color: #F0B6B6;
 }
-
 h1 {
-  color: #1fab89;
   text-align: center;
   font-family: Source Sans Pro, sans-serif;
   font-size: 50px;
@@ -25,7 +22,7 @@ h1 {
 
 #oil {
   text-align: center;
-  background-color: #d7fbe8;
+  background-color: #EB8C8C;
   width:1000px;
   display: inline-block;
   margin:auto;
@@ -35,9 +32,23 @@ p{
   font-size: 20px;
   font-family:'맑은 고딕';
 }
+#oilMain {
+	background:#fff;
+	border:1px solid #222;
+	padding: 20px;
+	width: 1100px;	
+	margin:30px auto;
+}
+#oil_header{
+	text-align: center;
+}
+main{
+	text-align: center;
+}
 </style>
 <body>
-<header>
+<div id="oilMain">
+<header id="oil_header">
 	<h1>${oil.oil_name} 정보</h1>
 	<c:if test="${oil.oislpg eq 'Y'}">
 		<img src="images/icon_LPG.png" width="50px" height="50px">
@@ -52,6 +63,7 @@ p{
 	    <p>휘발유 가격: ${oil.gprice}</p>
 	    <p>경유 가격: ${oil.dprice}</p>
     </div>
-  </main>
+ </main>
+</div>
 </body>
 </html>

@@ -15,7 +15,7 @@ public class GetFoodData {
         //음식 DATA 가져오기 (API=> DB)
         try {
           
-            String urlStr = "http://data.ex.co.kr/openapi/restinfo/restBestfoodList?key=test&type=json&numOfRows=100&pageNo=40";      
+            String urlStr = "http://data.ex.co.kr/openapi/restinfo/restBestfoodList?key=test&type=json&numOfRows=100&pageNo=8";      
             URL url = new URL(urlStr);
             
             String line = "";

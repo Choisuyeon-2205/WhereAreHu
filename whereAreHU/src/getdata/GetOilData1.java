@@ -19,7 +19,7 @@ public class GetOilData1 {
 		//주유소 DATA 가져오기 (API=> DB)
         try {
           
-            String urlStr = "http://data.ex.co.kr/openapi/business/curStateStation?key=test&type=json&numOfRows=100&pageNo=3";      
+            String urlStr = "http://data.ex.co.kr/openapi/business/curStateStation?key=test&type=json&numOfRows=100&pageNo=2";      
             URL url = new URL(urlStr);
             
             String line = "";

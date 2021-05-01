@@ -9,6 +9,9 @@
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="../list/image/small_logo_icon.png">
 </head>
 <style>
+body{
+	background-color: #A36464;
+}
 * {
   box-sizing: border-box;
   padding: 0;
@@ -16,16 +19,13 @@
 
 header {
   max-width: 1000px;
-  margin: 24vh auto;
+  margin: 15vh auto;
 }
 
 h1 {
-  color: #1fab89;
   text-align: center;
   font-family: Source Sans Pro, sans-serif;
-  line-height: 3em;
   font-size: 50px;
-  line-height: 1.1;
 }
 header p {
  text-align: center;
@@ -40,7 +40,7 @@ header p {
 .card {
   margin: 1rem;
   padding: 1rem;
-  background-color: #d7fbe8;
+  background-color: #F0B6B6;
   border-radius: 0.5rem;
   box-shadow: 0 0 6rem rgba(black, 0.1);
   width:450px;
@@ -51,22 +51,24 @@ header p {
   }
 }
 
-.card--image {
-  font-size: 6rem;
-  line-height: 1;
-  }
+ #brandMain {
+	background:#fff;
+	border:1px solid #222;
+	padding: 20px;
+	width: 1600px;	
+	margin:30px auto;
+}
 </style>
 <body>
+<div id="brandMain">
 <header>
   <h1>${area_name}의 브랜드매장</h1>
   <p>${area_name}와 함께 즐거운 여행 되세요!</p>
 </header>
-<hr>
 <main>
   <ul class="cards">
   	<c:forEach var="brand" items="${brandlist}">
     <li class="card">
-      <div class="card--image">✤</div>
       <h2>${brand.brand_name}</h2>
       <p>${brand.brand_text}</p>
       <p>오픈시간:&nbsp${brand.brand_start}</p>
@@ -75,5 +77,6 @@ header p {
     </c:forEach>
   </ul>
 </main>
+</div>
 </body>
 </html>

@@ -9,6 +9,9 @@
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="../list/image/small_logo_icon.png">
 </head>
 <style>
+body{
+	background-color: #A36464;
+}
 * {
   box-sizing: border-box;
   padding: 0;
@@ -16,16 +19,13 @@
 
 header {
   max-width: 1000px;
-  margin: 24vh auto;
+  margin: 15vh auto;
 }
 
 h1 {
-  color: #1fab89;
   text-align: center;
   font-family: Source Sans Pro, sans-serif;
-  line-height: 3em;
   font-size: 50px;
-  line-height: 1.1;
 }
 h2 {
 	display: inline-block;
@@ -41,7 +41,7 @@ header p {
 .card {
   margin: 1rem;
   padding: 1rem;
-  background-color: #d7fbe8;
+  background-color: #F0B6B6;
   border-radius: 0.5rem;
   box-shadow: 0 0 6rem rgba(black, 0.1);
   width:450px;
@@ -51,12 +51,19 @@ header p {
     margin-bottom: 1rem;
   }
 }
+#foodMain {
+	background:#fff;
+	border:1px solid #222;
+	padding: 20px;
+	width: 1600px;	
+	margin:30px auto;
+}
 </style>
 <body>
+<div id="foodMain">
 <header>
 <h1>${area_name}의 대표메뉴</h1>
 </header>
-<hr>
 <main>
   <ul class="cards">
   	<c:forEach var="food" items="${foodlist}">
@@ -71,5 +78,6 @@ header p {
     </c:forEach>
   </ul>
 </main>
+</div>
 </body>
 </html>

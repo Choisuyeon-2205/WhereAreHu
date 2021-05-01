@@ -17,7 +17,7 @@ public class GetBrandData {
 		 //브랜드 DATA 가져오기 (API=> DB)
         try {
           
-            String urlStr = "http://data.ex.co.kr/openapi/restinfo/restBrandList?key=test&type=json&numOfRows=100&pageNo=8";      
+            String urlStr = "http://data.ex.co.kr/openapi/restinfo/restBrandList?key=test&type=json&numOfRows=100&pageNo=3";      
             URL url = new URL(urlStr);
             
             String line = "";
