@@ -111,7 +111,7 @@ body{
 			</h1>
 			<nav id="nav">
 				<ul>
-					<li class="current"><a href="index.html">Welcome</a></li>
+					<li class="current"><a href="index.jsp">Welcome</a></li>
 					
 					   <c:if test="${(not empty sessionScope.kakaonick) or (not empty sessionScope.user_id) or (not empty sessionScope.navername)}">
 					 <%--   		<c:if test="${not empty sessionScope.kakaonick }"> <p>${sessionScope.kakaonick}님 환영합니다</p></c:if> --%>

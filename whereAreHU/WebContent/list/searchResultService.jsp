@@ -9,7 +9,7 @@
 <title>Where? 휴식이 있는 곳!</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="../list/assets/css/main.css" />
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="image/small_logo_icon.png">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="../list/assets/js/jquery.tablesorter.min.js"></script>
@@ -109,7 +109,7 @@ tr:hover td{
 }
 </style>
 <noscript>
-	<link rel="stylesheet" href="assets/css/noscript.css" />
+	<link rel="stylesheet" href="../list/assets/css/noscript.css" />
 </noscript>	
 
 
@@ -126,7 +126,7 @@ tr:hover td{
 			</h1>
 			<nav id="nav">
 				<ul>
-					<li class="current"><a href="index.html">Welcome</a></li>
+					<li class="current"><a href="index.jsp">Welcome</a></li>
 					
 					   <c:if test="${(not empty sessionScope.kakaonick) or (not empty sessionScope.user_id) or (not empty sessionScope.navername)}">
 					 <%--   		<c:if test="${not empty sessionScope.kakaonick }"> <p>${sessionScope.kakaonick}님 환영합니다</p></c:if> --%>

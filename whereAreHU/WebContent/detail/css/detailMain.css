@@ -2,7 +2,7 @@
 body{ background-color: #8b7e88; }
 
 .header, .detail, #buttons {
-	text-align: center;
+
 }
 
 h1 {
@@ -64,7 +64,6 @@ h4 {
 #buttons {
 	background-color: #ada8ae;
 	height: 100px;
-	
 }
 
 p {
@@ -168,24 +167,27 @@ p {
 button_wrap:link{
   text-decoration: none;
 }
-.menu ul{
-	display: grid;
-	grid-template-columns: auto auto auto; /* 3개라서 auto를 3번 준다 */
-	grid-gap: 30px; /* ul마다 30px씩 떨어뜨림! */
-	list-style-type : none; /* 링크 누르면 색 변하는 거 제거 */
+
+
+.wrapper{
+	margin-top:100px;
+	padding-top:100px;
 	
-	margin: 20px 20px 0 0 /* 12 3 6 9시 방향 띄우기 */
 }
-.menu ul a {
-	text-decoration: none; /* 링크 밑줄 제거 */
-	color: white;
-	font-weight: 800; /* 글자 굵기 설정 */
-}
+
 #detailMain {
 	background:#fff;
 	border:1px solid #222;
-	padding: 20px;
+
 	width: 1200px;	
-	margin:30px auto;
+
 }
-	
+
+#inline{
+	display: inline-block; 
+}
+
+#page-wrapper{
+	margin-top: 40px;
+}
+
