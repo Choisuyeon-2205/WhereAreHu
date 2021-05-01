@@ -28,6 +28,17 @@
 #inline{
 	display: inline-block; 
 }
+#videoBG{
+
+ position:fixed;
+ z-index:-1;
+ width: 100%;
+ height: auto;
+}
+
+#banner{
+	z-index:-2;
+}
 
 </style>
 
@@ -76,9 +87,7 @@
 
 		<!-- Banner -->
 		<section id="banner">
-
-			<div class="inner">
-
+		<div class="inner">
 				<header>
 					<h2>WhereRHU</h2>
 				</header>
@@ -94,8 +103,11 @@
 				</footer>
 
 			</div>
-
 		</section>
+		
+		<video id = "videoBG" autoplay muted loop >
+     	<source src="videoplayback.mp4" type="video/mp4">
+   		</video>
 
 		<!-- Main -->
 		<article id="main">
