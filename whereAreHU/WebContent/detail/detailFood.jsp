@@ -10,7 +10,7 @@
 </head>
 <style>
 body{
-	background-color: #A36464;
+	background-color: lightgray;
 }
 * {
   box-sizing: border-box;
@@ -25,7 +25,7 @@ header {
 h1 {
   text-align: center;
   font-family: Source Sans Pro, sans-serif;
-  font-size: 50px;
+  font-size: 35px;
 }
 h2 {
 	display: inline-block;
@@ -58,11 +58,45 @@ header p {
 	width: 1600px;	
 	margin:30px auto;
 }
+.wrapper {
+
+  /*This part is important for centering*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typing-demo {
+  width: 32ch;
+  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: monospace;
+  font-size: 1em;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
 </style>
 <body>
 <div id="foodMain">
 <header>
 <h1>${area_name}의 대표메뉴</h1>
+<div class="wrapper">
+    <div class="typing-demo">
+      노란색 표시는 추천 메뉴 입니다.
+    </div>
+</div>
 </header>
 <main>
   <ul class="cards">

@@ -41,7 +41,6 @@ $(function(){
 </script>
 <link rel="stylesheet" href="css/detailMain.css">
 </head>
-	
 	<nav class="menu_section">
 		<!-- 최상단 ~ 로고 있는 부분 하나 / 메뉴 있는 부분 하나 해서 두 개로 나눔 -->
 		<div class="logo">

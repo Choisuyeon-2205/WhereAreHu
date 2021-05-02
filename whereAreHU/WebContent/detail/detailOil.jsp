@@ -10,19 +10,28 @@
 </head>
 
 <style>
+#oil_header { font:  'Source Sans Pro', Arial, sans-serif; background: #becccc; text-transform: uppercase; color: #fff; text-align: center; letter-spacing: -3px; padding-top: 20px; padding-bottom: 20px; }
 body {
-	background-color: #F0B6B6;
+	background-color: lightgray;
 }
 h1 {
-  text-align: center;
-  font-family: Source Sans Pro, sans-serif;
-  font-size: 50px;
-  display: inline-block;
+  text-shadow:     0 1px 0 hsl(174,5%,80%),
+                   0 2px 0 hsl(174,5%,75%),
+                   0 3px 0 hsl(174,5%,70%),
+                   0 4px 0 hsl(174,5%,66%),
+                   0 5px 0 hsl(174,5%,64%),
+                   0 6px 0 hsl(174,5%,62%),
+                   0 7px 0 hsl(174,5%,61%),
+                   0 8px 0 hsl(174,5%,60%),
+                   0 0 5px rgba(0,0,0,.05),
+                  0 1px 3px rgba(0,0,0,.2),
+                  0 3px 5px rgba(0,0,0,.2),
+                 0 5px 10px rgba(0,0,0,.2),
+                0 10px 10px rgba(0,0,0,.2),
+                0 20px 20px rgba(0,0,0,.3);
 }
-
 #oil {
   text-align: center;
-  background-color: #EB8C8C;
   width:1000px;
   display: inline-block;
   margin:auto;
@@ -49,12 +58,12 @@ main{
 <body>
 <div id="oilMain">
 <header id="oil_header">
-	<h1>${oil.oil_name} 정보</h1>
+	<div id="title"><h1>${oil.oil_name} 정보</h1></div>
 	<c:if test="${oil.oislpg eq 'Y'}">
 		<img src="images/icon_LPG.png" width="50px" height="50px">
     </c:if>
     <p>운영시간: ${oil.oil_start} ~ ${oil.oil_end} </p>
-</header>
+</header><br>
 <main>
     <div id="oil">
 	    <p>방향: ${oil.oil_dire}</p>

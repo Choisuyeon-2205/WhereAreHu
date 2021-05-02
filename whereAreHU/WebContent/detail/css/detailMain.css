@@ -1,8 +1,11 @@
 @charset "UTF-8";
-body{ background-color: #8b7e88; }
 
-.header, .detail, #buttons {
+.header2, .detail, #buttons {
+	text-align: center;
+}
 
+body {
+	background-color: #ada8ae;
 }
 
 h1 {
@@ -167,19 +170,16 @@ p {
 button_wrap:link{
   text-decoration: none;
 }
-
-
 .wrapper{
 	margin-top:100px;
 	padding-top:100px;
 	
 }
-
 #detailMain {
 	background:#fff;
 	border:1px solid #222;
 	padding: 20px;
-	margin:30px auto;
+	margin:auto;
 	width: 1100px;	
 }
 
