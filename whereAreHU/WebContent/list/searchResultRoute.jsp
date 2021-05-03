@@ -15,6 +15,12 @@
 
 <style>
 
+*{
+	color: black;
+}
+#select {
+	font-weight: 500;
+}
 
 main {
 	margin: 30px 30px;
@@ -31,13 +37,13 @@ body{
 }
 .result_box{
 	display: grid;
-	grid-template-columns: 1fr 20px 1fr;
+	grid-template-columns: 250px 20px 200px;
 }
-#section1, #section2{
-	padding: 50px 0 0 50px;
+#section1 {
+	padding: 1px 0 0 10px;
 }
 #section2{
-	margin: 100px 100px 0 0;
+	/*margin: 100px 100px 0 0;*/
 }
 .result_box{
 	width: 80%;
@@ -106,11 +112,11 @@ tr:hover td{
 #inline{
 	display: inline-block; 
 }
-/* 
+
 .button {
   display: inline-block;
   padding: 15px 25px;
-  /*font-size: 24px;*/
+  font-size: 24px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -182,7 +188,7 @@ tr:hover td{
 
 				<h2>추가 검색 박스</h2><br>
 				  <form id="searchForm">
-				  	<h4>노선별 선택</h4>
+				  	<h4 id="select">노선별 선택</h4>
 				  		<div>
 				  						  		
 				  		<select name="route" >
@@ -193,30 +199,29 @@ tr:hover td{
 						</select>
 						</div>
 					<br><br>
-					<h4>주유소 여부</h4>
+					<h4 id="select">주유소 여부</h4>
 						<div>
 						<input type="radio" id="isoil" name="oil" value="all" checked="checked"> 구분 없음
 						<input type="radio" id="isoil" name="oil" value="yes"> O
 						<input type="radio" id="isoil" name="oil" value="no"> X
 						</div>
 					<br><br>
-					<h4>상행/하행 구분</h4>
+					<h4 id="select">상행/하행 구분</h4>
 						<div>
 						<input type="radio" id="upndown" name="updown" value="all" checked="checked"> 모두 선택
 						<input type="radio" id="upndown" name="updown" value="ascend"> 상행
 						<input type="radio" id="upndown" name="updown" value="descend"> 하행
 						</div>
+						
 						<br>
-						<br>
-						<br>
-						<input type="button" class = "button" value="확인" id="okButton">
+						<input type="button" class = "button" value="확인" id="okButton" style="font-size: 13px;">
 				  </form>
 			</section>
 			
-			<section id = "vertical"></section>
+			<section id = "vertical" style="border-left: 2px solid black"></section>
 			
-			<section id="section2" style="overflow:scroll; width: 750px; height: 550px;">
-			 			 <h2>검색 결과</h2><br>
+			<section id="section2" style="overflow:scroll; width: 1020px; ">
+			 			 <h2>검색 결과</h2>
 
 			 
 			 <div id="here"></div>
