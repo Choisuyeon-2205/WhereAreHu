@@ -140,6 +140,9 @@
 </head>
 
 <style>
+
+
+
 #header h1 {
 			font-weight: 900;
 			margin: 0;
@@ -625,7 +628,7 @@
 				<p>${username}님 환영합니다</p>
 				
 				<br>
-					<ul id="UserInfo">
+					<ul id="UserInfo" style="font-family: '코트라 고딕체 보통', 돋움, 굴림">
 						
 						<li id="user_id"><label for="user_id">아이디</label> ${user_id}</li>
 						<li id="username"><label for="user-name">이름</label> ${username}</li>

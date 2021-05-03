@@ -26,8 +26,9 @@ body{
 
 .search_lower{
 	display:grid;
-	justify-content:center;
+	justify-content:left;
 	margin-top: 40px;
+	padding-left: 450px;
 }
 
 /* 커서 액션 활성화 */
@@ -61,7 +62,7 @@ body{
 .search_box{
 	width: 630px;
 	display: inline-block;
-	background-color: rgba(215, 251, 232, 0.3);
+	background-color: rgba(215, 233, 233, 0.6);
 	color:white;
 	font-weight: bold;
 	padding: 20px 30px;
@@ -75,7 +76,7 @@ body{
 	width: 460px;
 	font-weight: bold;
 	font-size: 15px;
-	border: 1px solid black;
+	border: 1px solid rgb(230,227,227);
 	margin-top:10px;
 	padding-left:10px;
 }
@@ -141,33 +142,37 @@ body{
 				</ul>
 			</nav>
 		</header>
-
+		
+		
+		
+		
 		<div class = "body_contents">
+		
 		<section>
-		  <div class = "search_box">
-		  	<div class = "search_title">휴게소 검색</div>
-
-		  	<form action = "searchResult">
-		  		<input name = "search" class = "search_input" type = "text" placeholder = "검색하실 위치, 장소 혹은 휴게소를 검색해주세요">
-		  		
-			  	<div class = "search_button">
-			  		<input type = "submit" value = "검색">
-			  	</div>
-		  	</form>
-		  	
-		  </div>
-		</section>
-
 		<section class = "search_lower">
 		  <div class = "main_search_link">
-		  	<ul>
-		  		<li><a>다르게 조회하기 : </a></li>
+		  	<ul style="margin: 1px; padding-left: 120px; text-decoration: none">
 		  		<li><a href="../list/searchResultOil" class="_p4ul2ts" >주유소 조회</a></li>
 		  		<li><a href="../list/searchResultRoute" class="_p4ul2ts" >고속도로별 조회</a></li>
 		  	</ul>
 		  
 		  </div>
 		</section>
+		  <div class = "search_box" style="color: black">
+		  	<div class = "search_title" style="text-align: center; ">휴게소 검색</div>
+
+		  	<form action = "searchResult">
+		  		<input name = "search" class = "search_input" type = "text" placeholder = "검색하실 위치, 장소 혹은 휴게소를 검색해주세요" style="text-align: center;">
+		  		
+			  	<div class = "search_button" style="text-align: center; color: black; font-size: unset;">
+			  		<input type = "submit" value = "검색" >
+			  	</div>
+		  	</form>
+		  	
+		  </div>
+		</section>
+
+		
 		</div>
 	</div>
 </body>

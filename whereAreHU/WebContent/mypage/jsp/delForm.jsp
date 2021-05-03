@@ -58,7 +58,7 @@
 <br>
 저희 서비스 만족 하셨나요?
 <br>
-<textarea id="hasil" name="hasil" rows="7" cols="38" style="resize: none" placeholder="따듯한 한마디 감사합니다."></textarea>
+<textarea id="hasil" name="hasil" rows="7" cols="38" style="resize: none; text-align: center;" placeholder="따듯한 한마디 감사합니다." ></textarea>
 
 
 
