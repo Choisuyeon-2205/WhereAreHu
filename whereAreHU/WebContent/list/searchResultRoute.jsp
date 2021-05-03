@@ -145,8 +145,8 @@ tr:hover td{
 .button:hover {background-color: dimgrey;}
 
 .button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
+  background-color: dimgrey;
+  /*box-shadow: 0 5px #666;*/
   transform: translateY(4px);
 }
 

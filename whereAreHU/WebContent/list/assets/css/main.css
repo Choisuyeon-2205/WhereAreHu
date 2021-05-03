@@ -2001,6 +2001,11 @@ input::-moz-focus-inner {
 				font-size: 5em;
 				line-height: 1em;
 			}
+			.icon.featured.fa-check:hover:before {
+			color:red;
+			font-size: 5em;
+			line-height: 1em;
+			}
 			
 		
 			
