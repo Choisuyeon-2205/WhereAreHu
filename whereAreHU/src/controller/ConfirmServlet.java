@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.UserDAO;
+import model.UserVO;
 
 @WebServlet("/user/Confirm")
 public class ConfirmServlet extends HttpServlet {
@@ -23,7 +24,7 @@ public class ConfirmServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String user_id = request.getParameter("user_id");
 		  UserDAO dao = new UserDAO(); 
-		  boolean co;
+		  UserVO co;
 		  co = dao.confirmID(user_id);
 		  PrintWriter  out = response.getWriter();
 		  out.print(String.valueOf(co));
