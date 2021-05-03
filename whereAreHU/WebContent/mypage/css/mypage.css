@@ -432,7 +432,10 @@ input[type="text"], input[type="tel"], input[type="email"] {
       width : inherit;
       border-collapse: collapse;
     }
-.review th, td, .good th, td { padding:10px 20px; }
+.review th, td, .good th, td { 
+	padding:10px 20px; 
+	font-weight: bolder;
+	}
 
 #UserInfo li label {
  width:70px;

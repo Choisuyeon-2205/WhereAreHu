@@ -45,6 +45,9 @@
 
 <body class="index is-preload">
 	<div id="page-wrapper">
+	<video id = "videoBG" autoplay muted loop >
+	<source src="videoplayback.mp4" type="video/mp4">
+	</video>
 
 		<!-- Header -->
 		<header id="header" class="alt">
@@ -86,16 +89,20 @@
 		</header>
 
 		<!-- Banner -->
-		<section id="banner">
+		<section id="banner" >
+				
 		<div class="inner">
+		
 				<header>
 					<h2>WhereRHU</h2>
 				</header>
 				<p>
 					Find your <strong>RestArea</strong>, a free <br /> responsive <br />
 					by <a href="">hereHuGO</a>.
+					
 				</p>
 				<footer>
+				
 					<ul class="buttons stacked">
 						<li><a href="../list/searchPage.jsp"
 							class="button fit scrolly">Search RestArea</a></li>
@@ -105,9 +112,7 @@
 			</div>
 		</section>
 		
-		<video id = "videoBG" autoplay muted loop >
-     	<source src="videoplayback.mp4" type="video/mp4">
-   		</video>
+		
 
 		<!-- Main -->
 		<article id="main">

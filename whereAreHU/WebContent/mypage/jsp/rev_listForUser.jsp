@@ -13,7 +13,7 @@
 </head>
  <style>
     table, th, td {
-      border:1px solid #ccc;
+      border:2px double #ccc;
       border-collapse: collapse;
     }
     th, td { padding:10px 20px; }
@@ -23,7 +23,7 @@
 	<div class="profile-reviews tab" >
 		<h1>내가쓴 리뷰 확인하기</h1>
 		<table class="reviewCheck" >
-			<thead style="background: rgba(233, 233, 233, 1)">
+			<thead style="background: #62d2a2">
 				<tr>
 					<th>리뷰 번호</th>
 					<th>회원ID</th>
