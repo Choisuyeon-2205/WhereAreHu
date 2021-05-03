@@ -26,7 +26,7 @@ header{
 .result_box{
 	width: 80%;
 	height: 600px;
-	background-color: rgba(215, 251, 232, 0.6);
+	background-color: rgba(233, 233, 233, 0.8);
 	padding: 20px 0;
 	position: relative; /* 위치 이동 */
 	top: 20px;
@@ -141,14 +141,14 @@ tr:hover td{
 	
 		<section> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
 		  <div class = "main_search_link">
-		  	<h1>조회 결과</h1>
+		  	
 		  
 		  </div>
 		</section>
 		
-		<section class = "result_box">
-					<h3>검색 결과</h3><br>
-			<div class = "needed_left_space" style="overflow:scroll; width: 1050px; height: 500px;">				
+		<section class = "result_box" style="text-align: center">
+					<h2>검색 결과</h2><br>
+			<div class = "needed_left_space" style="overflow:scroll; width: 1050px; height: 500px; margin-left: 150px">				
 			
 
 		

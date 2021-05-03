@@ -21,6 +21,7 @@ body{
 	background-image: url("../list/image/backimg3.jpg");
 	background-size: cover; 
 	background-repeat: no-repeat;
+	padding-left: 140px;
 
 }
 
@@ -62,7 +63,7 @@ body{
 .search_box{
 	width: 630px;
 	display: inline-block;
-	background-color: rgba(215, 233, 233, 0.6);
+	background-color: rgba(233, 233, 233, 0.6);
 	color:white;
 	font-weight: bold;
 	padding: 20px 30px;
@@ -160,7 +161,7 @@ body{
 		  	<form action = "searchResult">
 		  		<input name = "search" class = "search_input" type = "text" placeholder = "검색하실 위치, 장소 혹은 휴게소를 검색해주세요" style="text-align: center;">
 		  		
-			  	<div class = "search_button" style="text-align: center; color: black; font-size: unset;">
+			  	<div class = "search_button" style="text-align: center; color: black; font-size: unset; margin-top: 10px;">
 			  		<input type = "submit" value = "검색" >
 			  	</div>
 		  	</form>

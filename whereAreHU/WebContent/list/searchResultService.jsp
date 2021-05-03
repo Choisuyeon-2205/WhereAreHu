@@ -39,8 +39,10 @@ body{
 	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
 }
 .result_box h2{
-	color:#27ae60;
+	color:black;
 	margin : 10px 0 0 50px;
+	text-align: center;
+	font-weight: 700;
 }
 
 
@@ -116,7 +118,7 @@ tr:hover td{
 
 </head>
 <body class="index is-preload">
-	<div id="page-wrapper">
+	<div id="page-wrapper" style="margin-left: 80px;">
 
 		<!-- Header -->
 		<header id="header" class="alt">
@@ -157,11 +159,11 @@ tr:hover td{
 		
 		<section class = "result_box">
 				 <h2>검색 결과</h2>
-			<section id="section2" style="overflow:scroll; width: 900px; height: 350px;">
+			<section id="section2" style="overflow:scroll; width: 900px; height: 350px; margin-left: 140px;">
 			 
 	
 			 
-			 <h4>※ 테이블명을 누르면 정렬이 실행됩니다</h4>
+			 <h4 style="text-align: center; ">※ 테이블명을 누르면 정렬이 실행됩니다</h4>
 			 <div id = "here">			 </div>
 			  <table id="myTable" class="tablesorter" cellspacing="2" cellpadding="2" border="2" >
 			 	<thead>

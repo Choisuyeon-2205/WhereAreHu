@@ -15,6 +15,7 @@ body{
 * {
   box-sizing: border-box;
   padding: 0;
+  font-family: 'KOTRA_GOTHIC';
 }
 
 header {

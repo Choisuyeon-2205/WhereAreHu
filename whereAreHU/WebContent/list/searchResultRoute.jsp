@@ -31,7 +31,7 @@ header{
 	height: 550px;
 	display: grid;
 	grid-template-columns: 250px 30px auto;
-	background-color: rgba(215, 251, 232, 0.6);
+	background-color: rgba(233, 233, 233, 0.8);
 	padding: 20px 30px;
 	position: relative; /* 위치 이동 */
 	top: 20px;
