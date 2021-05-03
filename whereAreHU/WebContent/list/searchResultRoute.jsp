@@ -125,7 +125,30 @@ tr:hover td{
     cursor: pointer;
 }
 
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  /*font-size: 24px;*/
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: black;
+  border: none;
+  border-radius: 15px;
+  /*box-shadow: 0 9px #999;*/
+  width: 200px;
+  height: 50px;
+}
 
+.button:hover {background-color: dimgrey;}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 
 
 </style>
@@ -164,7 +187,7 @@ tr:hover td{
 	
 		<section> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
 		  <div class = "main_search_link">
-		  	<h1>조회 결과</h1>
+		  	
 		  
 		  </div>
 		</section>
@@ -198,7 +221,10 @@ tr:hover td{
 						<input type="radio" id="upndown" name="updown" value="ascend"> 상행
 						<input type="radio" id="upndown" name="updown" value="descend"> 하행
 						</div>
-						<input type="button" value="확인" id="okButton">
+						<br>
+						<br>
+						<br>
+						<input type="button" class = "button" value="확인" id="okButton">
 				  </form>
 			  </div>
 			</section>
