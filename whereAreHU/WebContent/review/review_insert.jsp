@@ -15,13 +15,11 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 
 <style>
-.* {
-    font-family: 'NanumSquare', sans-serif !important;
-}
 	#revText
 	{
 		border-radius: 10px;
 		margin: 0 0 20px 0;
+		width: 800px;
 	}
 	
 	.parent {
@@ -54,6 +52,9 @@
 		padding: 1px 6px;
 		position: absolute;
 		right: 0%;
+		cursor: pointer;
+	}
+	#upload{
 		cursor: pointer;
 	}
 </style>

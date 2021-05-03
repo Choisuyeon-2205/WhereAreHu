@@ -75,7 +75,7 @@ body{
 	width: 460px;
 	font-weight: bold;
 	font-size: 15px;
-	border: 1px solid rgb(230,227,227);
+	border: 1px solid black;
 	margin-top:10px;
 	padding-left:10px;
 }
