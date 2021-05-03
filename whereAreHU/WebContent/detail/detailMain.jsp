@@ -122,7 +122,7 @@ $(function(){
 			<jsp:include page="../review/kakaoMap.jsp" />
 			</div>
 		</div>
-		<div id="buttons">
+		<div id="buttons" style="inline-size: max-content; margin-right: 200px; font-size: smaller;">
 			<input type="button" class="btns" id="food" value="대표음식"
 				onclick="location.href='selectDetailFood?area_num=${sarea.area_num}&area_name=${sarea.area_name}'">
 			<input type="button" class="btns" id="oil" value="주유소"

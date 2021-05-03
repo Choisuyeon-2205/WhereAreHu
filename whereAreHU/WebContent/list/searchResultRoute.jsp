@@ -40,7 +40,7 @@ body{
 	grid-template-columns: 250px 20px 200px;
 }
 #section1 {
-	padding: 1px 0 0 10px;
+	padding: 1px 0 0 20px;
 }
 #section2{
 	/*margin: 100px 100px 0 0;*/
@@ -218,9 +218,9 @@ tr:hover td{
 				  </form>
 			</section>
 			
-			<section id = "vertical" style="border-left: 2px solid black"></section>
+			<section id = "vertical" style="border-left: 2px solid black; margin-left: 20px;"></section>
 			
-			<section id="section2" style="overflow:scroll; width: 1020px; ">
+			<section id="section2" style="overflow:scroll; width: 1020px; margin-left: 30px;">
 			 			 <h2>검색 결과</h2>
 
 			 

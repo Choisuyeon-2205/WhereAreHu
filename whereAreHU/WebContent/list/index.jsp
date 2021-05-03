@@ -90,7 +90,7 @@
 		<!-- Banner -->
 		<section id="banner" >
 				
-		<div class="inner">
+		<div class="inner" style="margin-top: 90px;">
 		
 				<header>
 					<h2>WhereRHU</h2>

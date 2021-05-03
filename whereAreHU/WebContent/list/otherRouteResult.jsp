@@ -17,7 +17,7 @@
 			<th onclick="sortTable(1)" class="service2"><span
 				class="smalltext"><strong>주소</strong></span></th>
 			<th onclick="sortTable(2)" class="service2"><span
-				class="smalltext"><strong>추천 수</strong></span></th>
+				class="smalltext"><strong>추천  </strong></span></th>
 
 		</tr>
 		<c:forEach var="route" items="${routelist}">
