@@ -121,12 +121,8 @@ body{
 					   
 							<li class="submenu"><a href="#">menu</a>
 								<ul>
-								<li class="submenu"><a href="#">LookUP</a>
-									<ul>
-										<li><a href="#"> gas station</a></li>
-										<li><a href="#">highway</a></li>
-									</ul>
-								<li><a href="../list/searchPage.jsp">Search</a></li>
+								<li><a href="../list/searchPage.jsp">Search</a>
+								<li><a href="../recommend/recommendMain.jsp">Recommend</a></li>
 								<li><a href="../mypage/MyPage.jsp">MyPage</a></li>
 								<li><a href="https://edu.kosta.or.kr">Contact</a></li>
 
