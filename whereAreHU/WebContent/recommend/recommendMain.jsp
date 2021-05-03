@@ -11,27 +11,27 @@
 <link rel="stylesheet" href="../list/assets/css/main.css" />
 <style>
 body{
-	background-image: url("../list/image/serviceresult_back.jpeg"); 
+	background-image: url("../list/image/main_background.jpg"); 
 	background-repeat: no-repeat;
 	height: 880px;
 	background-size: 100% /* 그림 사이즈 딱 맞게~ */
 }
 .result_box{
-	width: 70%;
-	height: 600px;
-	background-color: rgba(215, 251, 232, 0.6);
+	width: 900px;
+	height: 650px;
+	background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 6px; /* 모서리 둥글게 */
 	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
 	text-align: center;
 }
 .middle_section , .left_section {
-/* 	margin-left: 50px;
+	margin-left: 30px;
 	margin-top: 50px;
-	padding: 20px; */
+	padding: 20px; 
 	display: inline-block;
 	width: 400px;
 	text-align: left;
-	background-color: rgba(255, 255, 255, 0.6);
+	background-color: rgba(0, 123, 120, 0.6);
 	border-radius: 6px; /* 모서리 둥글게 */
 	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
 }
@@ -43,7 +43,7 @@ input[type=checkbox] {
 }
 .main_search_link{ 
 	color:white; 
-	margin:0;
+	margin: 70px 0 0 0;
 	padding:0;
 }
 #bottom{
@@ -53,18 +53,18 @@ input[type=checkbox] {
 }
 #reset{
 	width: 80px;
-	height: 40px;
+	height: 50px;
 	margin-right: 20px;
-	margin-left: 20px;
+	margin-left: 40px;
 	font-size: 15px;
-	background-color: lightgray;
+	background-color: rgba(83, 92, 104, 0.7);
 	border-radius: 6px; /* 모서리 둥글게 */
 }
 #submit{
 	width: 120px;
-	height: 40px;
+	height: 50px;
 	font-size: 15px;
-	background-color: lightgray;
+	background-color: rgba(83, 92, 104, 0.7);
 	border-radius: 6px; /* 모서리 둥글게 */
 }
 #inline{
@@ -139,8 +139,6 @@ function chkchk (form){
 		<div class = "main_search_link">
 			<h1>휴게소 추천</h1>
 
-		
-		
 		<form method="post" action="recommendAction"  onsubmit="return chkchk(this);">
 		<section class = "result_box">
 			<div class = "left_section">
@@ -169,6 +167,6 @@ function chkchk (form){
 		</form>
 
 			</div>
-	
+	</div>
 </body>
 </html>
