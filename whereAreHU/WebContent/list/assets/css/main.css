@@ -2548,6 +2548,7 @@ input, select, textarea {
 		cursor: default;
 		padding: 6em 0;
 		text-align: center;
+		height: 800px;
 	}
 
 		#banner .inner {
