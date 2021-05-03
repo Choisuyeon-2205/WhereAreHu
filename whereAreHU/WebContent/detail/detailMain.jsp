@@ -12,11 +12,6 @@
 	href="../list/image/small_logo_icon.png">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<style>
-*{
-font-family:'KOTRA_GOTHIC';
-}
-</style>
 <script>
 $(function(){
 	var like_me = ${like_me};
@@ -58,7 +53,7 @@ $(function(){
 <link rel="stylesheet" href="css/main.css" />
 <link rel="stylesheet" href="css/detailMain.css">
 </head>
-<body class="index is-preload" style="margin-left: 200px;">
+<body class="index is-preload" style="padding-left: 180px">
 		<!-- Header -->
 		<header id="header" class="alt">
 			<h1 id="logo">
@@ -76,8 +71,12 @@ $(function(){
 					   
 							<li class="submenu"><a href="#">menu</a>
 								<ul>
-								<li><a href="../list/searchPage.jsp">Search</a>
-								<li><a href="../recommend/recommendMain.jsp">Recommend</a></li>
+								<li class="submenu"><a href="#">LookUP</a>
+									<ul>
+										<li><a href="#"> gas station</a></li>
+										<li><a href="#">highway</a></li>
+									</ul>
+								<li><a href="../list/searchPage.jsp">Search</a></li>
 								<li><a href="../mypage/MyPage.jsp">MyPage</a></li>
 								<li><a href="https://edu.kosta.or.kr">Contact</a></li>
 
@@ -96,9 +95,8 @@ $(function(){
 	
 	<div id="detailMain">
 		<div class="header2">
-		<hr>
-			<h1 id="area_name" style="font-family: 'KOTRA_GOTHIC';">${sarea.area_name}</h1>
-			<div id="like" style="font-family: 'KOTRA_GOTHIC';">
+			<h1 id="area_name">${sarea.area_name}</h1>
+			<div id="like">
 				<div id="like_button">♥</div>
 				<h5>
 					<div id="like_num">좋아요 수: <span id="like_num2">${like_num}</span></div>
