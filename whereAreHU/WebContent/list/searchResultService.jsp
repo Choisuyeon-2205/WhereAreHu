@@ -9,6 +9,7 @@
 <title>Where? 휴식이 있는 곳!</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="../list/css/styles.css"/>
 <link rel="stylesheet" href="../list/assets/css/main.css" />
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="image/small_logo_icon.png">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>

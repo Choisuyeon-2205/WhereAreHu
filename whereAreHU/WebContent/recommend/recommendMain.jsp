@@ -17,55 +17,84 @@ body{
 	background-size: 100% /* 그림 사이즈 딱 맞게~ */
 }
 .result_box{
-	width: 900px;
-	height: 650px;
-	background-color: rgba(255, 255, 255, 0.6);
+	width: 80%;
+	height: 550px;
+	margin : 100px 0 0 30px;
+	background-color: rgba(215, 251, 232, 0.6);
+	padding: 20px 30px;
+	position: relative; /* 위치 이동 */
+	top: 20px;
+	left: 100px;
 	border-radius: 6px; /* 모서리 둥글게 */
 	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
+}
+.result_box h2{
+	color:black;
+	margin : 10px 0 0 50px;
 	text-align: center;
+	font-weight: 700;
 }
-.middle_section , .left_section {
-	margin-left: 30px;
-	margin-top: 50px;
-	padding: 20px; 
-	display: inline-block;
-	width: 400px;
-	text-align: left;
-	background-color: rgba(0, 123, 120, 0.6);
-	border-radius: 6px; /* 모서리 둥글게 */
-	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
-}
-input[type=checkbox] {
-	margin: 10px;
-}
-#bottom{ 
-	text-align: right;
-}
-.main_search_link{ 
-	color:white; 
-	margin: 70px 0 0 0;
+
+
+.tablesorter{
 	padding:0;
+	margin:0;	
+	width: 800px;
+	height: 400px;
 }
-#bottom{
-	margin-top: 10px;
-	margin-right: 50px;
-	margin-bottom: 10px;
+
+.tablesorter p{
+	color:white;
+	padding: 10px;
+	line-height:35px;
 }
-#reset{
-	width: 80px;
-	height: 50px;
-	margin-right: 20px;
-	margin-left: 40px;
-	font-size: 15px;
-	background-color: rgba(83, 92, 104, 0.7);
-	border-radius: 6px; /* 모서리 둥글게 */
+::-webkit-scrollbar{
+	widht:25px;
 }
-#submit{
-	width: 120px;
-	height: 50px;
-	font-size: 15px;
-	background-color: rgba(83, 92, 104, 0.7);
-	border-radius: 6px; /* 모서리 둥글게 */
+::-webkit-scrollbar-track{
+	border:7px solid #232943;
+	box-shadow: inset 0 0 2.5px 2px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb{
+	background: #f00;
+	border-radius: 3px;
+}
+#vertical{
+	width: 5px;
+	height: 80%;
+	background-color: black;
+}
+#section2{
+    margin: 30px;
+    padding: 30px;
+    width: 70%;    
+}
+td, th {
+border: 1px solid transparent;
+height: 30px;
+transition: all 0.3s;
+  color: #BDC581;
+}
+
+th {
+background: #0a3d62;
+font-weight: bold;
+font-size: 13px;
+color:#27ae60
+}
+
+td {
+background: #FAFAFA;
+text-align: center;
+}
+
+tr:nth-child(even) td { background:#0a3d62; }
+tr:nth-child(odd) td { background: #3c6382; }
+
+tr:hover td{
+    background: rgb(31, 171, 137);
+    color: #FFF; 
+    cursor: pointer;
 }
 #inline{
 	display: inline-block; 

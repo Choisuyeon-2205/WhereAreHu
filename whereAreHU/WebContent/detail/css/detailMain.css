@@ -68,7 +68,7 @@ h4 {
 .btns:hover {
   background-color: #667685;
   box-shadow: 0px 15px 20px rgba(0, 9, 111, 0.4);
-  color: #fff;
+  color: grey;
   transform: translateY(-7px);
 }
 #buttons {
