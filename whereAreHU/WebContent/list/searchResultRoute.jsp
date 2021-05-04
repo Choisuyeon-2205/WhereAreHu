@@ -81,6 +81,7 @@ th {
 background: #0a3d62;
 font-weight: bold;
 font-size: 13px;
+width: 30px;
 }
 td {
 background: #FAFAFA;

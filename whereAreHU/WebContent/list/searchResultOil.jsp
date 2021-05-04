@@ -152,8 +152,8 @@ tr:hover td{
 			<table id="myTable" class="tablesorter" id="table" cellspacing="2" cellpadding="2" border="2" >
 				<thead>
 			    <tr class = "oil_table">
-					  	<th onclick="sortTable(0)" class="tcat" ><span class="smalltext"><strong>주유소명</strong></span></th>
-						<th onclick="sortTable(1)" class="tcat" ><span class="smalltext"><strong>지역</strong></span></th>
+					  	<th onclick="sortTable(0)" class="tcat" ><span class="smalltext" style="color: darkorange;"><strong>주유소명</strong></span></th>
+						<th onclick="sortTable(1)" class="tcat" ><span class="smalltext" style="color: darkorange;"><strong>지역</strong></span></th>
 				</tr>
 				</thead>
 				<tbody>
