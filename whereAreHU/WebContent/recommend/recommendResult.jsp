@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../list/assets/css/main.css" />
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="../list/assets/js/jquery.tablesorter.min.js"></script>
+<script src="../list/assets/js/jquery.tablesorter.widgets.min.js"></script>
 <style>
 #userid {
 	color: rgb(72, 52, 212);
@@ -84,7 +87,7 @@ body{
 	<h5 id = "text_color_result">${rlist} 지역 [${method=="good"?"추천순":"큰 휴게소순"}] 결과</h5>
 </section>
 <main>
-<table>
+<table id="myTable" class="tablesorter">
   <thead>
 	<tr>
 		<th>주유소코드</th><th>이름</th><th>주소</th><th>연락처</th><th>노선</th><th>주차대수</th><th>좋아요수</th>
@@ -106,5 +109,13 @@ body{
 </table>
 </main>
 </div>
+	<script>
+	
+	$(document).ready(function(){
+		$("#myTable").tablesorter();
+	});
+		
+	
+	</script>
 </body>
 </html>
