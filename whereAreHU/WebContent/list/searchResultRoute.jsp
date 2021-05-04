@@ -11,7 +11,9 @@
 <link rel="stylesheet" href="../list/css/styles.css"/>
 <link rel="stylesheet" href="assets/css/main.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+</style>
 
 <style>
 
@@ -187,7 +189,7 @@ tr:hover td{
 		<section class = "result_box">
 			<section id="section1"> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
 
-				<h2>추가 검색 박스</h2><br>
+				<h2 style="font-family: 'Do Hyeon', sans-serif;">추가 검색 박스</h2><br>
 				  <form id="searchForm">
 				  	<h4 id="select">노선별 선택</h4>
 				  		<div>
@@ -222,7 +224,7 @@ tr:hover td{
 			<section id = "vertical" style="border-left: 2px solid black; margin-left: 20px;"></section>
 			
 			<section id="section2" style="overflow:scroll; width: 1020px; margin-left: 30px;">
-			 			 <h2>검색 결과</h2>
+			 			 <h2 style="font-family: 'Do Hyeon', sans-serif;">검색 결과</h2>
 
 			 
 			 <div id="here"></div>

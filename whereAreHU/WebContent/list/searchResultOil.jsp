@@ -15,6 +15,13 @@
 <script src="../list/assets/js/jquery.tablesorter.min.js"></script>
 <script src="../list/assets/js/jquery.tablesorter.widgets.min.js"></script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+</style>
+
+
+
+<style>
+
 
 main {
 	margin: 30px 30px;
@@ -144,7 +151,7 @@ tr:hover td{
 
 		
 		<section class = "result_box" style="text-align: center">
-					<h2 id = "text_result_h2">검색 결과</h2><br>
+					<h2 id = "text_result_h2" style="font-family: 'Do Hyeon', sans-serif;">검색 결과</h2><br>
 			<div class = "needed_left_space" style="overflow:scroll; width: 1050px; height: 500px; margin-left: 150px">				
 			
 

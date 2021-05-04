@@ -12,6 +12,9 @@
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="image/small_logo_icon.png">
 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+</style>
 
 
 <style>
@@ -149,8 +152,8 @@ body{
 		<section class = "search_lower">
 		  <div class = "main_search_link">
 		  	<ul style="margin: 1px; padding-left: 120px; text-decoration: none">
-		  		<li><a href="../list/searchResultOil" class="_p4ul2ts" >주유소 조회</a></li>
-		  		<li><a href="../list/searchResultRoute" class="_p4ul2ts" >고속도로별 조회</a></li>
+		  		<li><a href="../list/searchResultOil" class="_p4ul2ts" style="font-family: 'Do Hyeon', sans-serif;" >주유소 조회</a></li>
+		  		<li><a href="../list/searchResultRoute" class="_p4ul2ts" style="font-family: 'Do Hyeon', sans-serif;" >고속도로별 조회</a></li>
 		  	</ul>
 		  
 		  </div>
@@ -162,7 +165,7 @@ body{
 		  		<input name = "search" class = "search_input" type = "text" placeholder = "검색하실 위치, 장소 혹은 휴게소를 검색해주세요" style="text-align: center;">
 		  		
 			  	<div class = "search_button" style="text-align: center; color: black; font-size: unset; margin-top: 10px;">
-			  		<input type = "submit" value = "검색" >
+			  		<input type = "submit" value = "검색">
 			  	</div>
 		  	</form>
 		  	
