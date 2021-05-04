@@ -9,7 +9,17 @@
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="../list/image/small_logo_icon.png">
 <link rel="stylesheet" href="../list/css/styles.css"/>
 <link rel="stylesheet" href="../list/assets/css/main.css" />
+
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+</style>
+
+<style>
+
+*{
+font-family: 'Do Hyeon', sans-serif;
+}
+
 body{
 	background-image: url("../list/image/main_background.jpg"); 
 	background-repeat: no-repeat;
@@ -18,9 +28,9 @@ body{
 }
 .result_box{
 	width: 700px;
-	height: 550px;
+	height: 620px;
 	margin : 100px 0 0 30px;
-	background-color: rgba(215, 251, 232, 0.6);
+	background-color: rgba(215, 251, 232, 0.8);
 	padding: 20px 30px;
 	position: relative; /* 위치 이동 */
 	top: 20px;
@@ -178,11 +188,13 @@ function chkchk (form){
 
 		
 		<div class = "main_search_link">
-			<h1>휴게소 추천</h1>
+			
 
 		<form method="post" action="recommendAction"  onsubmit="return chkchk(this);">
-		<section class = "result_box">
-			<div class = "left_section">
+		<section class = "result_box" style="color: black;
+    margin-left: 450px;">
+		<h1 style="text-align: center; font-family: 'Do Hyeon', sans-serif;">휴게소 추천</h1>
+			<div class = "left_section" style=" font-family: 'Do Hyeon', sans-serif;">
 				<input type="checkbox" name="region" value="서울"/>서울<br>
 				<input type="checkbox" name="region" value="경기"/>경기<br>
 				<input type="checkbox" name="region" value="부산"/>부산<br>
@@ -198,7 +210,7 @@ function chkchk (form){
 				<input type="checkbox" name="region" value="경상북도"/>경상북도
 			</div>
 		
-			<div class = "middle_section">
+			<div class = "middle_section" style=" font-family: 'Do Hyeon', sans-serif;">
 				<input type="radio" name="etc" value="good"/>추천순<br>
 				<input type="radio" name="etc" value="size"/>크기순<br>
 			</div>
