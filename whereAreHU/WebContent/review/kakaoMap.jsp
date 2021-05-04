@@ -5,7 +5,6 @@
 <head>
 <meta charset="utf-8">
 <title>주소로 장소 표시하기</title>
-
 </head>
 <body>
 	<div id="map" style="width: 100%; height: 350px;"></div>
@@ -45,7 +44,7 @@ $(function() {
 		
 		        // 인포윈도우로 장소에 대한 설명을 표시합니다
 		        var infowindow = new kakao.maps.InfoWindow({
-		        	content: '<div style="width:150px;text-align:center;padding:6px 0;"> ${sarea.area_name} <br><a href="' + msg + '">길찾기</a></div>'
+		        	content: '<div style="width:150px;font-size:0.8em;text-align:center;padding:6px 0;"> ${sarea.area_name} <br><a href="' + msg + '">길찾기</a></div>'
 		        });
 		        infowindow.open(map, marker);
 		

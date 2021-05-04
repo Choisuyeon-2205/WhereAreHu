@@ -49,6 +49,10 @@ $(function(){
 #buttons{
 	margin:50px 0 100px 0;
 }
+
+.detail_span {
+	font-size: 0.9em;
+}
 </style>
 <link rel="stylesheet" href="css/main.css" />
 <link rel="stylesheet" href="css/detailMain.css">
