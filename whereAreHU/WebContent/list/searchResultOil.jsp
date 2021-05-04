@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="css/styles.css"/>
 <link rel="stylesheet" href="../list/css/styles.css"/>
 <link rel="stylesheet" href="assets/css/main.css" />
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="../list/assets/js/jquery.tablesorter.min.js"></script>
+<script src="../list/assets/js/jquery.tablesorter.widgets.min.js"></script>
 <style>
 
 main {
@@ -47,7 +50,7 @@ width: 1000px;
 border-collapse:collapse; 
 border-spacing: 0;
 }
-.tborder{
+.tablesorter{
 	padding-left : 800px;
 }
 td, th {
@@ -146,21 +149,18 @@ tr:hover td{
 			
 
 		
-			<table class="tborder" id="table" cellspacing="2" cellpadding="2" border="2" >
-				
+			<table id="myTable" class="tablesorter" id="table" cellspacing="2" cellpadding="2" border="2" >
+				<thead>
 			    <tr class = "oil_table">
 					  	<th onclick="sortTable(0)" class="tcat" ><span class="smalltext"><strong>주유소명</strong></span></th>
 						<th onclick="sortTable(1)" class="tcat" ><span class="smalltext"><strong>지역</strong></span></th>
 				</tr>
+				</thead>
+				<tbody>
 				<c:forEach var="oil" items="${oillist}" > 
-	
-					
 						<tr id = result_section onclick="location.href='../detail/selectDetailOil?area_name=${oil.oil_name}'" ><td>${oil.oil_name}</td><td>${oil.oil_dire}</td></tr>
-
 				</c:forEach>
-		
-
-
+				</tbody>
 			</table>
 			</div>
 			
@@ -168,6 +168,15 @@ tr:hover td{
 
 	
 	</div>
+	
+	<script>
+	
+	$(document).ready(function(){
+		$("#myTable").tablesorter();
+	});
+		
+	
+	</script>
 </body>
 </html>
 

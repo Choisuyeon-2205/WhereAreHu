@@ -176,15 +176,9 @@ tr:hover td{
 				  <tbody>
 				  <c:forEach var="search" items="${servicesearch}" > 
 				  	<tr id = result_section onclick="location.href='../detail/selectDetail?area_num=${search.area_num }'" ><td>${search.area_name }</td><td>${search.thumbsup }</td></tr>
-				  
 				  </c:forEach>
 				  </tbody>
-				  
-
-
-
-
-			  	
+		
 			  </table>
 			
 			</section>
