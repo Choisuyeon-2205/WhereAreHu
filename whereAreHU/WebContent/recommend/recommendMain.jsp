@@ -17,14 +17,14 @@ body{
 	background-size: 100% /* 그림 사이즈 딱 맞게~ */
 }
 .result_box{
-	width: 80%;
+	width: 700px;
 	height: 550px;
 	margin : 100px 0 0 30px;
 	background-color: rgba(215, 251, 232, 0.6);
 	padding: 20px 30px;
 	position: relative; /* 위치 이동 */
 	top: 20px;
-	left: 100px;
+	left: 30px;
 	border-radius: 6px; /* 모서리 둥글게 */
 	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
 }
@@ -98,6 +98,18 @@ tr:hover td{
 }
 #inline{
 	display: inline-block; 
+}
+
+.left_section, .middle_section{
+	display: inline-block; 
+}
+
+.middle_section{
+	margin-left : 300px;
+	margin-bottom: 10px;
+}
+#bottom{
+	text-align: center;
 }
 </style>
 
