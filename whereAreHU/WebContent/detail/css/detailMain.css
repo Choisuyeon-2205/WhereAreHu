@@ -8,19 +8,25 @@ body {
 	background-color: #ada8ae;
 }
 
-h1 {
+
+
+#area_name {
 	font-weight: bold;
 	font-family: "맑은 고딕 bold";
 	font-size: 60px;
+	padding-left: 30px;
+	display: block;
 }
 
-h1, h2, h3, h4, h5 {
+h2, h3, h4, h5, #area_name {
 	display: inline-block;
 }
 
 h4 {
 	color: red;
 }
+
+
 
 .et-detail{
 	display: inline-block;
@@ -61,11 +67,11 @@ h4 {
 .btns:hover {
   background-color: #667685;
   box-shadow: 0px 15px 20px rgba(0, 9, 111, 0.4);
-  color: #fff;
+  color: grey;
   transform: translateY(-7px);
 }
 #buttons {
-	background-color: #ada8ae;
+/* 	background-color: #ada8ae; */
 	height: 100px;
 }
 
@@ -73,18 +79,23 @@ p {
 	font-family: "맑은 고딕";
 }
 
+#revinsert{
+	position: relative;
+}
+
 #revlist {
+	position: relative;
 	width: 800px;
-	margin: 10px auto;
+	margin:200px 0 0 150px;
 }
 #like_button {
 	display: inline-block;
 	color: #cca2a3;
 	cursor: pointer;
 	font-size: 30px;
-	position: absolute;
-	left: 46%;
-	top: 25%;
+	position: relative;
+	left: 160px;
+	top: 8px;
 	-webkit-transform: translate(-30%, -30%);
 	        transform: translate(-30%, -30%);
 	-webkit-transition: all 0.1s ease-in-out;
@@ -139,12 +150,6 @@ p {
     background-color: rgba( 255, 255, 255, 0 );
 	cursor: pointer; /* 커서 들이대면 커서가 변경됨 */
 }
-.menu_section{
-	display: grid;
-	grid-template-columns: auto auto; /* 1:1 비율로 나누어줌 (=1fr 1fr) */
-	justify-content: space-between; /* 양끝으로 가게 만들어~ */
-	background-color : rgba(173, 168, 174, 0.7);
-}
 .logo{
 	color: white;
 	font-size: 35px;
@@ -178,8 +183,8 @@ button_wrap:link{
 #detailMain {
 	background:#fff;
 	border:1px solid #222;
-	padding: 20px;
-	margin:auto;
+/* 	padding: 20px; */
+	margin:100px;
 	width: 1100px;	
 }
 
