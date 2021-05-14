@@ -15,11 +15,11 @@ table { width: 600px; margin: 20px auto; border-collapse: collapse; }
 tr:nth-child(odd) {padding: 5px;}
 tr:nth-child(even) { background-color:#FAFAFA; height: 100px; } 
 .star {width: 120px; }
-.writeinfo {color: gray; font-size: 11px;}
-.writeDel { color: gray; font-size: 11px; text-align: right; }
+.writeinfo {color: gray; font-size: 12px;}
+.writeDel { color: gray; font-size: 12px; text-align: right; }
 .img {border:white; width: 120px; height: 120px; text-align: center; vertical-align:middle; cursor: pointer;}
 #delRev { cursor: pointer; font-weight: normal;}
-#writeRev {color: gray; font-size: 0.9em;}
+#writeRev {color: gray; font-size: 0.8em;}
 </style>
 <script>
 $(function() {

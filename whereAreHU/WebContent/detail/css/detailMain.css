@@ -2,6 +2,7 @@
 
 .header2, .detail, #buttons {
 	text-align: center;
+	position:relative;
 }
 
 body {

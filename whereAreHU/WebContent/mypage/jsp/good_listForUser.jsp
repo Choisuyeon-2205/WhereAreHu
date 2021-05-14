@@ -8,7 +8,7 @@
 <title>나의 좋아요 목록</title>
   <style>
     table, th, td {
-      border:1px solid #ccc;
+      border:2px double #ccc;
       border-collapse: collapse;
     }
     th, td { padding:10px 20px; }
@@ -21,7 +21,7 @@
 		<h1>내가누른 좋아요 확인하기</h1>
 		<table class="goodCheck">
 			<thead>
-				<tr style="background: rgba(233, 233, 233,1)">
+				<tr style="background: #62d2a2">
 					<th>휴게소 이름</th>
 					<th>휴게소 주소</th>
 					<th>휴게소 추천</th>

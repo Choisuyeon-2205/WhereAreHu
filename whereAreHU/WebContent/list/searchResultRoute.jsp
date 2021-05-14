@@ -9,60 +9,97 @@
 <title>Where? 휴식이 있는 곳!</title>
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="image/small_logo_icon.png">
 <link rel="stylesheet" href="../list/css/styles.css"/>
+<link rel="stylesheet" href="assets/css/main.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+</style>
 
 <style>
 
+*{
+	color: black;
+}
+#select {
+	font-weight: 500;
+}
 
-header{
+main {
+	margin: 30px 30px;
+}
 
-	background-image: url("image/highway_3.jpg"); 
+body{
+	background-image: url("image/gas_background2.jpg"); 
 	background-repeat: no-repeat;
 	height: 880px;
 	background-size: 100% /* 그림 사이즈 딱 맞게~ */
 }
-
-
-
-
+#searchForm{
+	height:300px;
+}
+.result_box{
+	display: grid;
+	grid-template-columns: 250px 20px 200px;
+}
+#section1 {
+	padding: 1px 0 0 20px;
+}
+#section2{
+	/*margin: 100px 100px 0 0;*/
+}
 .result_box{
 	width: 80%;
-	height: 550px;
-	display: grid;
-	grid-template-columns: 250px 30px auto;
-	background-color: rgba(215, 251, 232, 0.6);
-	padding: 20px 30px;
+	height: 700px;
+	background-color: rgba(233, 233, 233, 0.8);
+	padding: 20px 0;
 	position: relative; /* 위치 이동 */
-	top: 20px;
-	left: 100px;
-	
+	top: 150px;
+	left: 150px;
 	border-radius: 6px; /* 모서리 둥글게 */
 	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
-
-}
-
-.left_section{
-	margin-left: 10px;
-	padding: 40px 0;
-	width: 200px;
 }
 
 
-.right_section{
-
-	padding:0;
-	margin:0;
-	
-
-	width: 800px;
-	height: 400px;
+.main_search_link h1 {
+	color: white;
+	font-size: 22px;
 }
+table {
+color: #333;
+width: 1000px;
+border-collapse:collapse; 
+border-spacing: 0;
+}
+.tborder{
+	padding-left : 800px;
+}
+td, th {
+border: 1px solid transparent;
+height: 30px;
+transition: all 0.3s;
+  color: white;
+}
+th {
+background: #0a3d62;
+font-weight: bold;
+font-size: 13px;
+width: 30px;
+}
+td {
+background: #FAFAFA;
+text-align: center;
+}
+tr:nth-child(even) td { background: #0a3d62; }
+tr:nth-child(odd) td { background: #3c6382; }
 
-.right_section p{
-	color:white;
-	padding: 10px;
-	line-height:35px;
+tr:hover td{
+    background: rgb(31, 171, 137);
+    color: #FFF; 
+    cursor: pointer;
+}
+.needed_left_space{
+	margin-left: 60px;
+	   width: 70%;
 }
 ::-webkit-scrollbar{
 	widht:25px;
@@ -75,58 +112,34 @@ header{
 	background: #f00;
 	border-radius: 3px;
 }
-
-
-#vertical{
-	width: 5px;
-	height: 80%;
-	background-color: black;
+#inline{
+	display: inline-block; 
 }
 
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: black;
+  border: none;
+  border-radius: 15px;
+  /*box-shadow: 0 9px #999;*/
 
-
-#section2{
-    margin: 30px;
-    padding: 30px;
-    width: 70%;
-    
 }
 
+.button:hover {background-color: dimgrey;}
 
-.main_search_link h1 {
-	color: white;
-	font-size: 22px;
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
-
-td, th {
-border: 1px solid transparent;
-height: 30px;
-transition: all 0.3s;
-  color: #828282;
-}
-
-th {
-background: #181818;
-font-weight: bold;
-font-size: 13px;
-}
-
-td {
-background: #FAFAFA;
-text-align: center;
-}
-
-tr:nth-child(even) td { background: #423e3e; }
-tr:nth-child(odd) td { background: #181818; }
-
-tr:hover td{
-    background: rgb(31, 171, 137);
-    color: #FFF; 
-    cursor: pointer;
-}
-
-
-
+ */
 
 </style>
 
@@ -134,47 +147,51 @@ tr:hover td{
 
 </head>
 <body><!-- block: 사이즈 완전 딱 맞게, 즉 높이랑 넓이 모두 조정 / inline-block: 넓이는 줄고, 높이는 그대로! -->
-		<header> <!-- 전체 -->
-		<nav class = "menu_section"> <!-- 최상단 ~ 로고 있는 부분 하나 / 메뉴 있는 부분 하나 해서 두 개로 나눔 -->
-		  <div class = "logo"><button type="button" onclick=" location.href='../list/mainPage.jsp'"><img src="logo1.png" alt="로고가 있는 자리" width = "100" height = "44"></button><svg width="102" height="32" fill="currentcolor" style="display:inline-block"></svg></div>
-		  <div class = "menu">
-		  	<ul class = "login_and_out">
-		  	<%
-		  		Object user_id = session.getAttribute("user_id");
-		  	%>
-						
-			<%
-				if(user_id == null){
-			%> 
-		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../user/loginChk'">로그인</button></li>
+<body class="index is-preload">
+	<div id="page-wrapper">
 
-		  	<%
-				} else {
-		  	%>
-		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='../mypage/MyPage.jsp'">마이페이지</button></li>
-		  		<li><button class = "button_wrap" type = "button" onclick = "location.href='logout'">로그아웃</button></li>
-		  	<%
-				}
-		  	%>	
-		  		
-		  	</ul>
-		  </div>
-		</nav>
-	
-	
-		<section> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
-		  <div class = "main_search_link">
-		  	<h1>조회 결과</h1>
-		  
-		  </div>
-		</section>
+		<!-- Header -->
+		<header id="header" class="alt">
+			<h1 id="logo">
+				<a href="../list/index.jsp"><strong> <span>whereR</span>Hu
+				</strong> </a>
+			</h1>
+			<nav id="nav">
+				<ul>
+					<li class="current"><a href="../list/index.jsp">Welcome</a></li>
+					
+					   <c:if test="${(not empty sessionScope.kakaonick) or (not empty sessionScope.user_id) or (not empty sessionScope.navername)}">
+					 <%--   		<c:if test="${not empty sessionScope.kakaonick }"> <p>${sessionScope.kakaonick}님 환영합니다</p></c:if> --%>
+					  		 <c:if test="${not empty sessionScope.user_id }"> <p id="inline">${sessionScope.user_id}님 환영합니다</p></c:if>
+					  		  <c:if test="${not empty sessionScope.navername }"> <p id="inline">${sessionScope.navername}님 환영합니다</p></c:if>
+					   
+							<li class="submenu"><a href="#">menu</a>
+								<ul>
+								<li><a href="../list/searchPage.jsp">Search</a>
+								<li><a href="../recommend/recommendMain.jsp">Recommend</a></li>
+								<li><a href="../mypage/MyPage.jsp">MyPage</a></li>
+								<li><a href="https://edu.kosta.or.kr">Contact</a></li>
+
+						</ul>
+						<li><a href="logout" class="button primary">Logout</a></li>
+					   </c:if>
+					   
+					   
+					   <c:if test="${(empty sessionScope.user_id) and (empty sessionScope.kakaonick) and (empty sessionScope.navername)}">
+					   <p id="inline">비회원</p>
+						<li><a href="../user/loginChk" class="button primary">Login</a></li>
+					  </c:if>
+				</ul>
+			</nav>
+		</header>
+
 		
 		<section class = "result_box">
 			<section id="section1"> <!-- 전체 안에 있는, 동시에 최상단으로부터는 아래에 있는 검색창 -->
-			  <div class = "left_section">
-				<h2>추가 검색 박스</h2><br>
+
+				<h2 style="font-family: 'Do Hyeon', sans-serif;">추가 검색 박스</h2><br>
 				  <form id="searchForm">
-				  	<h4>노선별 선택</h4>
+				  	<h4 id="select">노선별 선택</h4>
 				  		<div>
 				  						  		
 				  		<select name="route" >
@@ -185,35 +202,36 @@ tr:hover td{
 						</select>
 						</div>
 					<br><br>
-					<h4>주유소 여부</h4>
+					<h4 id="select">주유소 여부</h4>
 						<div>
 						<input type="radio" id="isoil" name="oil" value="all" checked="checked"> 구분 없음
 						<input type="radio" id="isoil" name="oil" value="yes"> O
 						<input type="radio" id="isoil" name="oil" value="no"> X
 						</div>
 					<br><br>
-					<h4>상행/하행 구분</h4>
+					<h4 id="select">상행/하행 구분</h4>
 						<div>
 						<input type="radio" id="upndown" name="updown" value="all" checked="checked"> 모두 선택
 						<input type="radio" id="upndown" name="updown" value="ascend"> 상행
 						<input type="radio" id="upndown" name="updown" value="descend"> 하행
 						</div>
-						<input type="button" value="확인" id="okButton">
+						
+						<br>
+						<input type="button" class = "button" value="확인" id="okButton" style="font-size: 13px;">
 				  </form>
-			  </div>
 			</section>
 			
-			<section id = "vertical"></section>
+			<section id = "vertical" style="border-left: 2px solid black; margin-left: 20px;"></section>
 			
-			<section id="section2" style="overflow:scroll; width: 850px; height: 450px;">
-			 
-			 <h2>검색 결과</h2><br>
+			<section id="section2" style="overflow:scroll; width: 1020px; margin-left: 30px;">
+			 			 <h2 style="font-family: 'Do Hyeon', sans-serif;">검색 결과</h2>
+
 			 
 			 <div id="here"></div>
 			
 			</section>
 		</section>
-	</header>
+
 	
 	<script>
 	  $(function(){
@@ -232,7 +250,7 @@ tr:hover td{
 		 });
 	  });
 	</script>
-	
+	</div>
 </body>
 </html>
 

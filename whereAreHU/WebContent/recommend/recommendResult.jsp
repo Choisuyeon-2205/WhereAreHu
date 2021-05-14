@@ -7,14 +7,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../list/assets/css/main.css" />
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="../list/assets/js/jquery.tablesorter.min.js"></script>
+<script src="../list/assets/js/jquery.tablesorter.widgets.min.js"></script>
 <style>
 #userid {
-	color: blue;
-	font-size: 25px;
+	color: rgb(72, 52, 212);
+	font-size: 50px;
+	font-weight: bold;
 }
 table { border-collapse: separate; border-spacing: 1px; text-align: center; line-height: 1.5; margin: 20px 10px; }
-table th { width: 155px; padding: 10px; font-weight: bold; vertical-align: top; color: #fff; background-color: #ce4869 ;}
-table td { width: 155px; padding: 10px; vertical-align: top; border-bottom: 1px solid #ccc; background-color: #eee;}
+table th { width: 155px; padding: 10px; font-weight: bold; vertical-align: top; color: black; background-color: #ce4869 ;}
+table td { width: 155px; padding: 10px; vertical-align: top; border-bottom: 1px solid black; background-color: #eee;}
 h2, h5, table {
 	text-align: center;
 	margin: auto;
@@ -29,9 +33,14 @@ body{
 #inline{
 	display: inline-block; 
 }
+.recom_result{
+	margin-top: 100px;
+}
+#text_color_result{
+	color: white;
+}
 </style>
 </head>
-<body>
 <body class="index is-preload">
 	<div id="page-wrapper">
 
@@ -52,12 +61,8 @@ body{
 					   
 							<li class="submenu"><a href="#">menu</a>
 								<ul>
-								<li class="submenu"><a href="#">LookUP</a>
-									<ul>
-										<li><a href="#"> gas station</a></li>
-										<li><a href="#">highway</a></li>
-									</ul>
-								<li><a href="../list/searchPage.jsp">Search</a></li>
+								<li><a href="../list/searchPage.jsp">Search</a>
+								<li><a href="../recommend/recommendMain.jsp">Recommend</a></li>
 								<li><a href="../mypage/MyPage.jsp">MyPage</a></li>
 								<li><a href="https://edu.kosta.or.kr">Contact</a></li>
 
@@ -77,12 +82,12 @@ body{
 
 
 
-<section>
-	<h2><span id="userid">${sessionScope.user_id}</span>님의 맞춤 추천</h2>
-	<h5>${rlist} 지역 [${method=="good"?"추천순":"큰 휴게소순"}] 결과</h5>
+<section class = "recom_result">
+	<h2 id = "text_color_result"><span id="userid">${sessionScope.user_id}</span>님의 맞춤 추천</h2>
+	<h5 id = "text_color_result">${rlist} 지역 [${method=="good"?"추천순":"큰 휴게소순"}] 결과</h5>
 </section>
 <main>
-<table>
+<table id="myTable" class="tablesorter">
   <thead>
 	<tr>
 		<th>주유소코드</th><th>이름</th><th>주소</th><th>연락처</th><th>노선</th><th>주차대수</th><th>좋아요수</th>
@@ -103,8 +108,14 @@ body{
   </tbody>
 </table>
 </main>
-
 </div>
-
+	<script>
+	
+	$(document).ready(function(){
+		$("#myTable").tablesorter();
+	});
+		
+	
+	</script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <style>
-.xkfxhl {	
+.outout {	
 	border: 0;
     padding: 10px;
    
@@ -22,6 +22,8 @@
     transition: background 0.3s ease-in-out;
     box-shadow: 0px 5px 7px 0px rgb(0 0 0 / 30%);
 }
+
+
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
  <script type="text/javascript">
@@ -44,7 +46,7 @@
 		 	 width: 100%;
 		 	 height : 500px;
 		 	 text-align: center;">
-<div style=" height: 400px; background: rgba(233, 233, 233, 0.7)">
+<div style=" height: 400px; background: rgba(233, 233, 233, 0.7); font-weight: bold;">
 <br>
 <h1>회원 탈퇴</h1>
 <section>
@@ -56,14 +58,14 @@
 <br>
 저희 서비스 만족 하셨나요?
 <br>
-<textarea id="hasil" name="hasil" rows="7" cols="38" style="resize: none" placeholder="따듯한 한마디 감사합니다."></textarea>
+<textarea id="hasil" name="hasil" rows="7" cols="38" style="resize: none; text-align: center;" placeholder="따듯한 한마디 감사합니다." ></textarea>
 
 
 
 </form>
 
 
-<input class="xkfxhl" type="submit" value="회원탈퇴" >
+<input class="outout" type="submit" value="회원탈퇴" >
 </section>
 </div>
 </div>

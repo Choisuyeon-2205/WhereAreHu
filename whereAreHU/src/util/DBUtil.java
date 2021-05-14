@@ -14,7 +14,7 @@ public class DBUtil {
 	public static Connection getConnection() {
 		Connection conn = null;
 		String driverName ="oracle.jdbc.driver.OracleDriver";
-		String url="jdbc:oracle:thin:@localhost:1521:xe";
+		String url="jdbc:oracle:thin:@192.168.0.102:1521:xe";
 		String userid="hr", password="hr";
 		
 		try {

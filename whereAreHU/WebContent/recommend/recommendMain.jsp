@@ -9,66 +9,117 @@
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="../list/image/small_logo_icon.png">
 <link rel="stylesheet" href="../list/css/styles.css"/>
 <link rel="stylesheet" href="../list/assets/css/main.css" />
+
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+</style>
+
+<style>
+
+*{
+font-family: 'Do Hyeon', sans-serif;
+}
+
 body{
-	background-image: url("../list/image/serviceresult_back.jpeg"); 
+	background-image: url("../list/image/main_background.jpg"); 
 	background-repeat: no-repeat;
 	height: 880px;
 	background-size: 100% /* 그림 사이즈 딱 맞게~ */
 }
 .result_box{
-	width: 70%;
-	height: 600px;
-	background-color: rgba(215, 251, 232, 0.6);
+	width: 700px;
+	height: 620px;
+	margin : 100px 0 0 30px;
+	background-color: rgba(215, 251, 232, 0.8);
+	padding: 20px 30px;
+	position: relative; /* 위치 이동 */
+	top: 20px;
+	left: 30px;
 	border-radius: 6px; /* 모서리 둥글게 */
 	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
+}
+.result_box h2{
+	color:black;
+	margin : 10px 0 0 50px;
 	text-align: center;
+	font-weight: 700;
 }
-.middle_section , .left_section {
-/* 	margin-left: 50px;
-	margin-top: 50px;
-	padding: 20px; */
-	display: inline-block;
-	width: 400px;
-	text-align: left;
-	background-color: rgba(255, 255, 255, 0.6);
-	border-radius: 6px; /* 모서리 둥글게 */
-	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
-}
-input[type=checkbox] {
-	margin: 10px;
-}
-#bottom{ 
-	text-align: right;
-}
-.main_search_link{ 
-	color:white; 
-	margin:0;
+
+
+.tablesorter{
 	padding:0;
+	margin:0;	
+	width: 800px;
+	height: 400px;
 }
-#bottom{
-	margin-top: 10px;
-	margin-right: 50px;
-	margin-bottom: 10px;
+
+.tablesorter p{
+	color:white;
+	padding: 10px;
+	line-height:35px;
 }
-#reset{
-	width: 80px;
-	height: 40px;
-	margin-right: 20px;
-	margin-left: 20px;
-	font-size: 15px;
-	background-color: lightgray;
-	border-radius: 6px; /* 모서리 둥글게 */
+::-webkit-scrollbar{
+	widht:25px;
 }
-#submit{
-	width: 120px;
-	height: 40px;
-	font-size: 15px;
-	background-color: lightgray;
-	border-radius: 6px; /* 모서리 둥글게 */
+::-webkit-scrollbar-track{
+	border:7px solid #232943;
+	box-shadow: inset 0 0 2.5px 2px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb{
+	background: #f00;
+	border-radius: 3px;
+}
+#vertical{
+	width: 5px;
+	height: 80%;
+	background-color: black;
+}
+#section2{
+    margin: 30px;
+    padding: 30px;
+    width: 70%;    
+}
+td, th {
+border: 1px solid transparent;
+height: 30px;
+transition: all 0.3s;
+  color: #BDC581;
+}
+
+th {
+background: #0a3d62;
+font-weight: bold;
+font-size: 13px;
+color:#27ae60
+}
+
+td {
+background: #FAFAFA;
+text-align: center;
+}
+
+tr:nth-child(even) td { background:#0a3d62; }
+tr:nth-child(odd) td { background: #3c6382; }
+
+tr:hover td{
+    background: rgb(31, 171, 137);
+    color: #FFF; 
+    cursor: pointer;
 }
 #inline{
 	display: inline-block; 
+}
+
+.left_section, .middle_section{
+	display: inline-block; 
+}
+
+.middle_section{
+	margin-left : 300px;
+	margin-bottom: 10px;
+}
+#bottom{
+	text-align: center;
 }
 </style>
 
@@ -114,12 +165,8 @@ function chkchk (form){
 					   
 							<li class="submenu"><a href="#">menu</a>
 								<ul>
-								<li class="submenu"><a href="#">LookUP</a>
-									<ul>
-										<li><a href="#"> gas station</a></li>
-										<li><a href="#">highway</a></li>
-									</ul>
-								<li><a href="../list/searchPage.jsp">Search</a></li>
+								<li><a href="../list/searchPage.jsp">Search</a>
+								<li><a href="../recommend/recommendMain.jsp">Recommend</a></li>
 								<li><a href="../mypage/MyPage.jsp">MyPage</a></li>
 								<li><a href="https://edu.kosta.or.kr">Contact</a></li>
 
@@ -141,13 +188,13 @@ function chkchk (form){
 
 		
 		<div class = "main_search_link">
-			<h1>휴게소 추천</h1>
+			
 
-		
-		
 		<form method="post" action="recommendAction"  onsubmit="return chkchk(this);">
-		<section class = "result_box">
-			<div class = "left_section">
+		<section class = "result_box" style="color: black;
+    margin-left: 450px;">
+		<h1 style="text-align: center; font-family: 'Do Hyeon', sans-serif;">휴게소 추천</h1>
+			<div class = "left_section" style=" font-family: 'Do Hyeon', sans-serif;">
 				<input type="checkbox" name="region" value="서울"/>서울<br>
 				<input type="checkbox" name="region" value="경기"/>경기<br>
 				<input type="checkbox" name="region" value="부산"/>부산<br>
@@ -163,7 +210,7 @@ function chkchk (form){
 				<input type="checkbox" name="region" value="경상북도"/>경상북도
 			</div>
 		
-			<div class = "middle_section">
+			<div class = "middle_section" style=" font-family: 'Do Hyeon', sans-serif;">
 				<input type="radio" name="etc" value="good"/>추천순<br>
 				<input type="radio" name="etc" value="size"/>크기순<br>
 			</div>
@@ -173,6 +220,6 @@ function chkchk (form){
 		</form>
 
 			</div>
-	
+	</div>
 </body>
 </html>

@@ -39,43 +39,67 @@ $(function(){
 	
 });
 </script>
+<style>
+#inline{
+	display: inline-block; 
+}
+#detailMain{
+	margin-top: 500px;
+}
+#buttons{
+	margin:50px 0 100px 0;
+}
+
+.detail_span {
+	font-size: 0.9em;
+}
+</style>
+<link rel="stylesheet" href="css/main.css" />
 <link rel="stylesheet" href="css/detailMain.css">
 </head>
-	<nav class="menu_section">
-		<!-- 최상단 ~ 로고 있는 부분 하나 / 메뉴 있는 부분 하나 해서 두 개로 나눔 -->
-		<div class="logo">
-			<button type="button" onclick="location.href='../list/index.jsp'">
-				<img src="../list/image/logo1.png" alt="로고가 있는 자리" width="100"
-					height="44">
-			</button>
-			<svg width="102" height="32" fill="currentcolor"
-				style="display: inline-block"></svg>
-		</div>
-		<div class="menu">
-			<ul class="login_and_out">
-				<%
-				Object user_id = session.getAttribute("user_id");
-				if (user_id == null) {
-				%>
-				<li><button class="button_wrap" type="button"
-						onclick="location.href='../user/loginChk'">로그인</button></li>
-				<%
-				} else {
-				%>
-				<li><button class="button_wrap" type="button"
-						onclick="location.href='../mypage/MyPage.jsp'">마이페이지</button></li>
-				<li><button class="button_wrap" type="button"
-						onclick="location.href='../list/logout'">로그아웃</button></li>
-				<%
-				}
-				%>
-			</ul>
-		</div>
-	</nav>
-	<body>	 
+<body class="index is-preload" style="padding-left: 180px">
+		<!-- Header -->
+		<header id="header" class="alt">
+			<h1 id="logo">
+				<a href="../list/index.jsp"><strong> <span>whereR</span>Hu
+				</strong> </a>
+			</h1>
+			<nav id="nav">
+				<ul>
+					<li class="current"><a href="../list/index.jsp">Welcome</a></li>
+					
+					   <c:if test="${(not empty sessionScope.kakaonick) or (not empty sessionScope.user_id) or (not empty sessionScope.navername)}">
+					 <%--   		<c:if test="${not empty sessionScope.kakaonick }"> <p>${sessionScope.kakaonick}님 환영합니다</p></c:if> --%>
+					  		 <c:if test="${not empty sessionScope.user_id }"> <p id="inline">${sessionScope.user_id}님 환영합니다</p></c:if>
+					  		  <c:if test="${not empty sessionScope.navername }"> <p id="inline">${sessionScope.navername}님 환영합니다</p></c:if>
+					   
+							<li class="submenu"><a href="#">menu</a>
+								<ul>
+								<li class="submenu"><a href="#">LookUP</a>
+									<ul>
+										<li><a href="#"> gas station</a></li>
+										<li><a href="#">highway</a></li>
+									</ul>
+								<li><a href="../list/searchPage.jsp">Search</a></li>
+								<li><a href="../mypage/MyPage.jsp">MyPage</a></li>
+								<li><a href="https://edu.kosta.or.kr">Contact</a></li>
+
+						</ul>
+						<li><a href="logout" class="button primary">Logout</a></li>
+					   </c:if>
+					   
+					   
+					   <c:if test="${(empty sessionScope.user_id) and (empty sessionScope.kakaonick) and (empty sessionScope.navername)}">
+					   <p id="inline">비회원</p>
+						<li><a href="../user/loginChk" class="button primary">Login</a></li>
+					  </c:if>
+				</ul>
+			</nav>
+		</header>
+	
 	<div id="detailMain">
 		<div class="header2">
-			<h1>${sarea.area_name}</h1>
+			<h1 id="area_name">${sarea.area_name}</h1>
 			<div id="like">
 				<div id="like_button">♥</div>
 				<h5>
@@ -102,7 +126,7 @@ $(function(){
 			<jsp:include page="../review/kakaoMap.jsp" />
 			</div>
 		</div>
-		<div id="buttons">
+		<div id="buttons" style="inline-size: max-content; margin-right: 200px; font-size: smaller;">
 			<input type="button" class="btns" id="food" value="대표음식"
 				onclick="location.href='selectDetailFood?area_num=${sarea.area_num}&area_name=${sarea.area_name}'">
 			<input type="button" class="btns" id="oil" value="주유소"

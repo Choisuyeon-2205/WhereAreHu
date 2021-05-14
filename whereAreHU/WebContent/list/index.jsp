@@ -25,6 +25,9 @@
 </head>
 <style>
 
+
+
+
 #inline{
 	display: inline-block; 
 }
@@ -45,6 +48,9 @@
 
 <body class="index is-preload">
 	<div id="page-wrapper">
+	<video id = "videoBG" autoplay muted loop >
+	<source src="videoplayback.mp4" type="video/mp4">
+	</video>
 
 		<!-- Header -->
 		<header id="header" class="alt">
@@ -63,12 +69,8 @@
 					   
 							<li class="submenu"><a href="#">menu</a>
 								<ul>
-								<li class="submenu"><a href="#">LookUP</a>
-									<ul>
-										<li><a href="#"> gas station</a></li>
-										<li><a href="#">highway</a></li>
-									</ul>
-								<li><a href="../list/searchPage.jsp">Search</a></li>
+								<li><a href="../list/searchPage.jsp">Search</a>
+								<li><a href="../recommend/recommendMain.jsp">Recommend</a></li>
 								<li><a href="../mypage/MyPage.jsp">MyPage</a></li>
 								<li><a href="https://edu.kosta.or.kr">Contact</a></li>
 
@@ -86,16 +88,20 @@
 		</header>
 
 		<!-- Banner -->
-		<section id="banner">
-		<div class="inner">
+		<section id="banner" >
+				
+		<div class="inner" style="margin-top: 90px;">
+		
 				<header>
 					<h2>WhereRHU</h2>
 				</header>
 				<p>
 					Find your <strong>RestArea</strong>, a free <br /> responsive <br />
 					by <a href="">hereHuGO</a>.
+					
 				</p>
 				<footer>
+				
 					<ul class="buttons stacked">
 						<li><a href="../list/searchPage.jsp"
 							class="button fit scrolly">Search RestArea</a></li>
@@ -105,9 +111,7 @@
 			</div>
 		</section>
 		
-		<video id = "videoBG" autoplay muted loop >
-     	<source src="videoplayback.mp4" type="video/mp4">
-   		</video>
+		
 
 		<!-- Main -->
 		<article id="main">
@@ -147,7 +151,7 @@
 						<section>
 							<span class="icon solid featured fa-check"></span>
 							<header>
-								<h3>별점 및 좋아요 기능</h3>
+								<h3>별점 및 좋아요기능</h3>
 							</header>
 							<p>사람을이 선호하는 휴게소를 찾을 수 있습니다.</p>
 						</section>
@@ -160,7 +164,7 @@
 							<header>
 								<h3>리뷰 기능</h3>
 							</header>
-							<p>다른 사람들의 휴게소 경험담을 들어보고 공유하세요 .</p>
+							<p>다른 사람들과 공유하세요.</p>
 						</section>
 					</div>
 				</div>

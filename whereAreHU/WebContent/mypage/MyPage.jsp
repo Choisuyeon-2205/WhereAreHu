@@ -140,6 +140,9 @@
 </head>
 
 <style>
+
+
+
 #header h1 {
 			font-weight: 900;
 			margin: 0;
@@ -574,12 +577,12 @@
 		z-index: 10000;">
 			
 			<h1 id="logo">
-				<a href="index.html" style="text-decoration: none; color: #3fb1a3" ><strong> <span>whereR</span>Hu
+				<a href="../list/index.jsp" style="text-decoration: none; color: #3fb1a3" ><strong> <span>whereR</span>Hu
 				</strong> </a>
 			</h1>
 			<nav id="nav">
 				<ul>
-					<li class="current"><a href="../WebContent/list/index.jsp">Welcome</a></li>
+					<li class="current"><a href="#">Welcome</a></li>
 					<li class="submenu"><a href="../list/index.jsp">menu</a>
 						<ul>
 
@@ -609,9 +612,7 @@
 				<img src="./img/login_icon1.png" width="200" alt="Profile Image">
 			</div>
 			<div class="profile-nav-info">
-				<h3 class="user-name">MYPAGE</h3>
-
-
+			<h3 class="user-name">MYPAGE</h3>
 			</div>
 			<div class="profile-option">
 				<div class="notification">
@@ -627,12 +628,13 @@
 				<p>${username}님 환영합니다</p>
 				
 				<br>
-					<ul id="UserInfo">
+					<ul id="UserInfo" style="font-family: '코트라 고딕체 보통', 돋움, 굴림">
 						
 						<li id="user_id"><label for="user_id">아이디</label> ${user_id}</li>
 						<li id="username"><label for="user-name">이름</label> ${username}</li>
 						<li id="user_email"><label for="mail">이메일</label> ${user_email}</li>
 						<li id="user_phone"><label for="phone">연락처</label> ${user_phone}</li> 
+						
 					</ul>
 					<br>
 				</div>
@@ -655,10 +657,10 @@
 
 			<div class="nav" >
 				<ul>
-					<li onclick="tabs(0)" class="userInfo"  style="background: rgba(233, 233, 233,0.7)">회원정보수정</li>
-					<li onclick="tabs(1)" class="review"  style="background: rgba(233, 233, 233,0.7)">리뷰조회</li>
-					<li onclick="tabs(2)" class="starview"  style="background: rgba(233, 233, 233,0.7)">좋아요조회</li>
-					<li onclick="tabs(3)" class="out"  style="background: rgba(233, 233, 233,0.7)">회원탈퇴</li>
+					<li onclick="tabs(0)" class="userInfo"  style="background: rgba(233, 233, 233,0.7); font-weight: bold ">회원정보수정</li>
+					<li onclick="tabs(1)" class="review"  style="background: rgba(233, 233, 233,0.7); font-weight: bold">리뷰조회</li>
+					<li onclick="tabs(2)" class="starview"  style="background: rgba(233, 233, 233,0.7); font-weight: bold">좋아요조회</li>
+					<li onclick="tabs(3)" class="out"  style="background: rgba(233, 233, 233,0.7); font-weight: bold">회원탈퇴</li>
 				</ul>
 			</div>
 			

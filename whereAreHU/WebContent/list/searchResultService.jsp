@@ -9,11 +9,15 @@
 <title>Where? 휴식이 있는 곳!</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="../list/css/styles.css"/>
 <link rel="stylesheet" href="../list/assets/css/main.css" />
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="image/small_logo_icon.png">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="../list/assets/js/jquery.tablesorter.min.js"></script>
 <script src="../list/assets/js/jquery.tablesorter.widgets.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+</style>
 
 
 
@@ -39,8 +43,10 @@ body{
 	box-shadow: 0 2px 2xp 0 rgb(214,214,214);
 }
 .result_box h2{
-	color:#27ae60;
+	color:black;
 	margin : 10px 0 0 50px;
+	text-align: center;
+	font-weight: 700;
 }
 
 
@@ -116,7 +122,7 @@ tr:hover td{
 
 </head>
 <body class="index is-preload">
-	<div id="page-wrapper">
+	<div id="page-wrapper" style="margin-left: 80px;">
 
 		<!-- Header -->
 		<header id="header" class="alt">
@@ -135,12 +141,8 @@ tr:hover td{
 					   
 							<li class="submenu"><a href="#">menu</a>
 								<ul>
-								<li class="submenu"><a href="#">LookUP</a>
-									<ul>
-										<li><a href="#"> gas station</a></li>
-										<li><a href="#">highway</a></li>
-									</ul>
-								<li><a href="../list/searchPage.jsp">Search</a></li>
+								<li><a href="../list/searchPage.jsp">Search</a>
+								<li><a href="../recommend/recommendMain.jsp">Recommend</a></li>
 								<li><a href="../mypage/MyPage.jsp">MyPage</a></li>
 								<li><a href="https://edu.kosta.or.kr">Contact</a></li>
 
@@ -160,12 +162,12 @@ tr:hover td{
 	
 		
 		<section class = "result_box">
-				 <h2>검색 결과</h2>
-			<section id="section2" style="overflow:scroll; width: 900px; height: 350px;">
+				 <h2 style="font-family: 'Do Hyeon', sans-serif;">검색 결과</h2>
+			<section id="section2" style="overflow:scroll; width: 900px; height: 350px; margin-left: 140px;">
 			 
 	
 			 
-			 <h4>※ 테이블명을 누르면 정렬이 실행됩니다</h4>
+			 <h4 style="text-align: center; ">※ 테이블명을 누르면 정렬이 실행됩니다</h4>
 			 <div id = "here">			 </div>
 			  <table id="myTable" class="tablesorter" cellspacing="2" cellpadding="2" border="2" >
 			 	<thead>
@@ -177,15 +179,9 @@ tr:hover td{
 				  <tbody>
 				  <c:forEach var="search" items="${servicesearch}" > 
 				  	<tr id = result_section onclick="location.href='../detail/selectDetail?area_num=${search.area_num }'" ><td>${search.area_name }</td><td>${search.thumbsup }</td></tr>
-				  
 				  </c:forEach>
 				  </tbody>
-				  
-
-
-
-
-			  	
+		
 			  </table>
 			
 			</section>

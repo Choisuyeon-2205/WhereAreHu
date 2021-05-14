@@ -15,13 +15,12 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 
 <style>
-.* {
-    font-family: 'NanumSquare', sans-serif !important;
-}
 	#revText
 	{
 		border-radius: 10px;
 		margin: 0 0 20px 0;
+		width: 800px;
+		font-size: 0.9em;
 	}
 	
 	.parent {
@@ -51,10 +50,19 @@
 	textarea:focus {outline:none;}
 	
 	#instBtn {
+		width: 90px;
+		height: 30px;
 		padding: 1px 6px;
 		position: absolute;
 		right: 0%;
 		cursor: pointer;
+		min-width: auto;
+		line-height: normal;
+		font-size: 0.7em;
+	}
+	#upload{
+		cursor: pointer;
+		font-size: 0.8em;
 	}
 </style>
 <script>

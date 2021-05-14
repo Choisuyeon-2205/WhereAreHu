@@ -38,10 +38,10 @@
 		<form action ="changeByUserList" method="post" >
 			<ul id="ChangeInfo" style = "">
 				<li><label for="user_id">아이디</label> 
-				<input type="text"id="user_id" name = "user_id" value="${user_id}" readonly="readonly"></li>
+				<input type="text"id="user_id" name = "user_id" value="${user_id}" readonly="readonly" style="text-align: center; background-color: none"></li>
 				<br>
 				<li><label for="user_name">이름</label> 
-				<input type="text" id="user_name" name = "user_name" value="${username}" readonly="readonly" ></li>
+				<input type="text" id="user_name" name = "user_name" value="${username}" readonly="readonly" style="text-align: center;" ></li>
 				<br>
 				<li><label for="user_pw">비밀번호</label> 
 				<input type="text" id="user_pw" name = "user_pw" ></li>
@@ -57,7 +57,7 @@
 			
 				<div>
 					<button class="changeButton1" type="submit">수정하기</button>
-					<button class="changeButton2" type="reset">뒤로가기</button>
+					<button class="changeButton2" type="reset">취소하기</button>
 				</div>
 				
 		</form>
